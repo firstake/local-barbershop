@@ -1,0 +1,71 @@
+body {
+  font-family: 'Kanit', sans-serif;
+  font-size: 18px;
+  margin: 0;
+  background-color: #fff;
+}
+
+@media screen and (max-width: 400px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .btn-xs {
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: .2rem;
+  }
+}
+
+/* Full height excluding header and footer */
+.f-h {
+  min-height: calc(100vh - 137px);
+}
+
+button {
+  outline: none !important;
+}
+
+.form-control:focus {
+  border-color: #dda122;
+  box-shadow: 0 0 0 0.2rem rgb(253, 184, 39);
+}
+
+.list-group-item.active {
+  background-color: #f8a92e;
+  border-color: #f8a92e;
+}
+
+.card-img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.badge {
+  font-size: 100%;
+  font-weight: inherit;
+}
+
+.btn.focus, .btn:focus {
+  box-shadow: none !important;
+}
+
+.btn-general {
+  color: #fff;
+  background-color: #e77f52;
+  border-color: #e77f52;
+}
+
+.btn-general:hover {
+  color: #fff;
+  background-color: #ce7b56;
+  border-color: #b96e4d;
+}
+
+/* Contacts page */
+.text-pre-line {
+  white-space: pre-line;
+}

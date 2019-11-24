@@ -1,0 +1,16 @@
+.card-deck .card {
+  flex: unset;
+  width: calc(33.333% - 30px);
+}
+
+@media screen and (max-width: 992px) {
+  .card-deck .card {
+    width: calc(50% - 30px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card-deck .card {
+    width: auto;
+  }
+}

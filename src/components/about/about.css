@@ -1,0 +1,23 @@
+.about-content {
+  background-color: #b1864f;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-content__text {
+  max-width: 500px;
+}
+
+.about-pic {
+  background: url(/img/home/about.jpg) no-repeat 50% 50%/cover;
+  min-height: 500px;
+  height: 100%;
+}
+
+@media screen and (max-width: 576px) {
+  .about-pic {
+  	min-height: calc(100vw / 1.5);
+  }
+}

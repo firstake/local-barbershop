@@ -1,0 +1,68 @@
+[
+  {
+    "token": 1574297844771,
+    "name": "Nicolas",
+    "phone": "950-025-2525",
+    "email": "cage@gmail.com",
+    "password": "password",
+    "avatar": "3148926447697.jpg",
+    "bookings": [
+      {
+        "date": "26:11:2019",
+        "time": "18:00",
+        "title": "Straight Razor Shave",
+        "link": "razor"
+      },
+      {
+        "date": "27:11:2019",
+        "time": "16:00",
+        "title": "Haircut",
+        "link": "haircut"
+      }
+    ]
+  },
+  {
+    "token": 1574298026981,
+    "name": "Vladimir",
+    "phone": "777-444-1223",
+    "email": "vladimir@mail.ru",
+    "password": "123456",
+    "avatar": "default.png",
+    "bookings": [
+      {
+        "date": "26:11:2019",
+        "time": "16:00",
+        "title": "Facial & Massage",
+        "link": "facials"
+      }
+    ]
+  },
+  {
+    "token": 1574467174995,
+    "name": "Oleg",
+    "phone": "456-461-3277",
+    "email": "oleg@mail.ru",
+    "password": "789456",
+    "avatar": "default.png",
+    "bookings": [
+      {
+        "date": "27:11:2019",
+        "time": "11:00",
+        "title": "Haircut",
+        "link": "haircut"
+      },
+      {
+        "date": "27:11:2019",
+        "time": "14:00",
+        "title": "Edge Up",
+        "link": "edgeup"
+      },
+      {
+        "date": "27:11:2019",
+        "time": "15:00",
+        "title": "Edge Up",
+        "link": "edgeup"
+      }
+    ]
+  }
+]
