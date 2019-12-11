@@ -35,33 +35,40 @@ class ServiceBookingPanel extends Component {
   }
 
   render() {
+    const {
+      isAuth, userData, link, title, fetchNewBooking, cancelBooking,
+    } = this.props;
+    const { isOpen } = this.state;
+
     let filteredBookings = [];
 
-    if (this.props.isAuth) {
-      filteredBookings = this.props.userData.bookings.filter(
-        (booking) => booking.link === this.props.link,
+    if (isAuth) {
+      filteredBookings = userData.bookings.filter(
+        (booking) => booking.link === link,
       );
     }
 
-    const sortedBookings = filteredBookings.sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time));
+    const sortedBookings = filteredBookings.sort(
+      (a, b) => (a.date + a.time).localeCompare(b.date + b.time),
+    );
 
     return (
       <>
         <ServiceBookingPanelButtons
-          isAuth={this.props.isAuth}
+          isAuth={isAuth}
           bookingsLength={sortedBookings.length}
           showModal={this.showModal}
         />
 
         <Modal
-          isOpen={this.state.isOpen}
+          isOpen={isOpen}
         >
-          {this.props.isAuth ? (
+          {isAuth ? (
             <ServiceBookingPanelUserForm
-              newBooking={this.props.fetchNewBooking}
-              title={this.props.title}
-              link={this.props.link}
-              token={this.props.userData.token}
+              newBooking={fetchNewBooking}
+              title={title}
+              link={link}
+              token={userData.token}
               onCancel={this.handleCancel}
             />
           ) : (
@@ -71,14 +78,14 @@ class ServiceBookingPanel extends Component {
           )}
         </Modal>
 
-        {this.props.isAuth && (
+        {isAuth && (
           <div className="row">
             <div className="col-12 col-md-6 pb-3">
               {sortedBookings.length !== 0 && (
                 <ServiceBookingPanelBookings
                   bookings={sortedBookings}
-                  cancelBooking={this.props.cancelBooking}
-                  token={this.props.userData.token}
+                  cancelBooking={cancelBooking}
+                  token={userData.token}
                 />
               )}
             </div>

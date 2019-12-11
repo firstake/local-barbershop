@@ -26,15 +26,20 @@ class AccountContent extends Component {
   }
 
   render() {
-    if (!this.props.isAuth) return <Redirect to="/sign-in" />;
+    const {
+      isAuth, userData, changeUserInfo, cancelBooking, changeUserAvatar,
+    } = this.props;
+    const { active } = this.state;
+
+    if (!isAuth) return <Redirect to="/sign-in" />;
 
     let section;
-    switch (this.state.active) {
+    switch (active) {
       case 'profile':
         section = (
           <AccountProfile
-            userData={this.props.userData}
-            changeUserInfo={this.props.changeUserInfo}
+            userData={userData}
+            changeUserInfo={changeUserInfo}
           />
         );
         break;
@@ -42,9 +47,9 @@ class AccountContent extends Component {
       default:
         section = (
           <AccountBookings
-            bookings={this.props.userData.bookings}
-            cancel={this.props.cancelBooking}
-            token={this.props.userData.token}
+            bookings={userData.bookings}
+            cancel={cancelBooking}
+            token={userData.token}
           />
         );
         break;
@@ -56,9 +61,9 @@ class AccountContent extends Component {
           <div className="row position-relative">
             <div className="col-4 col-md-12 pr-0 pr-sm-3">
               <Avatar
-                avatar={this.props.userData.avatar}
-                token={this.props.userData.token}
-                changeUserAvatar={this.props.changeUserAvatar}
+                avatar={userData.avatar}
+                token={userData.token}
+                changeUserAvatar={changeUserAvatar}
               />
             </div>
             <div className="col-8 col-md-12 px-3">
@@ -67,7 +72,7 @@ class AccountContent extends Component {
                   onClick={() => this.toggleSection('booking')}
                   className={
                     `list-group-item list-group-item-action py-2${
-                      this.state.active === 'booking' ? ' active' : ''}`
+                      active === 'booking' ? ' active' : ''}`
                   }
                 >
                   Bookings
@@ -76,7 +81,7 @@ class AccountContent extends Component {
                   onClick={() => this.toggleSection('profile')}
                   className={
                     `list-group-item list-group-item-action py-2${
-                      this.state.active === 'profile' ? ' active' : ''}`
+                      active === 'profile' ? ' active' : ''}`
                   }
                 >
                   Profile
@@ -96,11 +101,13 @@ AccountContent.propTypes = {
   isAuth: PropTypes.bool,
   cancelBooking: PropTypes.func,
   changeUserInfo: PropTypes.func,
+  changeUserAvatar: PropTypes.func,
   userData: PropTypes.shape({
     bookings: PropTypes.arrayOf(PropTypes.object),
     email: PropTypes.string,
     name: PropTypes.string,
     phone: PropTypes.string,
+    avatar: PropTypes.string,
     token: PropTypes.number,
   }),
 };

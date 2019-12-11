@@ -16,7 +16,7 @@ class ServicesCardDeck extends Component {
   render() {
     const { data } = this.state;
 
-    if (!this.state.data) {
+    if (!data) {
       return (
         <div className="d-flex justify-content-center align-items-center f-h">
           <div className="spinner-border text-warning " role="status">

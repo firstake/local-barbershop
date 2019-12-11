@@ -5,27 +5,32 @@ import './card.css';
 
 class Card extends Component {
   render() {
+    const {
+      img, title, description, link, price,
+    } = this.props.data;
+
     return (
       <div className="card mb-4">
         <img
-          src={this.props.data.img}
+          src={img}
           className="card-img-top"
-          alt={this.props.data.title}
+          alt={title}
         />
         <div className="card-body">
-          <h5 className="card-title">{this.props.data.title}</h5>
-          <p className="card-text text-muted">{this.props.data.description}</p>
+          <h5 className="card-title">{title}</h5>
+          <p className="card-text text-muted">{description}</p>
         </div>
         <div className="card-footer d-flex justify-content-between align-items-center">
           <Link
-            to={`services/${this.props.data.link}`}
+            to={`services/${link}`}
             className="btn btn-general text-white"
           >
             Details
           </Link>
           <div>
             <span>
-              ${this.props.data.price}
+              $
+              {price}
             </span>
           </div>
         </div>

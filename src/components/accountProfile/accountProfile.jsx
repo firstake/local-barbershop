@@ -4,12 +4,14 @@ import UserInfoList from '../userInfoList/userInfoList';
 
 class AccountProfile extends Component {
   render() {
+    const { userData, changeUserInfo } = this.props;
+
     return (
       <>
         <h2 className="text-center">Profile info</h2>
         <UserInfoList
-          userData={this.props.userData}
-          changeUserInfo={this.props.changeUserInfo}
+          userData={userData}
+          changeUserInfo={changeUserInfo}
         />
       </>
     );

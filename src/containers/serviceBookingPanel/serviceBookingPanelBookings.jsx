@@ -9,17 +9,20 @@ class ServiceBookingPanelBookings extends Component {
 
   cancelBooking(e) {
     const dateTimeArr = e.target.dataset.key.split(' ');
-    this.props.cancelBooking(dateTimeArr[0], dateTimeArr[1], this.props.token);
+    const [date, time] = dateTimeArr;
+    this.props.cancelBooking(date, time, this.props.token);
   }
 
   render() {
+    const { bookings } = this.props;
+
     return (
       <>
-        {this.props.bookings.length !== 0 && (
+        {bookings.length !== 0 && (
           <>
             <h3>Upcoming bookings</h3>
             <div className="list-group">
-              {this.props.bookings.map(({ date, time }) => (
+              {bookings.map(({ date, time }) => (
                 <div className="list-group-item" key={date + time}>
                   <p className="mb-1">{`${date} ${time}`}</p>
                   <button

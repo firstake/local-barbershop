@@ -7,12 +7,14 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/react-fontawesome": "^0.1.7",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
     "concurrently": "^5.0.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-fileupload": "^1.1.6",
+    "http-errors": "^1.7.3",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
@@ -26,12 +28,12 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "frontend-start": "react-scripts start",
-    "backend-start": "node server/server.js",
+    "frontend": "react-scripts start",
+    "backend": "node server",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "concurrently \"npm-run-all -p backend-start frontend-start\""
+    "dev": "concurrently \"npm-run-all -p backend frontend\""
   },
   "browserslist": {
     "production": [

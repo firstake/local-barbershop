@@ -1,17 +1,23 @@
-export const authHasErrored = (state = false, action) => {
+export const authHasErrored = (
+  state = { hasErrored: false, errorText: '' },
+  action,
+) => {
   switch (action.type) {
     case 'AUTH_HAS_ERRORED':
-      return action.hasErrored;
+      return { ...state, hasErrored: action.hasErrored, errorText: action.errorText };
 
     default:
       return state;
   }
 };
 
-export const regHasErrored = (state = false, action) => {
+export const regHasErrored = (
+  state = { hasErrored: false, errorText: '' },
+  action,
+) => {
   switch (action.type) {
     case 'REG_HAS_ERRORED':
-      return action.hasErrored;
+      return { ...state, hasErrored: action.hasErrored, errorText: action.errorText };
 
     default:
       return state;

@@ -1,7 +1,8 @@
 /* Auth */
-export const authHasErrored = (bool) => ({
+export const authHasErrored = (bool, errorText) => ({
   type: 'AUTH_HAS_ERRORED',
   hasErrored: bool,
+  errorText,
 });
 
 export const authSuccess = (bool, userData) => ({
@@ -18,15 +19,19 @@ export const authFetch = (email, pass) => (dispatch) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      dispatch(authSuccess(true, data));
-    })
-    .catch(() => dispatch(authHasErrored(true)));
+      if (data.err) {
+        dispatch(authHasErrored(true, data.err));
+      } else {
+        dispatch(authSuccess(true, data));
+      }
+    });
 };
 
 /* Register */
-export const regHasErrored = (bool) => ({
+export const regHasErrored = (bool, errorText) => ({
   type: 'REG_HAS_ERRORED',
   hasErrored: bool,
+  errorText
 });
 
 export const regFetch = (email, pass, name, phone) => (dispatch) => {
@@ -42,9 +47,12 @@ export const regFetch = (email, pass, name, phone) => (dispatch) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      dispatch(authSuccess(true, data));
+      if (data.err) {
+        dispatch(regHasErrored(true, data.err));
+      } else {
+        dispatch(authSuccess(true, data));
+      }
     })
-    .catch(() => dispatch(regHasErrored(true)));
 };
 
 /* Logout */
@@ -118,7 +126,7 @@ export const fetchChangeUserInfo = (name, value, token) => (dispatch) => {
 
 /* Change User Avatar */
 export const fetchChangeUserAvatar = (formData, token) => (dispatch) => {
-  fetch('/upload', {
+  fetch('/api/upload', {
     method: 'POST',
     body: formData,
   })

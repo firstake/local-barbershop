@@ -45,6 +45,7 @@ class DateTimePicker extends Component {
     const clonedTimeSelectOptions = JSON.parse(
       JSON.stringify(IMMUTABLE_timeSelectOptions),
     );
+    const { handleDateChange, handleTimeChange } = this.props;
 
     if (inputValue.time) {
       clonedTimeSelectOptions.forEach((item) => {
@@ -59,8 +60,8 @@ class DateTimePicker extends Component {
       timeSelectIsDisabled: false,
     });
 
-    this.props.handleDateChange(inputValue);
-    this.props.handleTimeChange(null);
+    handleDateChange(inputValue);
+    handleTimeChange(null);
   }
 
   handleTimeChange(value) {
@@ -68,13 +69,18 @@ class DateTimePicker extends Component {
   }
 
   render() {
+    const {
+      dateSelectOptions, dateSelectIsDisabled, timeSelectOptions, timeSelectIsDisabled,
+    } = this.state;
+    const { timeInputValue } = this.props;
+
     return (
       <>
         <p className="mb-2">Select time and date</p>
         <Select
           onChange={this.handleDateChange}
-          options={this.state.dateSelectOptions}
-          isDisabled={this.state.dateSelectIsDisabled}
+          options={dateSelectOptions}
+          isDisabled={dateSelectIsDisabled}
           placeholder="Select date"
           theme={(theme) => ({
             ...theme,
@@ -86,11 +92,11 @@ class DateTimePicker extends Component {
           styles={selectStyles}
         />
         <Select
-          value={this.props.timeInputValue}
+          value={timeInputValue}
           className="py-3"
           onChange={this.handleTimeChange}
-          options={this.state.timeSelectOptions}
-          isDisabled={this.state.timeSelectIsDisabled}
+          options={timeSelectOptions}
+          isDisabled={timeSelectIsDisabled}
           placeholder="Select time"
           theme={(theme) => ({
             ...theme,

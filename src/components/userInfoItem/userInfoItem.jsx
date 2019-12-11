@@ -30,7 +30,9 @@ class UserInfoItem extends Component {
     });
   }
 
-  saveChanges() {
+  saveChanges(evt) {
+    evt.preventDefault();
+
     this.props.saveChanges(this.state.currentTarget, this.state.currentValue);
     this.setState({
       isChanging: false,
@@ -38,7 +40,9 @@ class UserInfoItem extends Component {
     });
   }
 
-  cancelChanges() {
+  cancelChanges(evt) {
+    evt.preventDefault();
+
     this.setState({
       isChanging: false,
       currentValue: this.props.text,
@@ -46,47 +50,55 @@ class UserInfoItem extends Component {
   }
 
   render() {
+    const {
+      name, title, text, type, pattern, minLength, cssClass,
+    } = this.props;
+    const { isChanging, currentValue } = this.state;
+
     return (
       <li
         className={`d-flex
         justify-content-between
         align-items-center
         flex-wrap
-        list-group-item ${this.props.cssClass ? this.props.cssClass : ''}`}
+        list-group-item ${cssClass || ''}`}
       >
-        <span className="m-1 text-muted">{this.props.title}</span>
-        {this.state.isChanging ? (
-          <>
+        <span className="m-1 text-muted">{title}</span>
+        {isChanging ? (
+          <form
+            onSubmit={this.saveChanges}
+            style={{
+              flexGrow: 1, display: 'flex', alignItems: 'center', flexWrap: 'wrap',
+            }}
+          >
             <input
               className="m-1 mr-auto"
-              name={this.props.name}
+              name={name}
               onChange={this.handleChange}
-              type={this.props.type}
-              pattern={this.props.type === 'phone' ? null : this.props.pattern}
-              defaultValue={
-                this.props.type === 'password' ? '' : this.state.currentValue
-              }
+              type={type}
+              minLength={minLength || null}
+              pattern={type === 'phone' ? null : pattern}
+              defaultValue={type === 'password' ? '' : currentValue}
               required="required"
             />
             <div>
               <button
-                onClick={this.saveChanges}
+                type="submit"
                 className="p-0 m-1 btn btn-link text-success"
               >
                 Save
               </button>
               <button
                 onClick={this.cancelChanges}
-                type="button"
                 className="p-0 m-1 btn btn-link text-danger"
               >
                 Cancel
               </button>
             </div>
-          </>
+          </form>
         ) : (
           <>
-            <span className="m-1 mr-auto">{this.props.text}</span>
+            <span className="m-1 mr-auto">{text}</span>
             <button onClick={this.handleClick} className="p-0 m-1 btn btn-link">
               Change
             </button>
@@ -104,6 +116,8 @@ UserInfoItem.propTypes = {
   text: PropTypes.string,
   title: PropTypes.string,
   type: PropTypes.string,
+  pattern: PropTypes.string,
+  minLength: PropTypes.string,
 };
 
 export default UserInfoItem;

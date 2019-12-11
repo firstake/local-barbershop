@@ -16,15 +16,6 @@ class RegisterForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleInputChange(evt) {
-    const { value } = evt.target;
-    const { name } = evt.target;
-
-    this.setState({
-      [name]: value,
-    });
-  }
-
   handleSubmit(evt) {
     evt.preventDefault();
     this.props.fetchRegUser(
@@ -39,12 +30,23 @@ class RegisterForm extends Component {
     this.props.cancelRegError();
   }
 
-  render() {
-    if (this.props.isAuth) return <Redirect to="/account" />;
+  handleInputChange(evt) {
+    const { value } = evt.target;
+    const { name } = evt.target;
 
-    const errorMessage = this.props.regError && (
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  render() {
+    const { isAuth, regError } = this.props;
+
+    if (isAuth) return <Redirect to="/account" />;
+
+    const errorMessage = regError.hasErrored && (
       <div className="alert alert-danger text-center p-1">
-        <small>This email address already exists!</small>
+        <small>{ regError.errorText }</small>
       </div>
     );
 
@@ -126,7 +128,10 @@ RegisterForm.propTypes = {
   cancelRegError: PropTypes.func,
   fetchRegUser: PropTypes.func,
   isAuth: PropTypes.bool,
-  regError: PropTypes.bool,
+  regError: PropTypes.shape({
+    hasErrored: PropTypes.bool,
+    errorText: PropTypes.string,
+  }),
 };
 
 const mapStateToProps = (state) => ({

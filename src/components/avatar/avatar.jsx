@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import './avatar.css';
@@ -17,8 +18,9 @@ class Avatar extends Component {
   }
 
   imgHandleChange(e) {
-  	const reader = new FileReader();
+    const reader = new FileReader();
     const img = e.target.files[0];
+    const { token, changeUserAvatar } = this.props;
 
     if (img) {
       reader.readAsDataURL(img);
@@ -27,19 +29,21 @@ class Avatar extends Component {
     reader.onloadend = () => {
       const formData = new FormData();
 
-      formData.append('name', this.props.token + Date.now());
+      formData.append('name', token + Date.now());
       formData.append('avatar', img);
 
-      this.props.changeUserAvatar(formData, this.props.token);
+      changeUserAvatar(formData, token);
     };
   }
 
   render() {
+    const { avatar } = this.props;
+
   	return (
       <>
       <img
           className="rounded mb-4 w-100"
-          src={`avatars/${this.props.avatar}`}
+          src={`avatars/${avatar}`}
           alt="Avatar"
         />
       <button
@@ -58,5 +62,11 @@ class Avatar extends Component {
   	);
   }
 }
+
+Avatar.propTypes = {
+  token: PropTypes.number,
+  avatar: PropTypes.string,
+  changeUserAvatar: PropTypes.func,
+};
 
 export default Avatar;

@@ -10,14 +10,17 @@ class AccountBookings extends Component {
 
   cancelBooking(e) {
     const dateTimeArr = e.target.dataset.key.split(' ');
-    this.props.cancel(dateTimeArr[0], dateTimeArr[1], this.props.token);
+    const [date, time] = dateTimeArr;
+    this.props.cancel(date, time, this.props.token);
   }
 
   render() {
+    const { bookings } = this.props;
+
     return (
       <>
         <h2 className="text-center">Upcoming bookings</h2>
-        {!this.props.bookings.length ? (
+        {!bookings.length ? (
           <div className="alert alert-warning text-center py-1">
             <span>Nothing here... Would you like to </span>
             <Link to="/services" className="alert-link">
@@ -26,7 +29,7 @@ class AccountBookings extends Component {
           </div>
         ) : (
           <div className="list-group">
-            {this.props.bookings
+            {bookings
               .sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time))
               .map(({
                 date, time, title, link,

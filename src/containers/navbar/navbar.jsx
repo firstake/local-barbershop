@@ -29,6 +29,7 @@ class Navbar extends Component {
       namespace: 'app',
       preloadedState: null,
     });
+
     if (store) {
       this.props.restoreSession(true, store.authSuccess.userData);
     }
@@ -71,6 +72,9 @@ class Navbar extends Component {
   }
 
   render() {
+    const { isAuth } = this.props;
+    const { active } = this.state;
+
     return (
       <nav
         ref={this.setWrapperRef}
@@ -95,7 +99,7 @@ class Navbar extends Component {
 
         <div
           className={
-            `collapse navbar-collapse${this.state.active ? ' show' : ''}`
+            `collapse navbar-collapse${active ? ' show' : ''}`
           }
           onClick={this.menuHandleClick}
         >
@@ -127,14 +131,14 @@ class Navbar extends Component {
           <ul className="navbar-nav w-100 justify-content-end">
             <li className="nav-item">
               <NavLink
-                to={this.props.isAuth ? '/account' : '/sign-in'}
+                to={isAuth ? '/account' : '/sign-in'}
                 className="nav-link"
               >
-                {this.props.isAuth ? 'Account' : 'Sign in'}
+                {isAuth ? 'Account' : 'Sign in'}
               </NavLink>
             </li>
             <li className="nav-item">
-              {this.props.isAuth ? (
+              {isAuth ? (
                 <button className="nav-link btn-logout" onClick={this.logout}>
                   Logout
                 </button>

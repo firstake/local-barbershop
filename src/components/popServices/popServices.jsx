@@ -44,7 +44,8 @@ class PopServices extends Component {
                       {title}
                     </Link>
                     <span className="badge badge-secondary float-right">
-                      ${price}
+                      $
+                      {price}
                     </span>
                   </li>
                 ))}

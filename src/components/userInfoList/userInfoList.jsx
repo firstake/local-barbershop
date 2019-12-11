@@ -9,16 +9,19 @@ class UserInfoList extends Component {
   }
 
   saveChanges(name, value) {
-    this.props.changeUserInfo(name, value, this.props.userData.token);
+    const { changeUserInfo, userData } = this.props;
+    changeUserInfo(name, value, userData.token);
   }
 
   render() {
+    const { name, phone, email } = this.props.userData;
+
     return (
       <ul className="list-group list-group-flush">
         <UserInfoItem
           name="name"
           title="Name"
-          text={this.props.userData.name}
+          text={name}
           type="text"
           saveChanges={this.saveChanges}
           cssClass="border-top-0"
@@ -26,14 +29,15 @@ class UserInfoList extends Component {
         <UserInfoItem
           name="phone"
           title="Phone"
-          text={this.props.userData.phone}
+          text={phone}
           type="tel"
+          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
           saveChanges={this.saveChanges}
         />
         <UserInfoItem
           name="email"
           title="Email"
-          text={this.props.userData.email}
+          text={email}
           type="email"
           saveChanges={this.saveChanges}
         />
@@ -42,6 +46,7 @@ class UserInfoList extends Component {
           title="Password"
           text="******"
           type="password"
+          minLength="6"
           saveChanges={this.saveChanges}
           cssClass="border-bottom"
         />

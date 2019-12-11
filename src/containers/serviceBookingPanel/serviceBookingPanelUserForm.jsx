@@ -30,34 +30,42 @@ class ServiceBookingPanelUserForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.newBooking(
-      this.state.dateInputValue.value,
-      this.state.timeInputValue.value,
-      this.props.title,
-      this.props.link,
-      this.props.token,
+    const {
+      newBooking, onCancel, title, link, token,
+    } = this.props;
+    const { dateInputValue, timeInputValue } = this.state;
+
+    newBooking(
+      dateInputValue.value,
+      timeInputValue.value,
+      title,
+      link,
+      token,
     );
-    this.props.onCancel(e);
+    onCancel(e);
   }
 
   render() {
+    const { onCancel } = this.props;
+    const { dateInputValue, timeInputValue } = this.state;
+
     return (
       <form onSubmit={this.handleSubmit}>
         <DateTimePicker
-          dateInputValue={this.state.dateInputValue}
+          dateInputValue={dateInputValue}
           handleDateChange={this.handleDateChange}
-          timeInputValue={this.state.timeInputValue}
+          timeInputValue={timeInputValue}
           handleTimeChange={this.handleTimeChange}
         />
         <div className="text-center">
           <button
             type="submit"
-            disabled={!this.state.timeInputValue && 'disabled'}
+            disabled={!timeInputValue && 'disabled'}
             className="btn btn-general text-white"
           >
             Submit
           </button>
-          <button onClick={this.props.onCancel} className="btn btn-danger ml-3">Cancel</button>
+          <button onClick={onCancel} className="btn btn-danger ml-3">Cancel</button>
         </div>
       </form>
     );

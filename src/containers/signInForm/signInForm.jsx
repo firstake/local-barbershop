@@ -25,19 +25,25 @@ class SignInForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.fetchUserAuth(this.state.email, this.state.pass);
+    const { email, pass } = this.state;
+    const { fetchUserAuth } = this.props;
+
+    fetchUserAuth(email, pass);
   }
 
   componentWillUnmount() {
-    this.props.cancelAuthError();
+    const { cancelAuthError } = this.props;
+    cancelAuthError();
   }
 
   render() {
-    if (this.props.isAuth) return <Redirect to="/account" />;
+    const { isAuth, authError } = this.props;
 
-    const errorMessage = this.props.authError && (
+    if (isAuth) return <Redirect to="/account" />;
+
+    const errorMessage = authError.hasErrored && (
       <div className="alert alert-danger text-center p-1">
-        <small>Wrong email or password!</small>
+        <small>{ authError.errorText }</small>
       </div>
     );
 
@@ -88,7 +94,10 @@ class SignInForm extends Component {
 }
 
 SignInForm.propTypes = {
-  authError: PropTypes.bool,
+  authError: PropTypes.shape({
+    hasErrored: PropTypes.bool,
+    errorText: PropTypes.string,
+  }),
   isAuth: PropTypes.bool,
   cancelAuthError: PropTypes.func,
   fetchUserAuth: PropTypes.func,

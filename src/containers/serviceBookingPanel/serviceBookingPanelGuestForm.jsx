@@ -34,6 +34,7 @@ class ServiceBookingPanelGuestForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const home = document.location.origin;
+    const { title, link } = this.props;
 
     fetch(`${home}/api/set-user-booking`, {
       method: 'POST',
@@ -41,9 +42,9 @@ class ServiceBookingPanelGuestForm extends Component {
       body: JSON.stringify({
         date: this.state.dateInputValue.value,
         time: this.state.timeInputValue.value,
-        title: this.props.title,
-        link: this.props.link,
-        token: +localStorage.getItem('token'),
+        title,
+        link,
+        token: false,
       }),
     }).then(() => {
       this.setState({ successMessage: true });
@@ -51,13 +52,16 @@ class ServiceBookingPanelGuestForm extends Component {
   }
 
   render() {
+    const { onCancel } = this.props;
+    const { dateInputValue, timeInputValue, successMessage } = this.state;
+
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="inputs-container">
           <DateTimePicker
-            dateInputValue={this.state.dateInputValue}
+            dateInputValue={dateInputValue}
             handleDateChange={this.handleDateChange}
-            timeInputValue={this.state.timeInputValue}
+            timeInputValue={timeInputValue}
             handleTimeChange={this.handleTimeChange}
           />
 
@@ -101,7 +105,7 @@ class ServiceBookingPanelGuestForm extends Component {
             </small>
           </div>
 
-          {this.state.successMessage && (
+          {successMessage && (
             <div className="alert-plate">
               <div
                 className="alert
@@ -115,20 +119,20 @@ class ServiceBookingPanelGuestForm extends Component {
         </div>
 
         <div className="text-center pt-3">
-          {!this.state.successMessage && (
+          {!successMessage && (
             <button
               type="submit"
-              disabled={!this.state.timeInputValue && 'disabled'}
+              disabled={!timeInputValue && 'disabled'}
               className="btn btn-general text-white mr-3"
             >
               Submit
             </button>
           )}
           <button
-            onClick={this.props.onCancel}
+            onClick={onCancel}
             className="btn btn-danger"
           >
-            {this.state.successMessage ? 'Close' : 'Cancel'}
+            {successMessage ? 'Close' : 'Cancel'}
           </button>
         </div>
       </form>
@@ -137,6 +141,8 @@ class ServiceBookingPanelGuestForm extends Component {
 }
 
 ServiceBookingPanelGuestForm.propTypes = {
+  title: PropTypes.string,
+  link: PropTypes.string,
   onCancel: PropTypes.func,
 };
 
