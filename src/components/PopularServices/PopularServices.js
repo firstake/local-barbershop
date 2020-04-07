@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-const popServicesData = [
+const popularServicesData = [
   {
     title: 'Haircut',
     price: 35,
@@ -24,7 +24,7 @@ const popServicesData = [
   },
 ];
 
-class PopServices extends Component {
+class PopularServices extends Component {
   render() {
     return (
       <div className="container-fluid bg-light p-4">
@@ -38,7 +38,7 @@ class PopServices extends Component {
                 Learn more about our services.
               </p>
               <ul className="list-group list-group-flush border-right border-left shadow-sm">
-                {popServicesData.map(({ title, price, link }) => (
+                {popularServicesData.map(({ title, price, link }) => (
                   <li className="list-group-item" key={link}>
                     <Link to={`/services/${link}`} className="text-dark">
                       {title}
@@ -66,4 +66,4 @@ class PopServices extends Component {
   }
 }
 
-export default PopServices;
+export default PopularServices;

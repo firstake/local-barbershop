@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Portal from '../portal/portal';
-import './modal.css';
+import Portal from '../Portal';
+import './ModalWindow.css';
 
-class Modal extends Component {
+class ModalWindow extends Component {
   render() {
     const { isOpen, children } = this.props;
 
@@ -32,9 +32,9 @@ class Modal extends Component {
   }
 }
 
-Modal.propTypes = {
+ModalWindow.propTypes = {
   isOpen: PropTypes.bool,
   children: PropTypes.node,
 };
 
-export default Modal;
+export default ModalWindow;

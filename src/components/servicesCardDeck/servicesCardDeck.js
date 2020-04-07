@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Card from '../card/card';
+import Card from '../Card';
 
 class ServicesCardDeck extends Component {
   constructor(props) {

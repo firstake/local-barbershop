@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import './avatar.css';
+import './Avatar.css';
 
 class Avatar extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class Avatar extends Component {
   openUploadDialog() {
     this.imgInput.current.click();
   }
-
+  
   imgHandleChange(e) {
     const reader = new FileReader();
     const img = e.target.files[0];

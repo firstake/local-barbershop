@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import UserInfoList from '../userInfoList/userInfoList';
+import UserInfoList from '../UserInfoList';
 
 class AccountProfile extends Component {
   render() {

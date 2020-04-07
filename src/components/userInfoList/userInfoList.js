@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import UserInfoItem from '../userInfoItem/userInfoItem';
+import UserInfoItem from '../UserInfoItem';
 
 class UserInfoList extends Component {
   constructor(props) {

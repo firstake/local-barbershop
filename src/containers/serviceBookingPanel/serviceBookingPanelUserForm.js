@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import DateTimePicker from '../../components/dateTimePicker/dateTimePicker';
+import DateTimePicker from '../../components/DateTimePicker';
 
 class ServiceBookingPanelUserForm extends Component {
   constructor(props) {

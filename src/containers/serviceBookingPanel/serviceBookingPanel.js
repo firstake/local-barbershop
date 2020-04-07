@@ -12,7 +12,7 @@ import ServiceBookingPanelBookings from './serviceBookingPanelBookings';
 import ServiceBookingPanelUserForm from './serviceBookingPanelUserForm';
 import ServiceBookingPanelGuestForm from './serviceBookingPanelGuestForm';
 
-import Modal from '../../components/modal/modal';
+import ModalWindow from '../../components/ModalWindow';
 
 class ServiceBookingPanel extends Component {
   constructor(props) {
@@ -60,7 +60,7 @@ class ServiceBookingPanel extends Component {
           showModal={this.showModal}
         />
 
-        <Modal
+        <ModalWindow
           isOpen={isOpen}
         >
           {isAuth ? (
@@ -76,7 +76,7 @@ class ServiceBookingPanel extends Component {
               onCancel={this.handleCancel}
             />
           )}
-        </Modal>
+        </ModalWindow>
 
         {isAuth && (
           <div className="row">

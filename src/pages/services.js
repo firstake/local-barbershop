@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ScrollToTopOnMount from '../utils/scrollToTopOnMount';
 
-import ServicesCardDeck from '../components/servicesCardDeck/servicesCardDeck';
+import ServicesCardDeck from '../components/ServicesCardDeck';
 
 class Services extends Component {
   render() {

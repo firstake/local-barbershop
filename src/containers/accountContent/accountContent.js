@@ -9,9 +9,9 @@ import {
   fetchChangeUserAvatar,
 } from '../../actions/userAuthAction';
 
-import Avatar from '../../components/avatar/avatar';
-import AccountBookings from '../../components/accountBookings/accountBookings';
-import AccountProfile from '../../components/accountProfile/accountProfile';
+import Avatar from '../../components/Avatar';
+import AccountBookings from '../../components/AccountBookings';
+import AccountProfile from '../../components/AccountProfile';
 
 class AccountContent extends Component {
   constructor(props) {

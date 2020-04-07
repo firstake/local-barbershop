@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
-import Banner from '../components/banner/banner';
-import PopServices from '../components/popServices/popServices';
-import About from '../components/about/about';
+import Banner from '../components/Banner';
+import PopularServices from '../components/PopularServices';
+import About from '../components/About';
 
 class Home extends Component {
   render() {
     return (
       <>
         <Banner />
-        <PopServices />
+        <PopularServices />
         <About />
       </>
     );
