@@ -10,7 +10,7 @@ class Footer extends Component {
           p-4
           m-0"
         >
-          { new Date().getFullYear() } | Local Barbershop
+          { `${new Date().getFullYear()} | Local Barbershop` }
         </p>
       </footer>
     );
