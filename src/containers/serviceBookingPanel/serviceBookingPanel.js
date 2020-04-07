@@ -7,10 +7,11 @@ import {
   fetchNewBooking,
 } from '../../actions/userAuthAction';
 
-import ServiceBookingPanelButtons from './serviceBookingPanelButtons';
-import ServiceBookingPanelBookings from './serviceBookingPanelBookings';
-import ServiceBookingPanelUserForm from './serviceBookingPanelUserForm';
-import ServiceBookingPanelGuestForm from './serviceBookingPanelGuestForm';
+import BookingControls from './BookingControls';
+import UpcomingBookings from './UpcomingBookings';
+
+import UserBookingForm from './UserBookingForm';
+import GuestBookingForm from './GuestBookingForm';
 
 import ModalWindow from '../../components/ModalWindow';
 
@@ -54,7 +55,7 @@ class ServiceBookingPanel extends Component {
 
     return (
       <>
-        <ServiceBookingPanelButtons
+        <BookingControls
           isAuth={isAuth}
           bookingsLength={sortedBookings.length}
           showModal={this.showModal}
@@ -64,7 +65,7 @@ class ServiceBookingPanel extends Component {
           isOpen={isOpen}
         >
           {isAuth ? (
-            <ServiceBookingPanelUserForm
+            <UserBookingForm
               newBooking={fetchNewBooking}
               title={title}
               link={link}
@@ -72,7 +73,7 @@ class ServiceBookingPanel extends Component {
               onCancel={this.handleCancel}
             />
           ) : (
-            <ServiceBookingPanelGuestForm
+            <GuestBookingForm
               onCancel={this.handleCancel}
             />
           )}
@@ -82,7 +83,7 @@ class ServiceBookingPanel extends Component {
           <div className="row">
             <div className="col-12 col-md-6 pb-3">
               {sortedBookings.length !== 0 && (
-                <ServiceBookingPanelBookings
+                <UpcomingBookings
                   bookings={sortedBookings}
                   cancelBooking={cancelBooking}
                   token={userData.token}

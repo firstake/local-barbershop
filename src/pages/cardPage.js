@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import ServiceBookingPanel from '../containers/serviceBookingPanel/serviceBookingPanel';
+import ServiceBookingPanel from '../containers/ServiceBookingPanel';
 
 class cardPage extends Component {
   constructor(props) {

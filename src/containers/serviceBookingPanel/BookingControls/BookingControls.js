@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-class ServiceBookingPanelButtons extends Component {
+class BookingControls extends Component {
   render() {
     const { isAuth, showModal } = this.props;
 
@@ -33,10 +33,10 @@ class ServiceBookingPanelButtons extends Component {
   }
 }
 
-ServiceBookingPanelButtons.propTypes = {
+BookingControls.propTypes = {
   bookingsLength: PropTypes.number,
   showModal: PropTypes.func,
   isAuth: PropTypes.bool,
 };
 
-export default ServiceBookingPanelButtons;
+export default BookingControls;

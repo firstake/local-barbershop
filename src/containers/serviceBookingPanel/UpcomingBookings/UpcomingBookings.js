@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class ServiceBookingPanelBookings extends Component {
+class UpcomingBookings extends Component {
   constructor(props) {
     super(props);
     this.cancelBooking = this.cancelBooking.bind(this);
@@ -42,10 +42,10 @@ class ServiceBookingPanelBookings extends Component {
   }
 }
 
-ServiceBookingPanelBookings.propTypes = {
+UpcomingBookings.propTypes = {
   bookings: PropTypes.arrayOf(PropTypes.object),
   cancelBooking: PropTypes.func,
   token: PropTypes.number,
 };
 
-export default ServiceBookingPanelBookings;
+export default UpcomingBookings;

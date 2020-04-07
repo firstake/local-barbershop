@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import DateTimePicker from '../../components/DateTimePicker';
+import DateTimePicker from '../../../components/DateTimePicker';
 
-class ServiceBookingPanelUserForm extends Component {
+class UserBookingForm extends Component {
   constructor(props) {
     super(props);
 
@@ -72,7 +72,7 @@ class ServiceBookingPanelUserForm extends Component {
   }
 }
 
-ServiceBookingPanelUserForm.propTypes = {
+UserBookingForm.propTypes = {
   onCancel: PropTypes.func,
   newBooking: PropTypes.func,
   link: PropTypes.string,
@@ -80,4 +80,4 @@ ServiceBookingPanelUserForm.propTypes = {
   token: PropTypes.number,
 };
 
-export default ServiceBookingPanelUserForm;
+export default UserBookingForm;

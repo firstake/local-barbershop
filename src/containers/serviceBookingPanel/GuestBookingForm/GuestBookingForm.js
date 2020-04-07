@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import DateTimePicker from '../../components/DateTimePicker';
+import DateTimePicker from '../../../components/DateTimePicker';
 
-import './ServiceBookingPanelGuestForm.css';
+import './GuestBookingForm.css';
 
-class ServiceBookingPanelGuestForm extends Component {
+class GuestForm extends Component {
   constructor(props) {
     super(props);
 
@@ -140,10 +140,10 @@ class ServiceBookingPanelGuestForm extends Component {
   }
 }
 
-ServiceBookingPanelGuestForm.propTypes = {
+GuestForm.propTypes = {
   title: PropTypes.string,
   link: PropTypes.string,
   onCancel: PropTypes.func,
 };
 
-export default ServiceBookingPanelGuestForm;
+export default GuestForm;
