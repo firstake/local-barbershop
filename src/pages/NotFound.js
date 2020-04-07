@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Error extends Component {
+class NotFound extends Component {
   render() {
     return (
       <div className="container f-h text-center pt-4">
@@ -11,4 +11,4 @@ class Error extends Component {
   }
 }
 
-export default Error;
+export default NotFound;

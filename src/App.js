@@ -4,15 +4,15 @@ import { Switch, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-import Home from './pages/home';
-import Services from './pages/services';
-import Gallery from './pages/gallery';
-import CardPage from './pages/cardPage';
-import SignIn from './pages/signIn';
-import Register from './pages/register';
-import Account from './pages/account';
-import Contacts from './pages/contacts';
-import Error_404 from './pages/error';
+import Home from './pages/Home';
+import Services from './pages/Services';
+import Gallery from './pages/Gallery';
+import CardPage from './pages/CardPage';
+import SignIn from './pages/SignIn';
+import Register from './pages/Register';
+import Account from './pages/Account';
+import Contacts from './pages/Contacts';
+import NotFound from './pages/NotFound';
 
 class App extends Component {
   render() {
@@ -28,7 +28,7 @@ class App extends Component {
             <Route path="/contacts" component={Contacts} />
             <Route path="/register" component={Register} />
             <Route path="/account" component={Account} />
-            <Route component={Error_404} />
+            <Route component={NotFound} />
           </Switch>
         <Footer />
       </>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ScrollToTopOnMount from '../utils/scrollToTopOnMount';
+import ScrollToTopOnMount from '../utils/ScrollToTopOnMount';
 
 import ServicesCardDeck from '../components/ServicesCardDeck';
 
