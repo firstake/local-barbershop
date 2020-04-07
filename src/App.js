@@ -19,17 +19,17 @@ class App extends Component {
     return (
       <>
         <Header />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/sign-in" component={SignIn} />
-          <Route exact path="/services" component={Services} />
-          <Route path="/services/:title" component={CardPage} />
-          <Route path="/gallery" component={Gallery} />
-          <Route path="/contacts" component={Contacts} />
-          <Route path="/register" component={Register} />
-          <Route path="/account" component={Account} />
-          <Route component={Error_404} />
-        </Switch>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/sign-in" component={SignIn} />
+            <Route exact path="/services" component={Services} />
+            <Route path="/services/:title" component={CardPage} />
+            <Route path="/gallery" component={Gallery} />
+            <Route path="/contacts" component={Contacts} />
+            <Route path="/register" component={Register} />
+            <Route path="/account" component={Account} />
+            <Route component={Error_404} />
+          </Switch>
         <Footer />
       </>
     );
