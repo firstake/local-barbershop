@@ -41,24 +41,24 @@ class Avatar extends Component {
 
   	return (
       <>
-      <img
+        <img
           className="rounded mb-4 w-100"
           src={`avatars/${avatar}`}
           alt="Avatar"
         />
-      <button
+        <button
           className="plus-upload-btn"
           onClick={this.openUploadDialog}
         >
           <FontAwesomeIcon icon={faPlus} />
         </button>
-      <input
+        <input
           type="file"
           className="d-none"
           ref={this.imgInput}
           onChange={this.imgHandleChange}
         />
-    </>
+      </>
   	);
   }
 }

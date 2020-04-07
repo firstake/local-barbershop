@@ -10,7 +10,7 @@ class About extends Component {
             <div className="about-content__text">
               <h2>We are locals</h2>
               <p>
-                From day one, we wanted to create a barber shop that delivered
+                From day one, we wanted to create a barbershop that delivered
                 the best service out there, and consistently so. We were
                 frustrated with haircuts and customer service that were often
                 hit-and-miss, and were determined to do better.

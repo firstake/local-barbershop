@@ -29,8 +29,7 @@ class Card extends Component {
           </Link>
           <div>
             <span>
-              $
-              {price}
+              ${price}
             </span>
           </div>
         </div>
