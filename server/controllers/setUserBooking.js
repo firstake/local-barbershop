@@ -1,10 +1,10 @@
 const path = require("path");
 const createError = require("http-errors");
 
-const USERS_FILE = path.join(__dirname, "../json/users/users.json");
+const USERS_FILE = path.join(__dirname, "../database/users/users.json");
 const BOOKINGS_DATES = path.join(
   __dirname,
-  "../json/bookings/booking_dates.json"
+  "../database/bookings/booking_dates.json"
 );
 const readFrom = require("../utils/readFromFile");
 const writeTo = require("../utils/writeToFile");

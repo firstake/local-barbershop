@@ -5,6 +5,8 @@ React, React Router, Redux, Redux Thunk, Express.js, Bootstrap 4
 
 *  Clone repository
 
-*  Open project directory in terminal and run `npm install`
+*  Open `server` directory in terminal and run `npm install`, then `npm run server`
 
-*  When installation completed, run `npm run dev`. The project will start automatically, including the server.
+*  Open `client` directory in separate terminal and run `npm install`, then `npm run client-dev`
+
+*  Your default browser will automatically navigate to http://localhost:3000/

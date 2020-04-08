@@ -4,7 +4,7 @@ const createError = require("http-errors");
 
 const BOOKINGS_DATES = path.join(
   __dirname,
-  "../json/bookings/booking_dates.json"
+  "../database/bookings/booking_dates.json"
 );
 const readFrom = require("../utils/readFromFile");
 

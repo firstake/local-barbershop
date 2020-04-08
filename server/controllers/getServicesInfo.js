@@ -1,14 +1,14 @@
 const path = require("path");
 const createError = require("http-errors");
 
-const SERVICES_FILE = path.join(__dirname, "../json/services/services.json");
+const SERVICES_FILE = path.join(__dirname, "../database/services/services.json");
 const readFrom = require("../utils/readFromFile");
 
 const getServicesInfo = (req, res, next) => {
   let file = SERVICES_FILE;
 
   if (req.query.page !== undefined) {
-    file = path.join(__dirname, `../json/services/${req.query.page}.json`);
+    file = path.join(__dirname, `../database/services/${req.query.page}.json`);
   }
 
   readFrom(file)
