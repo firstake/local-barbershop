@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import RegisterForm from '../containers/RegisterForm';
 
 class Register extends Component {

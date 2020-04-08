@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 class AccountBookings extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class AccountBookings extends Component {
   }
 
   render() {
-    const { bookings } = this.props;
+    const {bookings} = this.props;
 
     return (
       <>
@@ -30,26 +30,26 @@ class AccountBookings extends Component {
         ) : (
           <div className="list-group">
             {bookings
-              .sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time))
-              .map(({
-                date, time, title, link,
-              }) => (
-                <div className="list-group-item" key={`${date} ${time}`}>
-                  <h5 className="mb-1 d-block">
-                    <Link to={`services/${link}`} className="text-secondary">
-                      {title}
-                    </Link>
-                  </h5>
-                  <p className="mb-1">{`${date} ${time}`}</p>
-                  <button
-                    onClick={this.cancelBooking}
-                    data-key={`${date} ${time}`}
-                    className="btn btn-danger float-right m-1"
-                  >
+                .sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time))
+                .map(({
+                  date, time, title, link,
+                }) => (
+                  <div className="list-group-item" key={`${date} ${time}`}>
+                    <h5 className="mb-1 d-block">
+                      <Link to={`services/${link}`} className="text-secondary">
+                        {title}
+                      </Link>
+                    </h5>
+                    <p className="mb-1">{`${date} ${time}`}</p>
+                    <button
+                      onClick={this.cancelBooking}
+                      data-key={`${date} ${time}`}
+                      className="btn btn-danger float-right m-1"
+                    >
                     Cancel
-                  </button>
-                </div>
-              ))}
+                    </button>
+                  </div>
+                ))}
           </div>
         )}
       </>

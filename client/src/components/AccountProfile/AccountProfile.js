@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import UserInfoList from '../UserInfoList';
 
 class AccountProfile extends Component {
   render() {
-    const { userData, changeUserInfo } = this.props;
+    const {userData, changeUserInfo} = this.props;
 
     return (
       <>

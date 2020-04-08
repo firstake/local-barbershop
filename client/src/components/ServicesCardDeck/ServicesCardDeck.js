@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Card from '../Card';
 
 class ServicesCardDeck extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: null };
+    this.state = {data: null};
   }
 
   componentDidMount() {
     fetch('api/services')
-      .then((res) => res.json())
-      .then((data) => this.setState({ data }));
+        .then((res) => res.json())
+        .then((data) => this.setState({data}));
   }
 
   render() {
-    const { data } = this.state;
+    const {data} = this.state;
 
     if (!data) {
       return (

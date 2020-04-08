@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import './Navbar.css';
 
-import { connect } from 'react-redux';
-import { load, clear } from 'redux-localstorage-simple';
-import { authSuccess, userLogout } from '../../actions/userAuthAction';
+import {connect} from 'react-redux';
+import {load, clear} from 'redux-localstorage-simple';
+import {authSuccess, userLogout} from '../../actions/userAuthAction';
 
 class Navbar extends Component {
   constructor(props) {
@@ -45,9 +45,9 @@ class Navbar extends Component {
 
   handleClickOutside(e) {
     if (
-      this.wrapperRef
-      && !this.wrapperRef.contains(e.target)
-      && window.screen.width < 768
+      this.wrapperRef &&
+      !this.wrapperRef.contains(e.target) &&
+      window.screen.width < 768
     ) {
       this.setState({
         active: false,
@@ -57,7 +57,7 @@ class Navbar extends Component {
 
   toggleClass() {
     const currentState = this.state.active;
-    this.setState({ active: !currentState });
+    this.setState({active: !currentState});
   }
 
   menuHandleClick(e) {
@@ -72,17 +72,17 @@ class Navbar extends Component {
   }
 
   render() {
-    const { isAuth } = this.props;
-    const { active } = this.state;
+    const {isAuth} = this.props;
+    const {active} = this.state;
 
     return (
       <nav
         ref={this.setWrapperRef}
         className="navbar navbar-expand-md navbar-light"
       >
-        <a className="navbar-brand" href="/">
+        <NavLink exact to="/" className="navbar-brand">
           <img src="/logo.svg" width="36" height="36" alt="logo" />
-        </a>
+        </NavLink>
 
         <button
           className="navbar-toggler"

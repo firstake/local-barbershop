@@ -14,30 +14,30 @@ export const authSuccess = (bool, userData) => ({
 export const authFetch = (email, pass) => (dispatch) => {
   fetch('/api/sign-in', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, pass }),
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({email, pass}),
   })
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.err) {
-        dispatch(authHasErrored(true, data.err));
-      } else {
-        dispatch(authSuccess(true, data));
-      }
-    });
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.err) {
+          dispatch(authHasErrored(true, data.err));
+        } else {
+          dispatch(authSuccess(true, data));
+        }
+      });
 };
 
 /* Register */
 export const regHasErrored = (bool, errorText) => ({
   type: 'REG_HAS_ERRORED',
   hasErrored: bool,
-  errorText
+  errorText,
 });
 
 export const regFetch = (email, pass, name, phone) => (dispatch) => {
   fetch('/api/register', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
       email,
       pass,
@@ -45,14 +45,14 @@ export const regFetch = (email, pass, name, phone) => (dispatch) => {
       phone,
     }),
   })
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.err) {
-        dispatch(regHasErrored(true, data.err));
-      } else {
-        dispatch(authSuccess(true, data));
-      }
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.err) {
+          dispatch(regHasErrored(true, data.err));
+        } else {
+          dispatch(authSuccess(true, data));
+        }
+      });
 };
 
 /* Logout */
@@ -72,7 +72,7 @@ export const newBooking = (date, time, title, link) => ({
 export const fetchNewBooking = (date, time, title, link, token) => (dispatch) => {
   fetch('/api/set-user-booking', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
       date,
       time,
@@ -92,7 +92,7 @@ export const cancelBooking = (date, time) => ({
 export const fetchCancelBooking = (date, time, token) => (dispatch) => {
   fetch('/api/cancel-booking', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
       date,
       time,
@@ -115,7 +115,7 @@ export const fetchChangeUserInfo = (name, value, token) => (dispatch) => {
 
   fetch('/api/change-user-info', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
       name,
       value,
@@ -130,9 +130,9 @@ export const fetchChangeUserAvatar = (formData, token) => (dispatch) => {
     method: 'POST',
     body: formData,
   })
-    .then((res) => res.json())
-    .then((data) => {
-      dispatch(changeUserInfo('avatar', data.avatar));
-      dispatch(fetchChangeUserInfo('avatar', data.avatar, token));
-    });
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch(changeUserInfo('avatar', data.avatar));
+        dispatch(fetchChangeUserInfo('avatar', data.avatar, token));
+      });
 };

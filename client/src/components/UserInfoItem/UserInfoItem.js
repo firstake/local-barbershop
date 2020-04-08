@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 class UserInfoItem extends Component {
@@ -53,7 +53,7 @@ class UserInfoItem extends Component {
     const {
       name, title, text, type, pattern, minLength, cssClass,
     } = this.props;
-    const { isChanging, currentValue } = this.state;
+    const {isChanging, currentValue} = this.state;
 
     return (
       <li

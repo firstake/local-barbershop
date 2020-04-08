@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import DateTimePicker from '../../../components/DateTimePicker';
 
@@ -33,21 +33,21 @@ class UserBookingForm extends Component {
     const {
       newBooking, onCancel, title, link, token,
     } = this.props;
-    const { dateInputValue, timeInputValue } = this.state;
+    const {dateInputValue, timeInputValue} = this.state;
 
     newBooking(
-      dateInputValue.value,
-      timeInputValue.value,
-      title,
-      link,
-      token,
+        dateInputValue.value,
+        timeInputValue.value,
+        title,
+        link,
+        token,
     );
     onCancel(e);
   }
 
   render() {
-    const { onCancel } = this.props;
-    const { dateInputValue, timeInputValue } = this.state;
+    const {onCancel} = this.props;
+    const {dateInputValue, timeInputValue} = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>

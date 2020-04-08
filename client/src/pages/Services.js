@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import ScrollToTopOnMount from '../utils/ScrollToTopOnMount';
 
 import ServicesCardDeck from '../components/ServicesCardDeck';

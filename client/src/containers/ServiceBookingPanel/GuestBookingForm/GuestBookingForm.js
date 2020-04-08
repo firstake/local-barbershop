@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import DateTimePicker from '../../../components/DateTimePicker';
 
@@ -34,11 +34,11 @@ class GuestForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const home = document.location.origin;
-    const { title, link } = this.props;
+    const {title, link} = this.props;
 
     fetch(`${home}/api/set-user-booking`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         date: this.state.dateInputValue.value,
         time: this.state.timeInputValue.value,
@@ -47,13 +47,13 @@ class GuestForm extends Component {
         token: false,
       }),
     }).then(() => {
-      this.setState({ successMessage: true });
+      this.setState({successMessage: true});
     });
   }
 
   render() {
-    const { onCancel } = this.props;
-    const { dateInputValue, timeInputValue, successMessage } = this.state;
+    const {onCancel} = this.props;
+    const {dateInputValue, timeInputValue, successMessage} = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -101,7 +101,7 @@ class GuestForm extends Component {
               required
             />
             <small className="form-text text-muted">
-              Don't be scary, we'll never share your email with anyone else.
+              Don&apos;t be scary, we&apos;ll never share your email with anyone else.
             </small>
           </div>
 

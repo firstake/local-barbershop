@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import ServiceBookingPanel from '../containers/ServiceBookingPanel';
@@ -19,19 +19,19 @@ class cardPage extends Component {
     const home = document.location.origin;
 
     fetch(`${home}/api/services?page=${link}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.err) {
-          this.setState({ isError: true });
-        } else {
-          this.setState({ pageData: data });
-        }
-      });
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.err) {
+            this.setState({isError: true});
+          } else {
+            this.setState({pageData: data});
+          }
+        });
   }
 
   render() {
-    const { isError, pageData } = this.state;
-    const { match } = this.props;
+    const {isError, pageData} = this.state;
+    const {match} = this.props;
 
     if (isError) {
       return <Redirect to="/404" />;

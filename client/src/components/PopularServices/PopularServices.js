@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 const popularServicesData = [
   {
@@ -33,12 +33,12 @@ class PopularServices extends Component {
             <div className="col-12">
               <h2 className="text-center">Popular services</h2>
               <p className="text-center">
-                We create simple and cool men's hairstyles.
+                We create simple and cool men&apos;s hairstyles.
                 <br />
                 Learn more about our services.
               </p>
               <ul className="list-group list-group-flush border-right border-left shadow-sm">
-                {popularServicesData.map(({ title, price, link }) => (
+                {popularServicesData.map(({title, price, link}) => (
                   <li className="list-group-item" key={link}>
                     <Link to={`/services/${link}`} className="text-dark">
                       {title}

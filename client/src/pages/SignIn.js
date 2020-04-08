@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import SignInForm from '../containers/SignInForm';
 
 class SignIn extends Component {

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import {
   fetchCancelBooking,
   fetchChangeUserInfo,
@@ -17,19 +17,19 @@ class AccountContent extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { active: 'booking' };
+    this.state = {active: 'booking'};
     this.toggleSection = this.toggleSection.bind(this);
   }
 
   toggleSection(section) {
-    this.setState({ active: section });
+    this.setState({active: section});
   }
 
   render() {
     const {
       isAuth, userData, changeUserInfo, cancelBooking, changeUserAvatar,
     } = this.props;
-    const { active } = this.state;
+    const {active} = this.state;
 
     if (!isAuth) return <Redirect to="/sign-in" />;
 

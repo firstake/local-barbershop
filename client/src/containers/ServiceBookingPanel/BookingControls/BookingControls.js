@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 class BookingControls extends Component {
   render() {
-    const { isAuth, showModal } = this.props;
+    const {isAuth, showModal} = this.props;
 
     return (
       <div className="text-right pt-4">

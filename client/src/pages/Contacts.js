@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, {Component} from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
   faMapMarkerAlt,
   faPhone,
@@ -56,12 +56,12 @@ class Contacts extends Component {
                  justify-content-center
                  align-items-center
                  mt-3"
-                style={{ minHeight: 250 }}
+                style={{minHeight: 250}}
               >
                 <div className="px-3">
                   <FontAwesomeIcon
                     icon={icon}
-                    style={{ fontSize: 50, color }}
+                    style={{fontSize: 50, color}}
                     className="mb-2"
                   />
                   <h2>{title}</h2>

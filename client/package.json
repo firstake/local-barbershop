@@ -20,6 +20,7 @@
   },
   "scripts": {
     "client-dev": "react-scripts start",
+    "client-lint": "eslint ./src",
     "client-build": "react-scripts build",
     "client-test": "react-scripts test",
     "client-eject": "react-scripts eject"
@@ -36,5 +37,9 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.19.0"
+  }
 }

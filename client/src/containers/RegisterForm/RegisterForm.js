@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
-import { connect } from 'react-redux';
-import { regFetch, regHasErrored } from '../../actions/userAuthAction';
+import {connect} from 'react-redux';
+import {regFetch, regHasErrored} from '../../actions/userAuthAction';
 
 class RegisterForm extends Component {
   constructor(props) {
@@ -19,10 +19,10 @@ class RegisterForm extends Component {
   handleSubmit(evt) {
     evt.preventDefault();
     this.props.fetchRegUser(
-      this.state.email,
-      this.state.pass,
-      this.state.name,
-      this.state.phone,
+        this.state.email,
+        this.state.pass,
+        this.state.name,
+        this.state.phone,
     );
   }
 
@@ -31,8 +31,8 @@ class RegisterForm extends Component {
   }
 
   handleInputChange(evt) {
-    const { value } = evt.target;
-    const { name } = evt.target;
+    const {value} = evt.target;
+    const {name} = evt.target;
 
     this.setState({
       [name]: value,
@@ -40,7 +40,7 @@ class RegisterForm extends Component {
   }
 
   render() {
-    const { isAuth, regError } = this.props;
+    const {isAuth, regError} = this.props;
 
     if (isAuth) return <Redirect to="/account" />;
 
@@ -93,7 +93,7 @@ class RegisterForm extends Component {
             required
           />
           <small className="form-text text-muted">
-            Don't be scary, we'll never share your email with anyone else.
+            Don&apos;t be scary, we&apos;ll never share your email with anyone else.
           </small>
         </div>
 

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import {
   fetchCancelBooking,
   fetchNewBooking,
@@ -27,30 +27,30 @@ class ServiceBookingPanel extends Component {
   }
 
   showModal() {
-    this.setState({ isOpen: true });
+    this.setState({isOpen: true});
   }
 
   handleCancel(e) {
     e.preventDefault();
-    this.setState({ isOpen: false });
+    this.setState({isOpen: false});
   }
 
   render() {
     const {
       isAuth, userData, link, title, fetchNewBooking, cancelBooking,
     } = this.props;
-    const { isOpen } = this.state;
+    const {isOpen} = this.state;
 
     let filteredBookings = [];
 
     if (isAuth) {
       filteredBookings = userData.bookings.filter(
-        (booking) => booking.link === link,
+          (booking) => booking.link === link,
       );
     }
 
     const sortedBookings = filteredBookings.sort(
-      (a, b) => (a.date + a.time).localeCompare(b.date + b.time),
+        (a, b) => (a.date + a.time).localeCompare(b.date + b.time),
     );
 
     return (
@@ -118,11 +118,13 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  cancelBooking: (date, time, token) => dispatch(fetchCancelBooking(date, time, token)),
-  fetchNewBooking: (date, time, title, link, token) => dispatch(fetchNewBooking(date, time, title, link, token)),
+  cancelBooking: (date, time, token) =>
+    dispatch(fetchCancelBooking(date, time, token)),
+  fetchNewBooking: (date, time, title, link, token) =>
+    dispatch(fetchNewBooking(date, time, title, link, token)),
 });
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+    mapStateToProps,
+    mapDispatchToProps,
 )(ServiceBookingPanel);

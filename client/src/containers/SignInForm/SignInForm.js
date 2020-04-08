@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { Link, Redirect } from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
-import { connect } from 'react-redux';
-import { authFetch, authHasErrored } from '../../actions/userAuthAction';
+import {connect} from 'react-redux';
+import {authFetch, authHasErrored} from '../../actions/userAuthAction';
 
 class SignInForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { email: '', pass: '' };
+    this.state = {email: '', pass: ''};
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInputChange(evt) {
-    const { value } = evt.target;
-    const { name } = evt.target;
+    const {value} = evt.target;
+    const {name} = evt.target;
 
     this.setState({
       [name]: value,
@@ -25,19 +25,19 @@ class SignInForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    const { email, pass } = this.state;
-    const { fetchUserAuth } = this.props;
+    const {email, pass} = this.state;
+    const {fetchUserAuth} = this.props;
 
     fetchUserAuth(email, pass);
   }
 
   componentWillUnmount() {
-    const { cancelAuthError } = this.props;
+    const {cancelAuthError} = this.props;
     cancelAuthError();
   }
 
   render() {
-    const { isAuth, authError } = this.props;
+    const {isAuth, authError} = this.props;
 
     if (isAuth) return <Redirect to="/account" />;
 
@@ -82,7 +82,7 @@ class SignInForm extends Component {
         </div>
 
         <p className="pt-4">
-          Don't have an account? Register
+          Don&apos;t have an account? Register
           {' '}
           <Link to="/register" className="text-warning">
             here.

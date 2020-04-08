@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 
-const IMMUTABLE_timeSelectOptions = [
-  { value: 11, label: '11:00', isDisabled: false },
-  { value: 12, label: '12:00', isDisabled: false },
-  { value: 13, label: '13:00', isDisabled: false },
-  { value: 14, label: '14:00', isDisabled: false },
-  { value: 15, label: '15:00', isDisabled: false },
-  { value: 16, label: '16:00', isDisabled: false },
-  { value: 17, label: '17:00', isDisabled: false },
-  { value: 18, label: '18:00', isDisabled: false },
+const immutableTimeSelectOptions = [
+  {value: 11, label: '11:00', isDisabled: false},
+  {value: 12, label: '12:00', isDisabled: false},
+  {value: 13, label: '13:00', isDisabled: false},
+  {value: 14, label: '14:00', isDisabled: false},
+  {value: 15, label: '15:00', isDisabled: false},
+  {value: 16, label: '16:00', isDisabled: false},
+  {value: 17, label: '17:00', isDisabled: false},
+  {value: 18, label: '18:00', isDisabled: false},
 ];
 
 const selectStyles = {
-  control: (styles) => ({ ...styles, fontSize: '1rem', paddingLeft: 1 }),
-  option: (styles) => ({ ...styles, fontSize: '1rem' }),
+  control: (styles) => ({...styles, fontSize: '1rem', paddingLeft: 1}),
+  option: (styles) => ({...styles, fontSize: '1rem'}),
 };
 
 class DateTimePicker extends Component {
@@ -29,7 +29,7 @@ class DateTimePicker extends Component {
       dateSelectIsDisabled: true,
       timeSelectIsDisabled: true,
       dateSelectOptions: null,
-      timeSelectOptions: IMMUTABLE_timeSelectOptions,
+      timeSelectOptions: immutableTimeSelectOptions,
     };
   }
 
@@ -37,15 +37,15 @@ class DateTimePicker extends Component {
     const home = document.location.origin;
 
     fetch(`${home}/api/get-booking-dates`)
-      .then((res) => res.json())
-      .then((data) => this.setState({ dateSelectOptions: data, dateSelectIsDisabled: false }));
+        .then((res) => res.json())
+        .then((data) => this.setState({dateSelectOptions: data, dateSelectIsDisabled: false}));
   }
 
   handleDateChange(inputValue) {
     const clonedTimeSelectOptions = JSON.parse(
-      JSON.stringify(IMMUTABLE_timeSelectOptions),
+        JSON.stringify(immutableTimeSelectOptions),
     );
-    const { handleDateChange, handleTimeChange } = this.props;
+    const {handleDateChange, handleTimeChange} = this.props;
 
     if (inputValue.time) {
       clonedTimeSelectOptions.forEach((item) => {
@@ -72,7 +72,7 @@ class DateTimePicker extends Component {
     const {
       dateSelectOptions, dateSelectIsDisabled, timeSelectOptions, timeSelectIsDisabled,
     } = this.state;
-    const { timeInputValue } = this.props;
+    const {timeInputValue} = this.props;
 
     return (
       <>
@@ -93,7 +93,7 @@ class DateTimePicker extends Component {
         />
         <Select
           value={timeInputValue}
-          className="py-3"
+          className="my-3"
           onChange={this.handleTimeChange}
           options={timeSelectOptions}
           isDisabled={timeSelectIsDisabled}

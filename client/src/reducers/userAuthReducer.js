@@ -1,10 +1,10 @@
 export const authHasErrored = (
-  state = { hasErrored: false, errorText: '' },
-  action,
+    state = {hasErrored: false, errorText: ''},
+    action,
 ) => {
   switch (action.type) {
     case 'AUTH_HAS_ERRORED':
-      return { ...state, hasErrored: action.hasErrored, errorText: action.errorText };
+      return {...state, hasErrored: action.hasErrored, errorText: action.errorText};
 
     default:
       return state;
@@ -12,12 +12,12 @@ export const authHasErrored = (
 };
 
 export const regHasErrored = (
-  state = { hasErrored: false, errorText: '' },
-  action,
+    state = {hasErrored: false, errorText: ''},
+    action,
 ) => {
   switch (action.type) {
     case 'REG_HAS_ERRORED':
-      return { ...state, hasErrored: action.hasErrored, errorText: action.errorText };
+      return {...state, hasErrored: action.hasErrored, errorText: action.errorText};
 
     default:
       return state;
@@ -25,15 +25,15 @@ export const regHasErrored = (
 };
 
 export const authSuccess = (
-  state = { isAuth: false, userData: null },
-  action,
+    state = {isAuth: false, userData: null},
+    action,
 ) => {
   switch (action.type) {
     case 'AUTH_SUCCESS':
-      return { ...state, isAuth: true, userData: action.userData };
+      return {...state, isAuth: true, userData: action.userData};
 
     case 'USER_LOGOUT':
-      return { ...state, isAuth: false, userData: null };
+      return {...state, isAuth: false, userData: null};
 
     case 'NEW_BOOKING':
       return {
@@ -59,7 +59,7 @@ export const authSuccess = (
           ...state.userData,
           bookings: [
             ...state.userData.bookings.filter(
-              (item) => !(item.date === action.date && item.time === action.time),
+                (item) => !(item.date === action.date && item.time === action.time),
             ),
           ],
         },

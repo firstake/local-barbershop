@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './GalleryImages.css';
 
 const images = [1, 2, 3, 4, 5, 6, 7, 8, 9];

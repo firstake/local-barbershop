@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import './Avatar.css';
 
 class Avatar extends Component {
@@ -16,11 +16,11 @@ class Avatar extends Component {
   openUploadDialog() {
     this.imgInput.current.click();
   }
-  
+
   imgHandleChange(e) {
     const reader = new FileReader();
     const img = e.target.files[0];
-    const { token, changeUserAvatar } = this.props;
+    const {token, changeUserAvatar} = this.props;
 
     if (img) {
       reader.readAsDataURL(img);
@@ -37,9 +37,9 @@ class Avatar extends Component {
   }
 
   render() {
-    const { avatar } = this.props;
+    const {avatar} = this.props;
 
-  	return (
+    return (
       <>
         <img
           className="rounded mb-4 w-100"
@@ -59,7 +59,7 @@ class Avatar extends Component {
           onChange={this.imgHandleChange}
         />
       </>
-  	);
+    );
   }
 }
 

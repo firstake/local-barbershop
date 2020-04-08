@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import UserInfoItem from '../UserInfoItem';
 
@@ -9,12 +9,12 @@ class UserInfoList extends Component {
   }
 
   saveChanges(name, value) {
-    const { changeUserInfo, userData } = this.props;
+    const {changeUserInfo, userData} = this.props;
     changeUserInfo(name, value, userData.token);
   }
 
   render() {
-    const { name, phone, email } = this.props.userData;
+    const {name, phone, email} = this.props.userData;
 
     return (
       <ul className="list-group list-group-flush">

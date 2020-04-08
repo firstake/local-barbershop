@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 class UpcomingBookings extends Component {
@@ -14,7 +14,7 @@ class UpcomingBookings extends Component {
   }
 
   render() {
-    const { bookings } = this.props;
+    const {bookings} = this.props;
 
     return (
       <>
@@ -22,7 +22,7 @@ class UpcomingBookings extends Component {
           <>
             <h3>Upcoming bookings</h3>
             <div className="list-group">
-              {bookings.map(({ date, time }) => (
+              {bookings.map(({date, time}) => (
                 <div className="list-group-item" key={date + time}>
                   <p className="mb-1">{`${date} ${time}`}</p>
                   <button
