@@ -10,3 +10,7 @@ React, React Router, Redux, Redux Thunk, Express.js, Bootstrap 4
 *  Open `client` directory in separate terminal and run `npm install`, then `npm run client-dev`
 
 *  Your default browser will automatically navigate to http://localhost:3000/
+
+### Additional Information:
+
+*  Sorry, there is no adequate database yet :worried:
