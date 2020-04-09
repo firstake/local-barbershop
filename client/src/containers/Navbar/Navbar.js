@@ -5,7 +5,8 @@ import './Navbar.css';
 
 import {connect} from 'react-redux';
 import {load, clear} from 'redux-localstorage-simple';
-import {authSuccess, userLogout} from '../../actions/userAuthAction';
+import {authSuccess} from '../../actions/authActions';
+import {userLogout} from '../../actions/userActions';
 
 class Navbar extends Component {
   constructor(props) {

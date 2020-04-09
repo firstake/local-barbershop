@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux';
-import {authHasErrored, regHasErrored, authSuccess} from './userAuthReducer';
+import regHasErrored from './regHasErrored';
+import authHasErrored from './authHasErrored';
+import authSuccess from './authSuccess';
 
 export default combineReducers({
-  authHasErrored,
   regHasErrored,
+  authHasErrored,
   authSuccess,
 });

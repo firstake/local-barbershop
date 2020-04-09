@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
 
 import {connect} from 'react-redux';
+import {fetchCancelBooking} from '../../actions/bookingActions';
 import {
-  fetchCancelBooking,
   fetchChangeUserInfo,
   fetchChangeUserAvatar,
-} from '../../actions/userAuthAction';
+} from '../../actions/userActions';
 
 import Avatar from '../../components/Avatar';
 import AccountBookings from '../../components/AccountBookings';

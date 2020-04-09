@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Link, Redirect} from 'react-router-dom';
 
 import {connect} from 'react-redux';
-import {authFetch, authHasErrored} from '../../actions/userAuthAction';
+import {authFetch, authHasErrored} from '../../actions/authActions';
 
 class SignInForm extends Component {
   constructor(props) {

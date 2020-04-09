@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
 
 import {connect} from 'react-redux';
-import {regFetch, regHasErrored} from '../../actions/userAuthAction';
+import {regFetch, regHasErrored} from '../../actions/registerActions';
 
 class RegisterForm extends Component {
   constructor(props) {

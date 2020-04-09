@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {
   fetchCancelBooking,
   fetchNewBooking,
-} from '../../actions/userAuthAction';
+} from '../../actions/bookingActions';
 
 import BookingControls from './BookingControls';
 import UpcomingBookings from './UpcomingBookings';
