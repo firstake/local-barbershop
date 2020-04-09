@@ -1,14 +1,14 @@
-const createError = require("http-errors");
+const createError = require('http-errors');
 
 const avatarUpload = (req, res, next) => {
-  const { avatar } = req.files;
+  const {avatar} = req.files;
 
-  avatar.mv(`${__dirname}/../../client/public/avatars/${req.body.name}.jpg`, err => {
+  avatar.mv(`${__dirname}/../../client/public/avatars/${req.body.name}.jpg`, (err) => {
     if (err) {
-      return next(createError(500, "Server error, please try again later..."));
+      return next(createError(500, 'Server error, please try again later...'));
     }
 
-    res.json({ avatar: `${req.body.name}.jpg` });
+    res.json({avatar: `${req.body.name}.jpg`});
   });
 };
 

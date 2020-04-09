@@ -13,7 +13,11 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "node index.js"
+    "server": "node index.js",
+    "server-lint": "eslint ./controllers ./routes ./utils ./index.js"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0"
+  }
 }
