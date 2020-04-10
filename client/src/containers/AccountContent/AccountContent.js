@@ -49,7 +49,6 @@ class AccountContent extends Component {
           <AccountBookings
             bookings={userData.bookings}
             cancel={cancelBooking}
-            token={userData.token}
           />
         );
         break;
@@ -62,7 +61,6 @@ class AccountContent extends Component {
             <div className="col-4 col-md-12 pr-0 pr-sm-3">
               <Avatar
                 avatar={userData.avatar}
-                token={userData.token}
                 changeUserAvatar={changeUserAvatar}
               />
             </div>
@@ -108,7 +106,6 @@ AccountContent.propTypes = {
     name: PropTypes.string,
     phone: PropTypes.string,
     avatar: PropTypes.string,
-    token: PropTypes.number,
   }),
 };
 
@@ -118,9 +115,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  cancelBooking: (date, time, token) => dispatch(fetchCancelBooking(date, time, token)),
-  changeUserInfo: (name, value, token) => dispatch(fetchChangeUserInfo(name, value, token)),
-  changeUserAvatar: (formData, token) => dispatch(fetchChangeUserAvatar(formData, token)),
+  cancelBooking: (date, time) => dispatch(fetchCancelBooking(date, time)),
+  changeUserInfo: (name, value) => dispatch(fetchChangeUserInfo(name, value)),
+  changeUserAvatar: (formData) => dispatch(fetchChangeUserAvatar(formData)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountContent);

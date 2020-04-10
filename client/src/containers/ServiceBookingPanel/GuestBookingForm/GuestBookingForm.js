@@ -44,7 +44,6 @@ class GuestForm extends Component {
         time: this.state.timeInputValue.value,
         title,
         link,
-        token: false,
       }),
     }).then(() => {
       this.setState({successMessage: true});

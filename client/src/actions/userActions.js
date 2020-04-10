@@ -5,7 +5,7 @@ export const changeUserInfo = (name, value) => ({
   value,
 });
 
-export const fetchChangeUserInfo = (name, value, token) => (dispatch) => {
+export const fetchChangeUserInfo = (name, value) => (dispatch) => {
   if (name !== 'password') {
     dispatch(changeUserInfo(name, value));
   }
@@ -16,21 +16,19 @@ export const fetchChangeUserInfo = (name, value, token) => (dispatch) => {
     body: JSON.stringify({
       name,
       value,
-      token,
     }),
   });
 };
 
 /* Change User Avatar */
-export const fetchChangeUserAvatar = (formData, token) => (dispatch) => {
+export const fetchChangeUserAvatar = (formData) => (dispatch) => {
   fetch('/api/upload', {
     method: 'POST',
     body: formData,
   })
       .then((res) => res.json())
       .then((data) => {
-        dispatch(changeUserInfo('avatar', data.avatar));
-        dispatch(fetchChangeUserInfo('avatar', data.avatar, token));
+        dispatch(fetchChangeUserInfo('avatar', data.avatar));
       });
 };
 

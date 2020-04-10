@@ -70,5 +70,14 @@
         "link": "edgeup"
       }
     ]
+  },
+  {
+    "access_token": "3xgYty8zlHgTx+Ui2YUSiKrxNtIQRNkAspdVEKnKN7Re/FXAhnEq1myKjrRfG8SS",
+    "name": "Hoba",
+    "phone": "777-444-3311",
+    "email": "hoba@mail.ru",
+    "password": "$2a$10$ftoPPprdmvMP6dGbpmLeqOkQook.9ZL2WkEToR5YoLY4JVVoKi8aW",
+    "avatar": "default.jpg",
+    "bookings": []
   }
 ]

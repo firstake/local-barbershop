@@ -1,5 +1,6 @@
 const path = require('path');
 const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
 const createError = require('http-errors');
 
 const USERS_FILE = path.join(__dirname, '../database/users/users.json');
@@ -17,11 +18,11 @@ const register = (req, res, next) => {
         }
 
         const newUser = {
-          token: Date.now(),
+          access_token: crypto.randomBytes(48).toString('base64'),
           name: req.body.name,
           phone: req.body.phone,
           email: req.body.email,
-          password: null,
+          password: '',
           avatar: 'default.png',
           bookings: [],
         };
@@ -32,6 +33,8 @@ const register = (req, res, next) => {
           users.push(newUser);
           writeTo(USERS_FILE, users);
 
+          res.cookie('UID', newUser.access_token, { httpOnly: true });
+          delete newUser.access_token;
           delete newUser.password;
           res.json(newUser);
         });

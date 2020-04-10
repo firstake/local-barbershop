@@ -25,7 +25,6 @@ AccountProfile.propTypes = {
     email: PropTypes.string,
     name: PropTypes.string,
     phone: PropTypes.string,
-    token: PropTypes.number,
   }),
 };
 

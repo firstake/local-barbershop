@@ -7,13 +7,13 @@ const readFrom = require('../utils/readFromFile');
 const writeTo = require('../utils/writeToFile');
 
 const changeUserInfo = (req, res, next) => {
-  if (req.body.token != false) {
+  if (req.cookies.UID) {
     readFrom(USERS_FILE)
         .then((data) => {
           const users = JSON.parse(data);
 
           users.find((item) => {
-            if (item.token === req.body.token) {
+            if (item.access_token === req.cookies.UID) {
               switch (req.body.name) {
                 case 'password':
                   bcrypt.hash(req.body.value, 10, (hashError, hashResult) => {

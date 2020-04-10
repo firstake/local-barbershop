@@ -25,12 +25,12 @@ const setUserBooking = (req, res, next) => {
         return next(createError(500, 'Server error, please try again later...'));
       });
 
-  if (req.body.token !== false) {
+  if (req.cookies.UID) {
     readFrom(USERS_FILE)
         .then((data) => {
           const users = JSON.parse(data);
           users.find((item) => {
-            if (item.token === req.body.token) {
+            if (item.access_token === req.cookies.UID) {
               item.bookings.push({
                 date: req.body.date,
                 time: `${req.body.time}:00`,

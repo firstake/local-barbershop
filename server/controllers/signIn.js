@@ -17,6 +17,8 @@ const signIn = (req, res, next) => {
         if (user !== undefined) {
           bcrypt.compare(pass, user.password, (compareError, compareResult) => {
             if (compareResult) {
+              res.cookie('UID', user.access_token, { httpOnly: true });
+              delete user.access_token;
               delete user.password;
               return res.json(user);
             }

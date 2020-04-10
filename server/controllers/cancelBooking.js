@@ -10,16 +10,16 @@ const readFrom = require('../utils/readFromFile');
 const writeTo = require('../utils/writeToFile');
 
 const cancelBooking = (req, res, next) => {
-  if (req.body.token != false) {
+  if (req.cookies.UID) {
     readFrom(USERS_FILE)
         .then((data) => {
           const users = JSON.parse(data);
           users.find((item) => {
-            if (item.token === req.body.token) {
+            if (item.access_token === req.cookies.UID) {
               item.bookings.forEach((booking, index) => {
                 if (
-                  booking.date === req.body.date &&
-                booking.time === req.body.time
+                  booking.date === req.body.date
+                  && booking.time === req.body.time
                 ) {
                   item.bookings.splice(index, 1);
                 }
@@ -40,7 +40,7 @@ const cancelBooking = (req, res, next) => {
         .then((data) => {
           const bookedDates = JSON.parse(data);
           const newDayTimes = bookedDates[req.body.date].filter(
-              (item) => !(item === +req.body.time.split(':')[0]),
+            (item) => !(item === +req.body.time.split(':')[0]),
           );
           bookedDates[req.body.date] = newDayTimes;
 

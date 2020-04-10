@@ -69,7 +69,6 @@ class ServiceBookingPanel extends Component {
               newBooking={fetchNewBooking}
               title={title}
               link={link}
-              token={userData.token}
               onCancel={this.handleCancel}
             />
           ) : (
@@ -86,7 +85,6 @@ class ServiceBookingPanel extends Component {
                 <UpcomingBookings
                   bookings={sortedBookings}
                   cancelBooking={cancelBooking}
-                  token={userData.token}
                 />
               )}
             </div>
@@ -108,7 +106,6 @@ ServiceBookingPanel.propTypes = {
     email: PropTypes.string,
     name: PropTypes.string,
     phone: PropTypes.string,
-    token: PropTypes.number,
   }),
 };
 
@@ -118,10 +115,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  cancelBooking: (date, time, token) =>
-    dispatch(fetchCancelBooking(date, time, token)),
-  fetchNewBooking: (date, time, title, link, token) =>
-    dispatch(fetchNewBooking(date, time, title, link, token)),
+  cancelBooking: (date, time) => dispatch(fetchCancelBooking(date, time)),
+  fetchNewBooking: (date, time, title, link) => dispatch(fetchNewBooking(date, time, title, link)),
 });
 
 export default connect(
