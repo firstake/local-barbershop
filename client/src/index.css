@@ -23,6 +23,7 @@ body {
 /* Full height excluding header and footer */
 .f-h {
   min-height: calc(100vh - 137px);
+  margin-top: 62px;
 }
 
 button {

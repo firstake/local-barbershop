@@ -1,4 +1,5 @@
 .banner {
+  margin-top: 62px;
   background: url(/img/home/banner.jpg) no-repeat 50% 50%/cover;
   width: 100%;
   min-height: 400px;

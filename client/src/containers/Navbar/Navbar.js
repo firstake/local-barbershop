@@ -21,11 +21,11 @@ class Navbar extends Component {
   }
 
   componentDidMount() {
-    document.addEventListener('mousedown', this.handleClickOutside);
+    document.addEventListener('click', this.handleClickOutside);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleClickOutside);
+    document.removeEventListener('click', this.handleClickOutside);
   }
 
   setWrapperRef(node) {
@@ -36,7 +36,7 @@ class Navbar extends Component {
     if (
       this.wrapperRef &&
       !this.wrapperRef.contains(e.target) &&
-      window.screen.width < 768
+      window.innerWidth < 768
     ) {
       this.setState({
         active: false,
@@ -45,12 +45,11 @@ class Navbar extends Component {
   }
 
   toggleClass() {
-    const currentState = this.state.active;
-    this.setState({active: !currentState});
+    this.setState((prevState) => ({active: !prevState.active}));
   }
 
   menuHandleClick(e) {
-    if ((e.target.tagName === 'A' || e.target.tagName === 'BUTTON') && window.screen.width < 768) {
+    if ((e.target.tagName === 'A' || e.target.tagName === 'BUTTON') && window.innerWidth < 768) {
       this.toggleClass();
     }
   }

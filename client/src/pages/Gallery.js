@@ -4,7 +4,7 @@ import GalleryImages from '../components/GalleryImages';
 class Gallery extends Component {
   render() {
     return (
-      <div className="container">
+      <div className="container f-h">
         <h1 className="text-center border-bottom pb-2 pt-4">Gallery</h1>
         <GalleryImages />
       </div>
