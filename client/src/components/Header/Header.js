@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import Navbar from '../../containers/Navbar';
+import './Header.css';
 
 class Header extends Component {
   render() {
     return (
-      <header className="bg-light">
+      <header className="position-fixed w-100 bg-light shadow-sm">
         <div className="container">
           <Navbar />
         </div>
