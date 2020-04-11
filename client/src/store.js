@@ -1,6 +1,5 @@
 import {createStore, compose, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
-import {save} from 'redux-localstorage-simple';
 import rootReducer from './reducers/index';
 
 /* eslint-disable no-underscore-dangle */
@@ -12,14 +11,11 @@ const composeEnhancers = process.env.NODE_ENV !== 'production' &&
 
 const configureStore = (initialState) => (
   createStore(
-      rootReducer,
-      initialState,
-      composeEnhancers(
-          applyMiddleware(
-              thunk,
-              save({states: ['authSuccess.userData'], namespace: 'app'}),
-          ),
-      ),
+    rootReducer,
+    initialState,
+    composeEnhancers(
+      applyMiddleware(thunk),
+    ),
   )
 );
 

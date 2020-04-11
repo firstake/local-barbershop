@@ -8,6 +8,7 @@ const appRoutes = require('./routes');
 
 const app = express();
 
+app.disable('x-powered-by');
 app.set('port', process.env.PORT || 3001);
 
 app.use(bodyParser.json());

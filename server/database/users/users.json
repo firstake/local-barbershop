@@ -1,6 +1,6 @@
 [
   {
-    "token": 1575554455850,
+    "access_token": "",
     "name": "Nicolas",
     "phone": "950-025-8942",
     "email": "cage@gmail.com",
@@ -28,7 +28,7 @@
     ]
   },
   {
-    "token": 1575554706781,
+    "access_token": "",
     "name": "Vladimir",
     "phone": "777-444-1223",
     "email": "vladimir@mail.ru",
@@ -44,7 +44,7 @@
     ]
   },
   {
-    "token": 1575554768714,
+    "access_token": "",
     "name": "Oleg",
     "phone": "456-461-3277",
     "email": "oleg@mail.ru",
@@ -70,14 +70,5 @@
         "link": "edgeup"
       }
     ]
-  },
-  {
-    "access_token": "3xgYty8zlHgTx+Ui2YUSiKrxNtIQRNkAspdVEKnKN7Re/FXAhnEq1myKjrRfG8SS",
-    "name": "Hoba",
-    "phone": "777-444-3311",
-    "email": "hoba@mail.ru",
-    "password": "$2a$10$ftoPPprdmvMP6dGbpmLeqOkQook.9ZL2WkEToR5YoLY4JVVoKi8aW",
-    "avatar": "default.jpg",
-    "bookings": []
   }
 ]

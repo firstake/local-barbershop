@@ -11,43 +11,43 @@ const writeTo = require('../utils/writeToFile');
 
 const setUserBooking = (req, res, next) => {
   readFrom(BOOKINGS_DATES)
-      .then((data) => {
-        const dates = JSON.parse(data);
-        if (!dates.hasOwnProperty(req.body.date)) {
-          dates[req.body.date] = [];
-        }
+    .then((data) => {
+      const dates = JSON.parse(data);
+      if (!dates.hasOwnProperty(req.body.date)) {
+        dates[req.body.date] = [];
+      }
 
-        dates[req.body.date].push(req.body.time);
-        writeTo(BOOKINGS_DATES, dates);
-      })
-      .catch((err) => {
-        console.error(err);
-        return next(createError(500, 'Server error, please try again later...'));
-      });
+      dates[req.body.date].push(req.body.time);
+      writeTo(BOOKINGS_DATES, dates);
+    })
+    .catch((err) => {
+      console.error(err);
+      return next(createError(500, 'Server error, please try again later...'));
+    });
 
   if (req.cookies.UID) {
     readFrom(USERS_FILE)
-        .then((data) => {
-          const users = JSON.parse(data);
-          users.find((item) => {
-            if (item.access_token === req.cookies.UID) {
-              item.bookings.push({
-                date: req.body.date,
-                time: `${req.body.time}:00`,
-                title: req.body.title,
-                link: req.body.link,
-              });
-            }
-          });
-
-          writeTo(USERS_FILE, users);
-        })
-        .catch((err) => {
-          console.error(err);
-          return next(
-              createError(500, 'Server error, please try again later...'),
-          );
+      .then((data) => {
+        const users = JSON.parse(data);
+        users.find((item) => {
+          if (item.access_token === req.cookies.UID) {
+            item.bookings.push({
+              date: req.body.date,
+              time: `${req.body.time}:00`,
+              title: req.body.title,
+              link: req.body.link,
+            });
+          }
         });
+
+        writeTo(USERS_FILE, users);
+      })
+      .catch((err) => {
+        console.error(err);
+        return next(
+            createError(500, 'Server error, please try again later...'),
+        );
+      });
   }
 
   res.end();

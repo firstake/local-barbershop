@@ -31,8 +31,3 @@ export const fetchChangeUserAvatar = (formData) => (dispatch) => {
         dispatch(fetchChangeUserInfo('avatar', data.avatar));
       });
 };
-
-/* Logout */
-export const userLogout = () => ({
-  type: 'USER_LOGOUT',
-});

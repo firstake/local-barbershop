@@ -12,14 +12,14 @@ const getServicesInfo = (req, res, next) => {
   }
 
   readFrom(file)
-      .then((data) => res.send(data))
-      .catch((err) => {
-        if (err.code === 'ENOENT') {
-          return next(createError(404, 'Not found!'));
-        } else {
-          return next(createError(500, 'Server error!'));
-        }
-      });
+    .then((data) => res.send(data))
+    .catch((err) => {
+      if (err.code === 'ENOENT') {
+        return next(createError(404, 'Not found!'));
+      } else {
+        return next(createError(500, 'Server error!'));
+      }
+    });
 };
 
 module.exports = getServicesInfo;

@@ -4,9 +4,8 @@ import {NavLink} from 'react-router-dom';
 import './Navbar.css';
 
 import {connect} from 'react-redux';
-import {load, clear} from 'redux-localstorage-simple';
-import {authSuccess} from '../../actions/authActions';
-import {userLogout} from '../../actions/userActions';
+import {restoreSession} from '../../actions/authActions';
+import {fetchUserLogout} from '../../actions/logoutActions';
 
 class Navbar extends Component {
   constructor(props) {
@@ -24,16 +23,7 @@ class Navbar extends Component {
 
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside);
-
-    const store = load({
-      states: ['authSuccess.userData'],
-      namespace: 'app',
-      preloadedState: null,
-    });
-
-    if (store) {
-      this.props.restoreSession(true, store.authSuccess.userData);
-    }
+    this.props.restoreSession();
   }
 
   componentWillUnmount() {
@@ -68,8 +58,7 @@ class Navbar extends Component {
   }
 
   logout() {
-    this.props.userLogout();
-    clear();
+    this.props.fetchUserLogout();
   }
 
   render() {
@@ -167,8 +156,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  userLogout: () => dispatch(userLogout()),
-  restoreSession: (bool, userData) => dispatch(authSuccess(bool, userData)),
+  fetchUserLogout: () => dispatch(fetchUserLogout()),
+  restoreSession: () => dispatch(restoreSession()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, null, {
