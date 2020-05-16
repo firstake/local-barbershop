@@ -6,7 +6,7 @@ import './Card.css';
 class Card extends Component {
   render() {
     const {
-      img, title, description, link, price,
+      img, title, short_desc, link, price,
     } = this.props.data;
 
     return (
@@ -18,7 +18,7 @@ class Card extends Component {
         />
         <div className="card-body">
           <h5 className="card-title">{title}</h5>
-          <p className="card-text text-muted">{description}</p>
+          <p className="card-text text-muted">{short_desc}</p>
         </div>
         <div className="card-footer d-flex justify-content-between align-items-center">
           <Link
