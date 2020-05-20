@@ -11,12 +11,13 @@
     "express-fileupload": "^1.1.6",
     "http-errors": "^1.7.3",
     "moment": "^2.24.0",
-    "mongodb": "^3.5.7"
+    "mongodb": "^3.5.7",
+    "mongoose": "^5.9.15"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node index.js",
-    "server-lint": "eslint ./controllers ./routes ./utils ./index.js"
+    "server-lint": "eslint ./controllers ./routes ./models ./lib ./utils ./index.js"
   },
   "devDependencies": {
     "eslint": "^6.8.0",

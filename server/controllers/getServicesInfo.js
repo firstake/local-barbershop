@@ -1,47 +1,25 @@
 const createError = require('http-errors');
-const dbConnected = require('../dbconnect');
+const Service = require('../models/service');
 
 const getServicesInfo = (req, res, next) => {
-  dbConnected()
-      .then((client) => {
-        const db = client.db('local-barbershop');
-        const collection = db.collection('services');
-
-        if (req.query.page) {
-          collection.findOne({
-            link: req.query.page,
-          },
-          {
-            projection: {
-              _id: 0,
-            },
-          },
-          function(err, results) {
-            if (err) {
-              return next(createError(500, 'Server error!'));
-            }
-            if (!results) {
-              return next(createError(404, 'Not found!'));
-            }
-            res.send(results);
-          });
-        } else {
-          collection.find({},
-            {
-              projection: {
-                _id: 0,
-                full_desc: 0,
-                time: 0,
-              },
-            })
-            .toArray(function(err, results) {
-              if (err) {
-                return next(createError(500, 'Server error!'));
-              }
-              res.send(results);
-            });
-        }
-      });
+  if (req.query.page) {
+    Service.findOne({link: req.query.page}, '-_id', function(err, service) {
+      if (err) {
+        return next(createError(500, 'Server error!'));
+      }
+      if (!service) {
+        return next(createError(404, 'Not found!'));
+      }
+      res.send(service);
+    });
+  } else {
+    Service.find({}, '-_id -full_desc -time', function(err, services) {
+      if (err) {
+        return next(createError(500, 'Server error!'));
+      }
+      res.send(services);
+    });
+  }
 };
 
 module.exports = getServicesInfo;
