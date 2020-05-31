@@ -25,15 +25,3 @@ export const authFetch = (email, pass) => (dispatch) => {
         }
       });
 };
-
-export const restoreSession = () => (dispatch) => {
-  fetch('api/restore-session')
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.err) {
-        console.log(data.err);
-      } else {
-        dispatch(authSuccess(true, data));
-      }
-    });
-}

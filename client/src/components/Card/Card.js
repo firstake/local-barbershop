@@ -6,7 +6,7 @@ import './Card.css';
 class Card extends Component {
   render() {
     const {
-      img, title, short_desc, link, price,
+      img, title, short_desc: description, link, price,
     } = this.props.data;
 
     return (
@@ -18,7 +18,7 @@ class Card extends Component {
         />
         <div className="card-body">
           <h5 className="card-title">{title}</h5>
-          <p className="card-text text-muted">{short_desc}</p>
+          <p className="card-text text-muted">{description}</p>
         </div>
         <div className="card-footer d-flex justify-content-between align-items-center">
           <Link
@@ -40,7 +40,7 @@ class Card extends Component {
 
 Card.propTypes = {
   data: PropTypes.shape({
-    description: PropTypes.string,
+    short_desc: PropTypes.string,
     img: PropTypes.string,
     link: PropTypes.string,
     price: PropTypes.number,

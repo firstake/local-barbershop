@@ -8,7 +8,7 @@ class ServicesCardDeck extends Component {
   }
 
   componentDidMount() {
-    fetch('api/services')
+    fetch('/api/services')
         .then((res) => res.json())
         .then((data) => this.setState({data}));
   }

@@ -3,7 +3,7 @@ export const fetchUserLogout = () => (dispatch) => {
     dispatch(userLogout());
   });
 };
-  
+
 export const userLogout = () => ({
   type: 'USER_LOGOUT',
 });

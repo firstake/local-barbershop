@@ -4,7 +4,6 @@ import {NavLink} from 'react-router-dom';
 import './Navbar.css';
 
 import {connect} from 'react-redux';
-import {restoreSession} from '../../actions/authActions';
 import {fetchUserLogout} from '../../actions/logoutActions';
 
 class Navbar extends Component {
@@ -23,7 +22,6 @@ class Navbar extends Component {
 
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside);
-    this.props.restoreSession();
   }
 
   componentWillUnmount() {
@@ -148,7 +146,7 @@ class Navbar extends Component {
 Navbar.propTypes = {
   isAuth: PropTypes.bool,
   restoreSession: PropTypes.func,
-  userLogout: PropTypes.func,
+  fetchUserLogout: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
@@ -157,7 +155,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchUserLogout: () => dispatch(fetchUserLogout()),
-  restoreSession: () => dispatch(restoreSession()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, null, {
