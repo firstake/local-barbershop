@@ -18,11 +18,11 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "client-dev": "react-scripts start",
-    "client-lint": "eslint ./src",
-    "client-build": "react-scripts build",
-    "client-test": "react-scripts test",
-    "client-eject": "react-scripts eject"
+    "client:dev": "react-scripts start",
+    "client:lint": "eslint ./src",
+    "client:build": "react-scripts build",
+    "client:test": "react-scripts test",
+    "client:eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [
