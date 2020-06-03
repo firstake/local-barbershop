@@ -15,10 +15,18 @@ const schema = new Schema({
     title: String,
     link: String,
   }],
+}, {
+  versionKey: false,
 });
 
 schema.methods.comparePasswords = function(password) {
   return bcrypt.compareSync(password, this.password);
 };
+
+schema.pre('save', function() {
+  if (this.isModified('password')) {
+    this.password = bcrypt.hashSync(this.password, 10);
+  }
+});
 
 module.exports = mongoose.model('User', schema);

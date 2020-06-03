@@ -4,7 +4,7 @@ const User = require('../models/user');
 
 const signIn = (req, res, next) => {
   const {email, pass} = req.body;
-  const access_token = crypto.randomBytes(48).toString('base64');
+  const access_token = crypto.randomBytes(48).toString('base64'); //eslint-disable-line
 
   User.findOneAndUpdate(
       {email},
