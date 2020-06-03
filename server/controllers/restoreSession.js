@@ -5,7 +5,7 @@ const restoreSession = (req, res, next) => {
   if (req.cookies.UID) {
     User.findOne({access_token: req.cookies.UID}, function(err, user) {
       if (err) {
-        return next(createError(500, 'Server error!'));
+        return next(createError(500, 'Server error, please try again later...'));
       }
 
       if (user) {
