@@ -29,4 +29,11 @@ schema.pre('save', function() {
   }
 });
 
+schema.pre('updateOne', function(done) {
+  if (this._update.password) {
+    this._update.password = bcrypt.hashSync(this._update.password, 10);
+  }
+  done();
+});
+
 module.exports = mongoose.model('User', schema);

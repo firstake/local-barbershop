@@ -1,41 +1,30 @@
-const path = require('path');
-const bcrypt = require('bcryptjs');
 const createError = require('http-errors');
-
-const USERS_FILE = path.join(__dirname, '../database/users/users.json');
-const readFrom = require('../utils/readFromFile');
-const writeTo = require('../utils/writeToFile');
+const User = require('../models/user');
 
 const changeUserInfo = (req, res, next) => {
-  if (req.cookies.UID) {
-    readFrom(USERS_FILE)
-        .then((data) => {
-          const users = JSON.parse(data);
+  const {cookies, body} = req;
+  const {UID} = cookies;
 
-          users.find((item) => {
-            if (item.access_token === req.cookies.UID) {
-              switch (req.body.name) {
-                case 'password':
-                  bcrypt.hash(req.body.value, 10, (hashError, hashResult) => {
-                    item.password = hashResult;
-                    writeTo(USERS_FILE, users);
-                  });
-                  break;
+  if (UID) {
+    const {name, value} = body;
 
-                default:
-                  item[req.body.name] = req.body.value;
-                  writeTo(USERS_FILE, users);
-              }
-            }
-          });
-          res.end();
-        })
-        .catch((err) => {
-          console.error(err);
-          return next(
-              createError(500, 'Server error, please try again later...'),
-          );
-        });
+    User.updateOne(
+        {access_token: UID},
+        {[name]: value},
+        function(err, result) {
+          if (err) {
+            return next(createError(500, 'Server error, please try again later...'));
+          }
+
+          if (result) {
+            res.end();
+          } else {
+            return next(createError(400, 'Bad request'));
+          }
+        },
+    );
+  } else {
+    return next(createError(401, 'Unauthorized'));
   }
 };
 
