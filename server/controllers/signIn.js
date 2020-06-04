@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const createError = require('http-errors');
 const User = require('../models/user');
+const sessionizeUser = require('../utils/sessionizeUser');
 
 const signIn = (req, res, next) => {
   const {email, pass} = req.body;
@@ -15,16 +16,10 @@ const signIn = (req, res, next) => {
         }
 
         if (user && user.comparePasswords(pass)) {
-          const returnedUser = {
-            name: user.name,
-            phone: user.phone,
-            email: user.email,
-            avatar: user.avatar,
-            bookings: [...user.bookings],
-          };
+          const sessionUser = sessionizeUser(user);
 
           res.cookie('UID', access_token, {httpOnly: true});
-          res.send(returnedUser);
+          res.send(sessionUser);
         } else {
           next(createError(200, 'Wrong email or password!'));
         }

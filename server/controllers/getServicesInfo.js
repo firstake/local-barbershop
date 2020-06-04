@@ -2,8 +2,9 @@ const createError = require('http-errors');
 const Service = require('../models/service');
 
 const getServicesInfo = (req, res, next) => {
-  if (req.query.page) {
-    Service.findOne({link: req.query.page}, '-_id', function(err, service) {
+  const {page} = req.query;
+  if (page) {
+    Service.findOne({link: page}, '-_id', function(err, service) {
       if (err) {
         return next(createError(500, 'Server error, please try again later...'));
       }

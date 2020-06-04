@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const createError = require('http-errors');
 const User = require('../models/user');
+const sessionizeUser = require('../utils/sessionizeUser');
 
 const register = (req, res, next) => {
   const {name, phone, email, pass: password} = req.body;
@@ -19,8 +20,6 @@ const register = (req, res, next) => {
         phone,
         email,
         password,
-        avatar: 'default.png',
-        bookings: [],
       });
 
       newUser.save(function(err, user) {
@@ -29,16 +28,10 @@ const register = (req, res, next) => {
         }
 
         if (user) {
-          const returnedUser = {
-            name: user.name,
-            phone: user.phone,
-            email: user.email,
-            avatar: user.avatar,
-            bookings: [...user.bookings],
-          };
+          const sessionUser = sessionizeUser(user);
 
           res.cookie('UID', user.access_token, {httpOnly: true});
-          res.send(returnedUser);
+          res.send(sessionUser);
         }
       });
     }

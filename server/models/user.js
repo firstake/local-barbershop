@@ -3,18 +3,39 @@ const mongoose = require('../lib/mongoose');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-  access_token: String,
-  name: String,
-  phone: String,
-  email: String,
-  password: String,
-  avatar: String,
-  bookings: [{
-    date: String,
-    time: String,
-    title: String,
-    link: String,
-  }],
+  access_token: {
+    type: String,
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  phone: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  avatar: {
+    type: String,
+    default: 'default.png',
+  },
+  bookings: {
+    type: [{
+      date: String,
+      time: String,
+      title: String,
+      link: String,
+    }],
+    default: [],
+  },
 }, {
   versionKey: false,
 });
