@@ -8,7 +8,7 @@ const register = require('../controllers/register');
 const restoreSession = require('../controllers/restoreSession');
 const changeUserInfo = require('../controllers/changeUserInfo');
 const getBookingDates = require('../controllers/getBookingDates');
-const setUserBooking = require('../controllers/setUserBooking');
+const setBooking = require('../controllers/setBooking');
 const cancelBooking = require('../controllers/cancelBooking');
 const avatarUpload = require('../controllers/avatarUpload');
 
@@ -20,7 +20,7 @@ router.get('/logout', logout);
 router.post('/sign-in', signIn);
 router.post('/register', register);
 router.post('/change-user-info', changeUserInfo);
-router.post('/set-user-booking', setUserBooking);
+router.post('/set-booking', setBooking);
 router.post('/cancel-booking', cancelBooking);
 router.post('/upload', avatarUpload);
 

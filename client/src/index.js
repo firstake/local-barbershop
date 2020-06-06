@@ -10,7 +10,7 @@ import {Provider} from 'react-redux';
 import App from './App';
 
 import configureStore from './store';
-import {restoreSession} from './utils/restoreSession';
+import {restoreSession} from './util/restoreSession';
 
 const renderApp = (preloadedState) => {
   const store = configureStore(preloadedState);

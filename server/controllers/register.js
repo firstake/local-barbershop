@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const createError = require('http-errors');
 const User = require('../models/user');
-const sessionizeUser = require('../utils/sessionizeUser');
+const sessionizeUser = require('../util/sessionizeUser');
 
 const register = (req, res, next) => {
   const {name, phone, email, pass: password} = req.body;

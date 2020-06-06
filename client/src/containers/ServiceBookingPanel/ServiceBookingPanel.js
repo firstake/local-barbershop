@@ -73,6 +73,8 @@ class ServiceBookingPanel extends Component {
             />
           ) : (
             <GuestBookingForm
+              title={title}
+              link={link}
               onCancel={this.handleCancel}
             />
           )}

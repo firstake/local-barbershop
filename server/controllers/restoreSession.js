@@ -1,6 +1,6 @@
 const createError = require('http-errors');
 const User = require('../models/user');
-const sessionizeUser = require('../utils/sessionizeUser');
+const sessionizeUser = require('../util/sessionizeUser');
 
 const restoreSession = (req, res, next) => {
   const {UID} = req.cookies;

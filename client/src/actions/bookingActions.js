@@ -7,7 +7,7 @@ export const newBooking = (date, time, title, link) => ({
 });
 
 export const fetchNewBooking = (date, time, title, link) => (dispatch) => {
-  fetch('/api/set-user-booking', {
+  fetch('/api/set-booking', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({

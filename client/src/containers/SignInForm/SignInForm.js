@@ -15,8 +15,7 @@ class SignInForm extends Component {
   }
 
   handleInputChange(evt) {
-    const {value} = evt.target;
-    const {name} = evt.target;
+    const {value, name} = evt.target;
 
     this.setState({
       [name]: value,
