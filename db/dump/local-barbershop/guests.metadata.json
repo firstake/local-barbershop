@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"local-barbershop.guests"}],"uuid":"0c7992973fdf4e438afec098f754bbb3"}
