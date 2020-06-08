@@ -21,7 +21,7 @@ const signIn = (req, res, next) => {
           res.cookie('UID', access_token, {httpOnly: true});
           res.send(sessionUser);
         } else {
-          next(createError(200, 'Wrong email or password!'));
+          next(createError(401, 'Wrong email or password!'));
         }
       });
 };
