@@ -30,9 +30,7 @@ class UserBookingForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const {
-      newBooking, onCancel, title, link, token,
-    } = this.props;
+    const {newBooking, onCancel, title, link} = this.props;
     const {dateInputValue, timeInputValue} = this.state;
 
     newBooking(
@@ -40,7 +38,6 @@ class UserBookingForm extends Component {
         timeInputValue.value,
         title,
         link,
-        token,
     );
     onCancel(e);
   }
@@ -77,7 +74,6 @@ UserBookingForm.propTypes = {
   newBooking: PropTypes.func,
   link: PropTypes.string,
   title: PropTypes.string,
-  token: PropTypes.number,
 };
 
 export default UserBookingForm;

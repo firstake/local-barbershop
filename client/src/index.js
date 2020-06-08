@@ -9,13 +9,21 @@ import './index.css';
 import {Provider} from 'react-redux';
 import App from './App';
 
-import store from './store';
+import configureStore from './store';
+import {restoreSession} from './util/restoreSession';
 
-ReactDOM.render(
-    <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>,
-    document.getElementById('root'),
-);
+const renderApp = (preloadedState) => {
+  const store = configureStore(preloadedState);
+  ReactDOM.render(
+      <BrowserRouter>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </BrowserRouter>,
+      document.getElementById('root'),
+  );
+};
+
+(async () =>
+  renderApp(await restoreSession())
+)();

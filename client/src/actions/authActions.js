@@ -25,4 +25,3 @@ export const authFetch = (email, pass) => (dispatch) => {
         }
       });
 };
-

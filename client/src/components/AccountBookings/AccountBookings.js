@@ -11,7 +11,7 @@ class AccountBookings extends Component {
   cancelBooking(e) {
     const dateTimeArr = e.target.dataset.key.split(' ');
     const [date, time] = dateTimeArr;
-    this.props.cancel(date, time, this.props.token);
+    this.props.cancel(date, time);
   }
 
   render() {
@@ -60,7 +60,6 @@ class AccountBookings extends Component {
 AccountBookings.propTypes = {
   bookings: PropTypes.arrayOf(PropTypes.object),
   cancel: PropTypes.func,
-  token: PropTypes.number,
 };
 
 export default AccountBookings;

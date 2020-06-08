@@ -5,19 +5,23 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-fileupload": "^1.1.6",
     "http-errors": "^1.7.3",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "mongodb": "^3.5.7",
+    "mongoose": "^5.9.15"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node index.js",
-    "server-lint": "eslint ./controllers ./routes ./utils ./index.js"
+    "server:dev": "nodemon index.js",
+    "server:lint": "eslint ./controllers ./routes ./models ./lib ./util ./index.js"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
-    "eslint-config-google": "^0.14.0"
+    "eslint-config-google": "^0.14.0",
+    "nodemon": "^2.0.4"
   }
 }

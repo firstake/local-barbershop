@@ -11,10 +11,14 @@ class GuestForm extends Component {
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleTimeChange = this.handleTimeChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleGuestChange = this.handleGuestChange.bind(this);
 
     this.state = {
       dateInputValue: null,
       timeInputValue: null,
+      name: '',
+      phone: '',
+      email: '',
       successMessage: false,
     };
   }
@@ -31,12 +35,21 @@ class GuestForm extends Component {
     });
   }
 
+  handleGuestChange(evt) {
+    const {name, value} = evt.target;
+
+    this.setState({
+      [name]: value,
+    });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const home = document.location.origin;
     const {title, link} = this.props;
+    const {name, phone, email} = this.state;
 
-    fetch(`${home}/api/set-user-booking`, {
+    fetch(`${home}/api/set-booking`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -44,7 +57,9 @@ class GuestForm extends Component {
         time: this.state.timeInputValue.value,
         title,
         link,
-        token: false,
+        name,
+        phone,
+        email,
       }),
     }).then(() => {
       this.setState({successMessage: true});
@@ -74,6 +89,7 @@ class GuestForm extends Component {
               id="name"
               placeholder="Enter name"
               required
+              onChange={this.handleGuestChange}
             />
           </div>
 
@@ -87,6 +103,7 @@ class GuestForm extends Component {
               id="phone"
               placeholder="777-444-3311"
               required
+              onChange={this.handleGuestChange}
             />
           </div>
 
@@ -99,6 +116,7 @@ class GuestForm extends Component {
               id="email"
               placeholder="Enter email"
               required
+              onChange={this.handleGuestChange}
             />
             <small className="form-text text-muted">
               Don&apos;t be scary, we&apos;ll never share your email with anyone else.

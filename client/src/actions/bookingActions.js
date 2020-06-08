@@ -6,8 +6,8 @@ export const newBooking = (date, time, title, link) => ({
   link,
 });
 
-export const fetchNewBooking = (date, time, title, link, token) => (dispatch) => {
-  fetch('/api/set-user-booking', {
+export const fetchNewBooking = (date, time, title, link) => (dispatch) => {
+  fetch('/api/set-booking', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -15,7 +15,6 @@ export const fetchNewBooking = (date, time, title, link, token) => (dispatch) =>
       time,
       title,
       link,
-      token,
     }),
   }).then(() => dispatch(newBooking(date, time, title, link)));
 };
@@ -26,14 +25,13 @@ export const cancelBooking = (date, time) => ({
   time,
 });
 
-export const fetchCancelBooking = (date, time, token) => (dispatch) => {
+export const fetchCancelBooking = (date, time) => (dispatch) => {
   fetch('/api/cancel-booking', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
       date,
       time,
-      token,
     }),
   }).then(() => dispatch(cancelBooking(date, time)));
 };

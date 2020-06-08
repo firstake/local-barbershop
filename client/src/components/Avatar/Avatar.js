@@ -20,7 +20,7 @@ class Avatar extends Component {
   imgHandleChange(e) {
     const reader = new FileReader();
     const img = e.target.files[0];
-    const {token, changeUserAvatar} = this.props;
+    const {changeUserAvatar} = this.props;
 
     if (img) {
       reader.readAsDataURL(img);
@@ -29,10 +29,10 @@ class Avatar extends Component {
     reader.onloadend = () => {
       const formData = new FormData();
 
-      formData.append('name', token + Date.now());
+      formData.append('name', Date.now().toString());
       formData.append('avatar', img);
 
-      changeUserAvatar(formData, token);
+      changeUserAvatar(formData);
     };
   }
 
@@ -64,7 +64,6 @@ class Avatar extends Component {
 }
 
 Avatar.propTypes = {
-  token: PropTypes.number,
   avatar: PropTypes.string,
   changeUserAvatar: PropTypes.func,
 };

@@ -15,15 +15,14 @@
     "react-scripts": "3.2.0",
     "react-select": "^3.0.8",
     "redux": "^4.0.4",
-    "redux-localstorage-simple": "^2.1.6",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "client-dev": "react-scripts start",
-    "client-lint": "eslint ./src",
-    "client-build": "react-scripts build",
-    "client-test": "react-scripts test",
-    "client-eject": "react-scripts eject"
+    "client:dev": "react-scripts start",
+    "client:lint": "eslint ./src",
+    "client:build": "react-scripts build",
+    "client:test": "react-scripts test",
+    "client:eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [

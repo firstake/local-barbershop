@@ -6,7 +6,7 @@ import './Card.css';
 class Card extends Component {
   render() {
     const {
-      img, title, description, link, price,
+      img, title, short_desc: description, link, price,
     } = this.props.data;
 
     return (
@@ -40,7 +40,7 @@ class Card extends Component {
 
 Card.propTypes = {
   data: PropTypes.shape({
-    description: PropTypes.string,
+    short_desc: PropTypes.string,
     img: PropTypes.string,
     link: PropTypes.string,
     price: PropTypes.number,

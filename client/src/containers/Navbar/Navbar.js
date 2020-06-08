@@ -4,9 +4,7 @@ import {NavLink} from 'react-router-dom';
 import './Navbar.css';
 
 import {connect} from 'react-redux';
-import {load, clear} from 'redux-localstorage-simple';
-import {authSuccess} from '../../actions/authActions';
-import {userLogout} from '../../actions/userActions';
+import {fetchUserLogout} from '../../actions/logoutActions';
 
 class Navbar extends Component {
   constructor(props) {
@@ -24,16 +22,6 @@ class Navbar extends Component {
 
   componentDidMount() {
     document.addEventListener('click', this.handleClickOutside);
-
-    const store = load({
-      states: ['authSuccess.userData'],
-      namespace: 'app',
-      preloadedState: null,
-    });
-
-    if (store) {
-      this.props.restoreSession(true, store.authSuccess.userData);
-    }
   }
 
   componentWillUnmount() {
@@ -67,8 +55,7 @@ class Navbar extends Component {
   }
 
   logout() {
-    this.props.userLogout();
-    clear();
+    this.props.fetchUserLogout();
   }
 
   render() {
@@ -158,7 +145,7 @@ class Navbar extends Component {
 Navbar.propTypes = {
   isAuth: PropTypes.bool,
   restoreSession: PropTypes.func,
-  userLogout: PropTypes.func,
+  fetchUserLogout: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
@@ -166,8 +153,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  userLogout: () => dispatch(userLogout()),
-  restoreSession: (bool, userData) => dispatch(authSuccess(bool, userData)),
+  fetchUserLogout: () => dispatch(fetchUserLogout()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, null, {

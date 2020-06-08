@@ -9,8 +9,8 @@ class UserInfoList extends Component {
   }
 
   saveChanges(name, value) {
-    const {changeUserInfo, userData} = this.props;
-    changeUserInfo(name, value, userData.token);
+    const {changeUserInfo} = this.props;
+    changeUserInfo(name, value);
   }
 
   render() {
@@ -62,7 +62,6 @@ UserInfoList.propTypes = {
     email: PropTypes.string,
     name: PropTypes.string,
     phone: PropTypes.string,
-    token: PropTypes.number,
   }),
 };
 
