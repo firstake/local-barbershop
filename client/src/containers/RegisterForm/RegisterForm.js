@@ -45,7 +45,7 @@ class RegisterForm extends Component {
     if (isAuth) return <Redirect to="/account" />;
 
     const errorMessage = regError.hasErrored && (
-      <div className="alert alert-danger text-center p-1">
+      <div className="alert alert-danger d-flex justify-content-center p-1">
         <small>{ regError.errorText }</small>
       </div>
     );

@@ -41,7 +41,7 @@ class SignInForm extends Component {
     if (isAuth) return <Redirect to="/account" />;
 
     const errorMessage = authError.hasErrored && (
-      <div className="alert alert-danger text-center p-1">
+      <div className="alert alert-danger d-flex justify-content-center p-1">
         <small>{ authError.errorText }</small>
       </div>
     );
