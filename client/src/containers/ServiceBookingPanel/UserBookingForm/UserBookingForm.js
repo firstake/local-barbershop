@@ -28,8 +28,8 @@ class UserBookingForm extends Component {
     });
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+  handleSubmit(evt) {
+    evt.preventDefault();
     const {newBooking, onCancel, title, link} = this.props;
     const {dateInputValue, timeInputValue} = this.state;
 
@@ -39,7 +39,7 @@ class UserBookingForm extends Component {
         title,
         link,
     );
-    onCancel(e);
+    onCancel(evt);
   }
 
   render() {

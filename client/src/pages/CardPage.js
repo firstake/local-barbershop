@@ -47,31 +47,33 @@ class cardPage extends Component {
       );
     }
 
+    const {img, title, full_desc, price, time} = pageData;
+
     return (
       <div className="container f-h py-4">
         <div className="card">
           <div className="row">
             <div className="col-md-6">
               <img
-                src={pageData.img}
+                src={img}
                 className="card-img"
-                alt={pageData.title}
+                alt={title}
               />
             </div>
             <div className="col-md-6">
               <div className="card-body">
-                <h1 className="card-title">{pageData.title}</h1>
+                <h1 className="card-title">{title}</h1>
                 <p className="card-text text-muted">
-                  {pageData.full_desc}
+                  {full_desc}
                 </p>
                 <p className="card-text text-right m-0">
                   Price: $
-                  {pageData.price}
+                  {price}
                 </p>
                 <p className="card-text text-right">
                   Duration:
                   {' '}
-                  {pageData.time}
+                  {time}
                   {' '}
                   min
                 </p>
@@ -81,7 +83,7 @@ class cardPage extends Component {
         </div>
 
         <ServiceBookingPanel
-          title={pageData.title}
+          title={title}
           link={match.params.title}
         />
       </div>

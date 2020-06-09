@@ -30,8 +30,8 @@ class ServiceBookingPanel extends Component {
     this.setState({isOpen: true});
   }
 
-  handleCancel(e) {
-    e.preventDefault();
+  handleCancel(evt) {
+    evt.preventDefault();
     this.setState({isOpen: false});
   }
 

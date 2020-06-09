@@ -43,8 +43,8 @@ class GuestForm extends Component {
     });
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+  handleSubmit(evt) {
+    evt.preventDefault();
     const home = document.location.origin;
     const {title, link} = this.props;
     const {name, phone, email} = this.state;

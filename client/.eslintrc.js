@@ -27,7 +27,8 @@ module.exports = {
     }
   },
   'rules': {
-    'require-jsdoc' : 0,
+    'require-jsdoc': 0,
+    'camelcase': 0,
     'max-len': ['error', { "code": 100 }]
   },
 };

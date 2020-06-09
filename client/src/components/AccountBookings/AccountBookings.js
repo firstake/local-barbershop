@@ -8,9 +8,8 @@ class AccountBookings extends Component {
     this.cancelBooking = this.cancelBooking.bind(this);
   }
 
-  cancelBooking(e) {
-    const dateTimeArr = e.target.dataset.key.split(' ');
-    const [date, time] = dateTimeArr;
+  cancelBooking(evt) {
+    const [date, time] = evt.target.dataset.key.split(' ');
     this.props.cancel(date, time);
   }
 

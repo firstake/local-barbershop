@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 
-const immutableTimeSelectOptions = [
+const timeSelectOptions = [
   {value: 11, label: '11:00', isDisabled: false},
   {value: 12, label: '12:00', isDisabled: false},
   {value: 13, label: '13:00', isDisabled: false},
@@ -29,7 +29,7 @@ class DateTimePicker extends Component {
       dateSelectIsDisabled: true,
       timeSelectIsDisabled: true,
       dateSelectOptions: null,
-      timeSelectOptions: immutableTimeSelectOptions,
+      timeSelectOptions,
     };
   }
 
@@ -43,7 +43,7 @@ class DateTimePicker extends Component {
 
   handleDateChange(inputValue) {
     const clonedTimeSelectOptions = JSON.parse(
-        JSON.stringify(immutableTimeSelectOptions),
+        JSON.stringify(timeSelectOptions),
     );
     const {handleDateChange, handleTimeChange} = this.props;
 

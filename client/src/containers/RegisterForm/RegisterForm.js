@@ -18,11 +18,12 @@ class RegisterForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
+    const {email, pass, name, phone} = this.state;
     this.props.fetchRegUser(
-        this.state.email,
-        this.state.pass,
-        this.state.name,
-        this.state.phone,
+        email,
+        pass,
+        name,
+        phone,
     );
   }
 
@@ -31,8 +32,7 @@ class RegisterForm extends Component {
   }
 
   handleInputChange(evt) {
-    const {value} = evt.target;
-    const {name} = evt.target;
+    const {value, name} = evt.target;
 
     this.setState({
       [name]: value,

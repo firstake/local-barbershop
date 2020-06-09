@@ -32,10 +32,10 @@ class Navbar extends Component {
     this.wrapperRef = node;
   }
 
-  handleClickOutside(e) {
+  handleClickOutside(evt) {
     if (
       this.wrapperRef &&
-      !this.wrapperRef.contains(e.target) &&
+      !this.wrapperRef.contains(evt.target) &&
       window.innerWidth < 768
     ) {
       this.setState({
@@ -48,8 +48,9 @@ class Navbar extends Component {
     this.setState((prevState) => ({active: !prevState.active}));
   }
 
-  menuHandleClick(e) {
-    if ((e.target.tagName === 'A' || e.target.tagName === 'BUTTON') && window.innerWidth < 768) {
+  menuHandleClick(evt) {
+    const {tagName} = evt.target;
+    if ((tagName === 'A' || tagName === 'BUTTON') && window.innerWidth < 768) {
       this.toggleClass();
     }
   }

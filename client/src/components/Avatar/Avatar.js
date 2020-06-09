@@ -17,9 +17,9 @@ class Avatar extends Component {
     this.imgInput.current.click();
   }
 
-  imgHandleChange(e) {
+  imgHandleChange(evt) {
     const reader = new FileReader();
-    const img = e.target.files[0];
+    const img = evt.target.files[0];
     const {changeUserAvatar} = this.props;
 
     if (img) {

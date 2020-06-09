@@ -66,6 +66,23 @@ button {
   border-color: #b96e4d;
 }
 
+/* Gallery page */
+.gallery {
+  column-count: 3;
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 470px) {
+  .gallery {
+    column-count: 1;
+  }
+}
+
 /* Contacts page */
 .text-pre-line {
   white-space: pre-line;
