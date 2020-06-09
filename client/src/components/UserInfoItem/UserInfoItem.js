@@ -72,7 +72,7 @@ class UserInfoItem extends Component {
             }}
           >
             <input
-              className="m-1 mr-auto"
+              className="m-1 mr-auto form-control-lean"
               name={name}
               onChange={this.handleChange}
               type={type}
