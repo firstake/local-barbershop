@@ -30,16 +30,7 @@ button {
   outline: none !important;
 }
 
-.form-control-lean {
-  display: block;
-  color: #495057;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: .25rem;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-
-.form-control-lean:focus, .form-control:focus {
+.form-control:focus {
   outline: 0;
   border-color: #dda122;
   box-shadow: 0 0 0 0.2rem rgb(253, 184, 39);

@@ -1,0 +1,20 @@
+.form-control-lean {
+  display: block;
+  color: #495057;
+  background-clip: padding-box;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  border-right: none;
+  border-left: none;
+  border-radius: 0;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.form-control-lean:disabled {
+  background: transparent;
+}
+  
+.form-control-lean:focus {
+  outline: 0;
+  border-bottom-color: #dda122;
+}
