@@ -1,10 +1,13 @@
 const authSuccess = (
-    state = {isAuth: false, userData: null},
+    state = {isAuth: false, userData: null, isPending: false},
     action,
 ) => {
   switch (action.type) {
     case 'AUTH_SUCCESS':
       return {...state, isAuth: true, userData: action.userData};
+
+    case 'AUTH_IS_PENDING':
+      return {...state, isPending: action.isPending}
 
     case 'USER_LOGOUT':
       return {...state, isAuth: false, userData: null};

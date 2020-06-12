@@ -46,7 +46,7 @@ class SignInForm extends Component {
   }
 
   render() {
-    const {isAuth, authError} = this.props;
+    const {isAuth, authError, isPending} = this.props;
     const {isPassShown} = this.state;
 
     const cardLocation = localStorage.getItem('cardLocation');
@@ -64,53 +64,69 @@ class SignInForm extends Component {
     );
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <div>
         {errorMessage}
+        <form onSubmit={this.handleSubmit}>
+          <fieldset disabled={isPending}>
 
-        <div className="form-group">
-          <label htmlFor="email">Email address</label>
-          <input
-            onChange={this.handleInputChange}
-            name="email"
-            type="email"
-            className="form-control"
-            id="email"
-            placeholder="Enter email"
-            autoComplete="email"
-            autoFocus
-            required
-          />
-        </div>
+            <div className="form-group">
+              <label htmlFor="email">Email address</label>
+              <input
+                onChange={this.handleInputChange}
+                name="email"
+                type="email"
+                className="form-control"
+                id="email"
+                placeholder="Enter email"
+                autoComplete="email"
+                autoFocus
+                required
+              />
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <div className="password-wrapper">
-            <input
-              onChange={this.handleInputChange}
-              name="pass"
-              type={isPassShown ? 'text' : 'password'}
-              className="form-control"
-              id="password"
-              placeholder="Password"
-              autoComplete="current-password"
-              required
-            />
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <div className="password-wrapper">
+                <input
+                  onChange={this.handleInputChange}
+                  name="pass"
+                  type={isPassShown ? 'text' : 'password'}
+                  className="form-control"
+                  id="password"
+                  placeholder="Password"
+                  autoComplete="current-password"
+                  required
+                />
+                <button
+                  type="button"
+                  className="btn-toggle-password"
+                  onClick={this.togglePassVisiblity}
+                >
+                  <FontAwesomeIcon icon={isPassShown ? faEye : faEyeSlash} />
+                </button>
+              </div>
+            </div>
+
             <button
-              type="button"
-              className="btn-toggle-password"
-              onClick={this.togglePassVisiblity}
+              type="submit"
+              className="
+              btn btn-general
+              d-flex justify-content-center align-items-center mx-auto
+              text-white"
             >
-              <FontAwesomeIcon icon={isPassShown ? faEye : faEyeSlash} />
+              Submit
+              {isPending ?
+                (<span
+                  className="spinner-border spinner-border-sm ml-2"
+                  role="status"
+                  aria-hidden="true">
+                </span>
+                ) : null
+              }
             </button>
-          </div>
-        </div>
 
-        <div className="text-center">
-          <button type="submit" className="btn btn-general text-white">
-            Submit
-          </button>
-        </div>
-
+          </fieldset>
+        </form>
         <p className="pt-4">
           Don&apos;t have an account? Register
           {' '}
@@ -118,7 +134,7 @@ class SignInForm extends Component {
             here.
           </Link>
         </p>
-      </form>
+      </div>
     );
   }
 }
@@ -136,6 +152,7 @@ SignInForm.propTypes = {
 const mapStateToProps = (state) => ({
   isAuth: state.authSuccess.isAuth,
   authError: state.authHasErrored,
+  isPending: state.authSuccess.isPending,
 });
 
 const mapDispatchToProps = (dispatch) => ({
