@@ -145,6 +145,7 @@ SignInForm.propTypes = {
     errorText: PropTypes.string,
   }),
   isAuth: PropTypes.bool,
+  isPending: PropTypes.bool,
   cancelAuthError: PropTypes.func,
   fetchUserAuth: PropTypes.func,
 };

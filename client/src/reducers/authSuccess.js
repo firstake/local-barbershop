@@ -7,7 +7,7 @@ const authSuccess = (
       return {...state, isAuth: true, userData: action.userData};
 
     case 'AUTH_IS_PENDING':
-      return {...state, isPending: action.isPending}
+      return {...state, isPending: action.isPending};
 
     case 'USER_LOGOUT':
       return {...state, isAuth: false, userData: null};
