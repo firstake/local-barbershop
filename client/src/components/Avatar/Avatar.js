@@ -54,6 +54,7 @@ class Avatar extends Component {
         </button>
         <input
           type="file"
+          accept="image/*"
           className="d-none"
           ref={this.imgInput}
           onChange={this.imgHandleChange}
