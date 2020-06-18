@@ -48,7 +48,7 @@ class RegisterForm extends Component {
   }
 
   render() {
-    const {isAuth, regError} = this.props;
+    const {isAuth, regError, isPending} = this.props;
     const {isPassShown} = this.state;
 
     if (isAuth) return <Redirect to="/account" />;
@@ -60,89 +60,106 @@ class RegisterForm extends Component {
     );
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <div>
         {errorMessage}
+        <form onSubmit={this.handleSubmit}>
+          <fieldset disabled={isPending}>
 
-        <div className="form-group">
-          <label htmlFor="name">Full name</label>
-          <input
-            onChange={this.handleInputChange}
-            name="name"
-            type="text"
-            className="form-control"
-            id="name"
-            placeholder="Enter name"
-            autoComplete="name"
-            autoFocus
-            required
-          />
-        </div>
+            <div className="form-group">
+              <label htmlFor="name">Full name</label>
+              <input
+                onChange={this.handleInputChange}
+                name="name"
+                type="text"
+                className="form-control"
+                id="name"
+                placeholder="Enter name"
+                autoComplete="name"
+                autoFocus
+                required
+              />
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="phone">Phone number</label>
-          <input
-            onChange={this.handleInputChange}
-            name="phone"
-            type="tel"
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-            className="form-control"
-            id="phone"
-            placeholder="777-444-3311"
-            autoComplete="tel"
-            required
-          />
-        </div>
+            <div className="form-group">
+              <label htmlFor="phone">Phone number</label>
+              <input
+                onChange={this.handleInputChange}
+                name="phone"
+                type="tel"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                className="form-control"
+                id="phone"
+                placeholder="777-444-3311"
+                autoComplete="tel"
+                required
+              />
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="email">Email address</label>
-          <input
-            onChange={this.handleInputChange}
-            name="email"
-            type="email"
-            className="form-control"
-            id="email"
-            placeholder="Enter email"
-            autoComplete="email"
-            required
-          />
-          <small className="form-text text-muted">
-            Don&apos;t be scary, we&apos;ll never share your email with anyone else.
-          </small>
-        </div>
+            <div className="form-group">
+              <label htmlFor="email">Email address</label>
+              <input
+                onChange={this.handleInputChange}
+                name="email"
+                type="email"
+                className="form-control"
+                id="email"
+                placeholder="Enter email"
+                autoComplete="email"
+                required
+              />
+              <small className="form-text text-muted">
+                Don&apos;t be scary, we&apos;ll never share your email with anyone else.
+              </small>
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <div className="password-wrapper">
-            <input
-              onChange={this.handleInputChange}
-              name="pass"
-              type={isPassShown ? 'text' : 'password'}
-              minLength="6"
-              className="form-control"
-              id="password"
-              placeholder="Password"
-              autoComplete="new-password"
-              required
-            />
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <div className="password-wrapper">
+                <input
+                  onChange={this.handleInputChange}
+                  name="pass"
+                  type={isPassShown ? 'text' : 'password'}
+                  minLength="6"
+                  className="form-control"
+                  id="password"
+                  placeholder="Password"
+                  autoComplete="new-password"
+                  required
+                />
+                <button
+                  type="button"
+                  className="btn-toggle-password"
+                  onClick={this.togglePassVisiblity}
+                >
+                  <FontAwesomeIcon icon={isPassShown ? faEye : faEyeSlash} />
+                </button>
+              </div>
+              <small className="form-text text-muted">
+                We hope you come up with something.
+              </small>
+            </div>
+
             <button
-              type="button"
-              className="btn-toggle-password"
-              onClick={this.togglePassVisiblity}
+              type="submit"
+              className="
+              btn btn-general
+              d-flex justify-content-center align-items-center mx-auto
+              text-white"
             >
-              <FontAwesomeIcon icon={isPassShown ? faEye : faEyeSlash} />
+              Submit
+              {isPending ?
+                (<span
+                  className="spinner-border spinner-border-sm ml-2"
+                  role="status"
+                  aria-hidden="true">
+                </span>
+                ) : null
+              }
             </button>
-          </div>
-          <small className="form-text text-muted">
-            We hope you come up with something.
-          </small>
-        </div>
 
-        <div className="text-center">
-          <button type="submit" className="btn btn-general text-white">
-            Submit
-          </button>
-        </div>
-      </form>
+          </fieldset>
+        </form>
+      </div>
     );
   }
 }
@@ -151,6 +168,7 @@ RegisterForm.propTypes = {
   cancelRegError: PropTypes.func,
   fetchRegUser: PropTypes.func,
   isAuth: PropTypes.bool,
+  isPending: PropTypes.bool,
   regError: PropTypes.shape({
     hasErrored: PropTypes.bool,
     errorText: PropTypes.string,
@@ -160,6 +178,7 @@ RegisterForm.propTypes = {
 const mapStateToProps = (state) => ({
   isAuth: state.authSuccess.isAuth,
   regError: state.regHasErrored,
+  isPending: state.authSuccess.isPending,
 });
 
 const mapDispatchToProps = (dispatch) => ({
