@@ -59,6 +59,9 @@ class SignInForm extends Component {
             className="form-control"
             id="email"
             placeholder="Enter email"
+            autoComplete="email"
+            autoFocus
+            required
           />
         </div>
 
@@ -71,6 +74,8 @@ class SignInForm extends Component {
             className="form-control"
             id="password"
             placeholder="Password"
+            autoComplete="current-password"
+            required
           />
         </div>
 

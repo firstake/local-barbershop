@@ -63,6 +63,8 @@ class RegisterForm extends Component {
             className="form-control"
             id="name"
             placeholder="Enter name"
+            autoComplete="name"
+            autoFocus
             required
           />
         </div>
@@ -77,6 +79,7 @@ class RegisterForm extends Component {
             className="form-control"
             id="phone"
             placeholder="777-444-3311"
+            autoComplete="tel"
             required
           />
         </div>
@@ -90,6 +93,7 @@ class RegisterForm extends Component {
             className="form-control"
             id="email"
             placeholder="Enter email"
+            autoComplete="email"
             required
           />
           <small className="form-text text-muted">
@@ -107,6 +111,7 @@ class RegisterForm extends Component {
             className="form-control"
             id="password"
             placeholder="Password"
+            autoComplete="new-password"
             required
           />
           <small className="form-text text-muted">
