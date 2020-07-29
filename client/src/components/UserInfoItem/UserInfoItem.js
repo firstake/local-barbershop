@@ -2,10 +2,16 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import './UserInfoItem.css';
 
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
+
 class UserInfoItem extends Component {
   constructor(props) {
     super(props);
 
+    this.getType = this.getType.bind(this);
+    this.togglePassVisiblity = this.togglePassVisiblity.bind(this);
+    this.resetPassVisiblity = this.resetPassVisiblity.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.saveChanges = this.saveChanges.bind(this);
@@ -17,7 +23,28 @@ class UserInfoItem extends Component {
       currentValue: this.props.text,
       currentTarget: null,
       isChanging: false,
+      isPassShown: false,
     };
+  }
+
+  getType() {
+    const {type} = this.props;
+    const {isPassShown} = this.state;
+
+    if (type === 'password') {
+      return (isPassShown ? 'text' : 'password');
+    }
+    return type;
+  }
+
+  togglePassVisiblity() {
+    this.setState((prevState) => ({isPassShown: !prevState.isPassShown}));
+  }
+
+  resetPassVisiblity() {
+    this.setState({
+      isPassShown: false,
+    });
   }
 
   handleClick() {
@@ -41,6 +68,8 @@ class UserInfoItem extends Component {
 
   saveChanges(evt) {
     evt.preventDefault();
+    this.resetPassVisiblity();
+
     const stateObject = {
       isChanging: false,
       currentTarget: null,
@@ -54,9 +83,8 @@ class UserInfoItem extends Component {
     this.setState(stateObject);
   }
 
-  cancelChanges(evt) {
-    evt.preventDefault();
-
+  cancelChanges() {
+    this.resetPassVisiblity();
     this.setState({
       isChanging: false,
       currentValue: this.props.text,
@@ -65,9 +93,9 @@ class UserInfoItem extends Component {
 
   render() {
     const {
-      name, title, type, pattern, minLength, cssClass,
+      name, title, type, autocomplete, pattern, minLength, cssClass,
     } = this.props;
-    const {isChanging, currentValue} = this.state;
+    const {isChanging, currentValue, isPassShown} = this.state;
 
     return (
       <li
@@ -84,19 +112,31 @@ class UserInfoItem extends Component {
           }}
         >
           <label htmlFor={name} className="m-1 text-muted">{title}</label>
-          <input
-            className="m-1 mr-auto form-control-lean"
-            id={name}
-            name={name}
-            onChange={this.handleChange}
-            type={type}
-            minLength={minLength || null}
-            pattern={type === 'phone' ? null : pattern}
-            value={currentValue}
-            required="required"
-            disabled={!isChanging}
-            ref={this.textInput}
-          />
+          <div className={`${type === 'password' ? 'password-wrapper ' : ''}m-1 mr-auto`}>
+            <input
+              className="form-control-lean"
+              id={name}
+              name={name}
+              onChange={this.handleChange}
+              type={this.getType()}
+              autoComplete={autocomplete}
+              minLength={minLength || null}
+              pattern={type === 'phone' ? null : pattern}
+              value={currentValue}
+              required="required"
+              disabled={!isChanging}
+              ref={this.textInput}
+            />
+            {type === 'password' && isChanging ? (
+              <button
+                type="button"
+                className="btn-toggle-password"
+                onClick={this.togglePassVisiblity}
+              >
+                <FontAwesomeIcon icon={isPassShown ? faEye : faEyeSlash} />
+              </button>
+            ) : null}
+          </div>
           {isChanging ? (
             <div>
               <button
@@ -106,6 +146,7 @@ class UserInfoItem extends Component {
                 Save
               </button>
               <button
+                type="button"
                 onClick={this.cancelChanges}
                 className="p-0 m-1 btn btn-link text-danger"
               >
@@ -130,6 +171,7 @@ UserInfoItem.propTypes = {
   text: PropTypes.string,
   title: PropTypes.string,
   type: PropTypes.string,
+  autocomplete: PropTypes.string,
   pattern: PropTypes.string,
   minLength: PropTypes.string,
 };

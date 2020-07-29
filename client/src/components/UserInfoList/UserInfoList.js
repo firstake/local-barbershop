@@ -23,6 +23,7 @@ class UserInfoList extends Component {
           title="Name"
           text={name}
           type="text"
+          autocomplete="name"
           saveChanges={this.saveChanges}
           cssClass="border-top-0"
         />
@@ -31,6 +32,7 @@ class UserInfoList extends Component {
           title="Phone"
           text={phone}
           type="tel"
+          autocomplete="tel"
           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
           saveChanges={this.saveChanges}
         />
@@ -39,6 +41,7 @@ class UserInfoList extends Component {
           title="Email"
           text={email}
           type="email"
+          autocomplete="email"
           saveChanges={this.saveChanges}
         />
         <UserInfoItem
@@ -46,6 +49,7 @@ class UserInfoList extends Component {
           title="Password"
           text="******"
           type="password"
+          autocomplete="new-password"
           minLength="6"
           saveChanges={this.saveChanges}
           cssClass="border-bottom"
