@@ -150,6 +150,7 @@ class GuestForm extends Component {
             </button>
           )}
           <button
+            type="button"
             onClick={onCancel}
             className="btn btn-danger"
           >

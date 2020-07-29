@@ -62,7 +62,13 @@ class UserBookingForm extends Component {
           >
             Submit
           </button>
-          <button onClick={onCancel} className="btn btn-danger ml-3">Cancel</button>
+          <button
+            type="button"
+            onClick={onCancel}
+            className="btn btn-danger ml-3"
+          >
+            Cancel
+          </button>
         </div>
       </form>
     );
