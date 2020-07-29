@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-const images = new Array(9).fill(0).map((item, index) => index + 1);
+import images from '../consts/gallery-images';
 
 class Gallery extends Component {
   render() {
@@ -8,13 +8,15 @@ class Gallery extends Component {
       <div className="container f-h">
         <h1 className="text-center border-bottom pb-2 pt-4">Gallery</h1>
         <div className="gallery my-4">
-          {images.map((item) => (
-            <div className="mb-3" key={item}>
+          {images.map((image) => (
+            <div className="mb-3" key={image.id}>
               <img
                 className="img-fluid"
                 loading="lazy"
-                src={`img/gallery/${item}.jpg`}
+                src={`img/gallery/${image.id}.jpg`}
                 alt="Local Barbershop"
+                width={image.width}
+                height={image.height}
               />
             </div>
           ))}
