@@ -2,16 +2,24 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Link, Redirect} from 'react-router-dom';
 
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
+
 import {connect} from 'react-redux';
 import {authFetch, authHasErrored} from '../../actions/authActions';
 
 class SignInForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {email: '', pass: ''};
+    this.state = {email: '', pass: '', isPassShown: false};
 
+    this.togglePassVisiblity = this.togglePassVisiblity.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  togglePassVisiblity() {
+    this.setState((prevState) => ({isPassShown: !prevState.isPassShown}));
   }
 
   handleInputChange(evt) {
@@ -37,6 +45,7 @@ class SignInForm extends Component {
 
   render() {
     const {isAuth, authError} = this.props;
+    const {isPassShown} = this.state;
 
     if (isAuth) return <Redirect to="/account" />;
 
@@ -67,16 +76,25 @@ class SignInForm extends Component {
 
         <div className="form-group">
           <label htmlFor="password">Password</label>
-          <input
-            onChange={this.handleInputChange}
-            name="pass"
-            type="password"
-            className="form-control"
-            id="password"
-            placeholder="Password"
-            autoComplete="current-password"
-            required
-          />
+          <div className="password-wrapper">
+            <input
+              onChange={this.handleInputChange}
+              name="pass"
+              type={isPassShown ? 'text' : 'password'}
+              className="form-control"
+              id="password"
+              placeholder="Password"
+              autoComplete="current-password"
+              required
+            />
+            <button
+              type="button"
+              className="btn-toggle-password"
+              onClick={this.togglePassVisiblity}
+            >
+              <FontAwesomeIcon icon={isPassShown ? faEye : faEyeSlash} />
+            </button>
+          </div>
         </div>
 
         <div className="text-center">

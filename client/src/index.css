@@ -67,6 +67,23 @@ button {
   border-color: #b96e4d;
 }
 
+/* Toggle password visibility */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.btn-toggle-password {
+  font-size: 1rem;
+  padding: 0;
+  position: absolute;
+  right: .75rem;
+  border: none;
+  background: none;
+  color: rgba(0,0,0,.5);
+}
+
 /* Gallery page */
 .gallery {
   column-count: 3;

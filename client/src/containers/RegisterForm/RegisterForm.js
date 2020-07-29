@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
 
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
+
 import {connect} from 'react-redux';
 import {regFetch, regHasErrored} from '../../actions/registerActions';
 
@@ -9,11 +12,16 @@ class RegisterForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '', pass: '', name: '', phone: '',
+      email: '', pass: '', name: '', phone: '', isPassShown: false,
     };
 
+    this.togglePassVisiblity = this.togglePassVisiblity.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  togglePassVisiblity() {
+    this.setState((prevState) => ({isPassShown: !prevState.isPassShown}));
   }
 
   handleSubmit(evt) {
@@ -41,6 +49,7 @@ class RegisterForm extends Component {
 
   render() {
     const {isAuth, regError} = this.props;
+    const {isPassShown} = this.state;
 
     if (isAuth) return <Redirect to="/account" />;
 
@@ -103,17 +112,26 @@ class RegisterForm extends Component {
 
         <div className="form-group">
           <label htmlFor="password">Password</label>
-          <input
-            onChange={this.handleInputChange}
-            name="pass"
-            type="password"
-            minLength="6"
-            className="form-control"
-            id="password"
-            placeholder="Password"
-            autoComplete="new-password"
-            required
-          />
+          <div className="password-wrapper">
+            <input
+              onChange={this.handleInputChange}
+              name="pass"
+              type={isPassShown ? 'text' : 'password'}
+              minLength="6"
+              className="form-control"
+              id="password"
+              placeholder="Password"
+              autoComplete="new-password"
+              required
+            />
+            <button
+              type="button"
+              className="btn-toggle-password"
+              onClick={this.togglePassVisiblity}
+            >
+              <FontAwesomeIcon icon={isPassShown ? faEye : faEyeSlash} />
+            </button>
+          </div>
           <small className="form-text text-muted">
             We hope you come up with something.
           </small>
