@@ -12,17 +12,23 @@ import {
 import Avatar from '../../components/Avatar';
 import AccountBookings from '../../components/AccountBookings';
 import AccountProfile from '../../components/AccountProfile';
+import Tabs from '../../components/Tabs';
+
+const buttonLabels = [
+  'Bookings',
+  'Profile',
+];
 
 class AccountContent extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {active: 'booking'};
-    this.toggleSection = this.toggleSection.bind(this);
+    this.state = {active: 0};
+    this.openTab = this.openTab.bind(this);
   }
 
-  toggleSection(section) {
-    this.setState({active: section});
+  openTab(evt) {
+    this.setState({active: +evt.target.dataset.index});
   }
 
   render() {
@@ -32,27 +38,6 @@ class AccountContent extends Component {
     const {active} = this.state;
 
     if (!isAuth) return <Redirect to="/sign-in" />;
-
-    let section;
-    switch (active) {
-      case 'profile':
-        section = (
-          <AccountProfile
-            userData={userData}
-            changeUserInfo={changeUserInfo}
-          />
-        );
-        break;
-
-      default:
-        section = (
-          <AccountBookings
-            bookings={userData.bookings}
-            cancel={cancelBooking}
-          />
-        );
-        break;
-    }
 
     return (
       <div className="row pt-3">
@@ -64,32 +49,38 @@ class AccountContent extends Component {
                 changeUserAvatar={changeUserAvatar}
               />
             </div>
-            <div className="col-8 col-md-12 px-3">
+            <div className="col-8 col-md-12 px-3 mb-4">
               <div className="list-group">
-                <button
-                  onClick={() => this.toggleSection('booking')}
-                  className={
-                    `list-group-item list-group-item-action py-2${
-                      active === 'booking' ? ' active' : ''}`
-                  }
-                >
-                  Bookings
-                </button>
-                <button
-                  onClick={() => this.toggleSection('profile')}
-                  className={
-                    `list-group-item list-group-item-action py-2${
-                      active === 'profile' ? ' active' : ''}`
-                  }
-                >
-                  Profile
-                </button>
+                {buttonLabels.map((label, i) => (
+                  <button
+                    onClick={this.openTab}
+                    data-index={i}
+                    key={label}
+                    className={
+                      `list-group-item list-group-item-action py-2${
+                        i === active ? ' active' : ''}`
+                    }
+                  >
+                    {label}
+                  </button>
+                ))}
               </div>
             </div>
           </div>
         </div>
 
-        <div className="col-md-8 mr-auto ml-auto">{section}</div>
+        <div className="col-md-8 mr-auto ml-auto">
+          <Tabs active={active}>
+            <AccountBookings
+              bookings={userData.bookings}
+              cancel={cancelBooking}
+            />
+            <AccountProfile
+              userData={userData}
+              changeUserInfo={changeUserInfo}
+            />
+          </Tabs>
+        </div>
       </div>
     );
   }
