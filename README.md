@@ -1,4 +1,6 @@
 # Local Barbershop App
+<img src="preview.jpg" />
+
 Bootstrap 4  
 React, React Router, Redux, Redux Thunk  
 Express.js, Mongoose  
