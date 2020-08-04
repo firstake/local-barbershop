@@ -39,6 +39,8 @@ class SignInForm extends Component {
   }
 
   componentWillUnmount() {
+    localStorage.removeItem('cardLocation');
+
     const {cancelAuthError} = this.props;
     cancelAuthError();
   }
@@ -46,6 +48,12 @@ class SignInForm extends Component {
   render() {
     const {isAuth, authError} = this.props;
     const {isPassShown} = this.state;
+
+    const cardLocation = localStorage.getItem('cardLocation');
+
+    if (isAuth && cardLocation) {
+      return <Redirect to={cardLocation} />;
+    }
 
     if (isAuth) return <Redirect to="/account" />;
 

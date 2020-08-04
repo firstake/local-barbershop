@@ -1,8 +1,22 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
 class BookingControls extends Component {
+  constructor(props) {
+    super(props);
+
+    this.toSignIn = this.toSignIn.bind(this);
+  }
+
+  toSignIn(evt) {
+    evt.preventDefault();
+
+    const {history} = this.props;
+    localStorage.setItem('cardLocation', history.location.pathname);
+    history.push('/sign-in');
+  }
+
   render() {
     const {isAuth, showModal} = this.props;
 
@@ -24,9 +38,13 @@ class BookingControls extends Component {
         </button>
 
         {!isAuth && (
-          <Link to="/sign-in" className="btn btn-general mx-2 mb-3 text-white">
+          <a
+            href="/sign-in"
+            onClick={this.toSignIn}
+            className="btn btn-general mx-2 mb-3 text-white"
+          >
             Sign in and Book
-          </Link>
+          </a>
         )}
       </div>
     );
@@ -37,6 +55,7 @@ BookingControls.propTypes = {
   bookingsLength: PropTypes.number,
   showModal: PropTypes.func,
   isAuth: PropTypes.bool,
+  history: PropTypes.object,
 };
 
-export default BookingControls;
+export default withRouter(BookingControls);
