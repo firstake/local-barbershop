@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import './PopularServices.css';
 
 const popularServicesData = [
   {
@@ -37,7 +38,7 @@ class PopularServices extends Component {
                 <br />
                 Learn more about our services.
               </p>
-              <ul className="list-group list-group-flush border-right border-left shadow-sm">
+              <ul className="popular-services list-group list-group-flush shadow">
                 {popularServicesData.map(({title, price, link}) => (
                   <li className="list-group-item" key={link}>
                     <Link to={`/services/${link}`} className="text-dark">

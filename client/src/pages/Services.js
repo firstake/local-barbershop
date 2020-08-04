@@ -32,7 +32,7 @@ class Services extends Component {
             </div>
           </div>
         ) : (
-          <div className="d-flex justify-content-center align-items-center f-h">
+          <div className="d-flex justify-content-center align-items-center spinner-container">
             <div className="spinner-border text-warning " role="status">
               <span className="sr-only">Loading...</span>
             </div>

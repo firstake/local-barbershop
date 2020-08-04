@@ -88,6 +88,11 @@ button {
   right: 0;
 }
 
+/* Services page */
+.spinner-container {
+  min-height: calc(100vh - 137px - 81px);
+}
+
 /* Gallery page */
 .gallery {
   column-count: 3;
