@@ -10,7 +10,13 @@ export const authSuccess = (bool, userData) => ({
   userData,
 });
 
+export const authIsPending = (bool) => ({
+  type: 'AUTH_IS_PENDING',
+  isPending: bool,
+});
+
 export const authFetch = (email, pass) => (dispatch) => {
+  dispatch(authIsPending(true));
   fetch('/api/sign-in', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
@@ -18,6 +24,7 @@ export const authFetch = (email, pass) => (dispatch) => {
   })
       .then((res) => res.json())
       .then((data) => {
+        dispatch(authIsPending(false));
         if (data.err) {
           dispatch(authHasErrored(true, data.err));
         } else {
