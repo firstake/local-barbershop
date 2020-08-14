@@ -65,7 +65,7 @@ class Contacts extends Component {
                     className="mb-2"
                   />
                   <h2>{title}</h2>
-                  <p className="text-break text-pre-line">{text}</p>
+                  <p className="text-break text-pre-line mb-0">{text}</p>
                 </div>
               </div>
             </div>
