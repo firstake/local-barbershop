@@ -11,6 +11,7 @@ const getBookingDates = require('../controllers/getBookingDates');
 const setBooking = require('../controllers/setBooking');
 const cancelBooking = require('../controllers/cancelBooking');
 const avatarUpload = require('../controllers/avatarUpload');
+const notFound = require('../controllers/notFound');
 
 router.get('/services', getServicesInfo);
 router.get('/get-booking-dates', getBookingDates);
@@ -23,5 +24,7 @@ router.post('/change-user-info', changeUserInfo);
 router.post('/set-booking', setBooking);
 router.post('/cancel-booking', cancelBooking);
 router.post('/upload', avatarUpload);
+
+router.use('/*', notFound);
 
 module.exports = router;
