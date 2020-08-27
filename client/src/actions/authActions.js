@@ -22,6 +22,7 @@ export const authFetch = (email, pass) => (dispatch) => {
 
   signInAPI({email, pass}).then((data) => {
     dispatch(authIsPending(false));
+
     if (data.err) {
       dispatch(authHasErrored(true, data.err));
     } else {

@@ -15,14 +15,13 @@ export const regFetch = (email, pass, name, phone) => (dispatch) => {
     pass,
     name,
     phone,
-  })
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch(authIsPending(false));
-        if (data.err) {
-          dispatch(regHasErrored(true, data.err));
-        } else {
-          dispatch(authSuccess(true, data));
-        }
-      });
+  }).then((data) => {
+    dispatch(authIsPending(false));
+
+    if (data.err) {
+      dispatch(regHasErrored(true, data.err));
+    } else {
+      dispatch(authSuccess(true, data));
+    }
+  });
 };
