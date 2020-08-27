@@ -1,3 +1,5 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
@@ -7,9 +9,8 @@ import App from './App';
 import configureStore from './store';
 import {restoreSession} from './util/restoreSession';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './fonts/fonts.css';
 import './index.css';
+import './fonts/fonts.css';
 
 const renderApp = (preloadedState) => {
   const store = configureStore(preloadedState);
