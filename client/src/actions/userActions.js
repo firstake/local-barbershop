@@ -1,4 +1,4 @@
-import {changeUserInfoApi, uploadApi} from '../API';
+import {changeUserInfoAPI, uploadAPI} from '../API';
 
 /* Change User Info */
 const changeUserInfo = (name, value) => ({
@@ -12,12 +12,12 @@ export const fetchChangeUserInfo = (name, value) => (dispatch) => {
     dispatch(changeUserInfo(name, value));
   }
 
-  changeUserInfoApi({name, value});
+  changeUserInfoAPI({name, value});
 };
 
 /* Change User Avatar */
 export const fetchChangeUserAvatar = (formData) => (dispatch) => {
-  uploadApi(formData).then((data) => {
+  uploadAPI(formData).then((data) => {
     dispatch(fetchChangeUserInfo('avatar', data.avatar));
   });
 };

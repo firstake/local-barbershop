@@ -1,7 +1,7 @@
-import {restoreSessionApi} from '../API';
+import {restoreSessionAPI} from '../API';
 
 export const restoreSession = async () => {
-  const user = await restoreSessionApi();
+  const user = await restoreSessionAPI();
 
   let preloadedState = {};
   if (user.name) {

@@ -1,4 +1,4 @@
-import {signInApi} from '../API';
+import {signInAPI} from '../API';
 
 export const authHasErrored = (bool, errorText) => ({
   type: 'AUTH_HAS_ERRORED',
@@ -20,7 +20,7 @@ export const authIsPending = (bool) => ({
 export const authFetch = (email, pass) => (dispatch) => {
   dispatch(authIsPending(true));
 
-  signInApi({email, pass}).then((data) => {
+  signInAPI({email, pass}).then((data) => {
     dispatch(authIsPending(false));
     if (data.err) {
       dispatch(authHasErrored(true, data.err));

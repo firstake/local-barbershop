@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import {serviceApi} from '../API';
+import {serviceAPI} from '../API';
 
 import ServiceBookingPanel from '../containers/ServiceBookingPanel';
 
@@ -19,7 +19,7 @@ class cardPage extends Component {
   componentDidMount() {
     const link = this.props.match.params.title || '';
 
-    serviceApi(link).then((data) => {
+    serviceAPI(link).then((data) => {
       if (data.err) {
         this.setState({isError: true});
       } else {

@@ -1,5 +1,5 @@
 import {authSuccess, authIsPending} from './authActions';
-import {registerApi} from '../API';
+import {registerAPI} from '../API';
 
 export const regHasErrored = (bool, errorText) => ({
   type: 'REG_HAS_ERRORED',
@@ -10,7 +10,7 @@ export const regHasErrored = (bool, errorText) => ({
 export const regFetch = (email, pass, name, phone) => (dispatch) => {
   dispatch(authIsPending(true));
 
-  registerApi({
+  registerAPI({
     email,
     pass,
     name,

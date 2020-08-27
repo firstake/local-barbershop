@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import {setBookingApi} from '../../../API';
+import {setBookingAPI} from '../../../API';
 
 import DateTimePicker from '../../../components/DateTimePicker';
 import './GuestBookingForm.css';
@@ -50,7 +50,7 @@ class GuestForm extends Component {
     const {title, link} = this.props;
     const {name, phone, email} = this.state;
 
-    setBookingApi({
+    setBookingAPI({
       date: this.state.dateInputValue.value,
       time: this.state.timeInputValue.value,
       title,
