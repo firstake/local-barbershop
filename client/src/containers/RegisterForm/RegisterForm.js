@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 
-import {connect} from 'react-redux';
 import {regFetch, regHasErrored} from '../../actions/registerActions';
 
 class RegisterForm extends Component {

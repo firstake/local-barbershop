@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 import './Banner.css';
 
 class Banner extends Component {

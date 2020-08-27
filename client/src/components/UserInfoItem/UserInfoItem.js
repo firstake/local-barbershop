@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import './UserInfoItem.css';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
+
+import './UserInfoItem.css';
 
 class UserInfoItem extends Component {
   constructor(props) {

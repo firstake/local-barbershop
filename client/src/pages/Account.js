@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 import AccountContent from '../containers/AccountContent';
 
 class Account extends Component {

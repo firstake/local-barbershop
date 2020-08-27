@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+
+import {servicesApi} from '../API';
+
 import Card from '../components/Card';
 import ScrollToTopOnMount from '../util/ScrollToTopOnMount';
 
@@ -9,9 +12,7 @@ class Services extends Component {
   }
 
   componentDidMount() {
-    fetch('/api/services')
-        .then((res) => res.json())
-        .then((data) => this.setState({data}));
+    servicesApi().then((data) => this.setState({data}));
   }
 
   render() {

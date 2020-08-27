@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 
+import {bookingDatesApi} from '../../API';
+
 const timeSelectOptions = [
   {value: 11, label: '11:00', isDisabled: false},
   {value: 12, label: '12:00', isDisabled: false},
@@ -34,10 +36,7 @@ class DateTimePicker extends Component {
   }
 
   componentDidMount() {
-    const home = document.location.origin;
-
-    fetch(`${home}/api/get-booking-dates`)
-        .then((res) => res.json())
+    bookingDatesApi()
         .then((data) => this.setState({dateSelectOptions: data, dateSelectIsDisabled: false}));
   }
 

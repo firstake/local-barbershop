@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-
 import {connect} from 'react-redux';
+
 import {
   fetchCancelBooking,
   fetchNewBooking,
@@ -9,7 +9,6 @@ import {
 
 import BookingControls from './BookingControls';
 import UpcomingBookings from './UpcomingBookings';
-
 import UserBookingForm from './UserBookingForm';
 import GuestBookingForm from './GuestBookingForm';
 

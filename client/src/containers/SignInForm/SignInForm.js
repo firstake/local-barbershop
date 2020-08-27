@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Link, Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
+
+import {authFetch, authHasErrored} from '../../actions/authActions';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
-
-import {connect} from 'react-redux';
-import {authFetch, authHasErrored} from '../../actions/authActions';
 
 class SignInForm extends Component {
   constructor(props) {

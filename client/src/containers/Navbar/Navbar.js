@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
-import './Navbar.css';
-
 import {connect} from 'react-redux';
+
 import {fetchUserLogout} from '../../actions/logoutActions';
+
+import './Navbar.css';
 
 class Navbar extends Component {
   constructor(props) {

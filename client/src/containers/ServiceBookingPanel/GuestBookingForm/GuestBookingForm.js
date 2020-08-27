@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import DateTimePicker from '../../../components/DateTimePicker';
 
+import {setBookingApi} from '../../../API';
+
+import DateTimePicker from '../../../components/DateTimePicker';
 import './GuestBookingForm.css';
 
 class GuestForm extends Component {
@@ -45,22 +47,17 @@ class GuestForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    const home = document.location.origin;
     const {title, link} = this.props;
     const {name, phone, email} = this.state;
 
-    fetch(`${home}/api/set-booking`, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        date: this.state.dateInputValue.value,
-        time: this.state.timeInputValue.value,
-        title,
-        link,
-        name,
-        phone,
-        email,
-      }),
+    setBookingApi({
+      date: this.state.dateInputValue.value,
+      time: this.state.timeInputValue.value,
+      title,
+      link,
+      name,
+      phone,
+      email,
     }).then(() => {
       this.setState({successMessage: true});
     });

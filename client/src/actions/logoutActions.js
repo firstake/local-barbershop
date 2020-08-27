@@ -1,9 +1,11 @@
+import {logoutApi} from '../API';
+
 export const fetchUserLogout = () => (dispatch) => {
-  fetch('/api/logout').then(() => {
+  logoutApi().then(() => {
     dispatch(userLogout());
   });
 };
 
-export const userLogout = () => ({
+const userLogout = () => ({
   type: 'USER_LOGOUT',
 });
