@@ -29,10 +29,6 @@ export const restoreSession = () => {
   return getRequest('api/restore-session');
 };
 
-export const logout = () => {
-  return getRequest('api/logout');
-};
-
 export const signIn = (bodyData) => {
   return postRequest('api/sign-in', bodyData);
 };
@@ -57,5 +53,11 @@ export const upload = (formData) => {
   return fetch(`${API_URL}/api/upload`, {
     method: 'POST',
     body: formData,
+  }).then((res) => res.json());
+};
+
+export const logout = () => {
+  return fetch(`${API_URL}/api/logout`, {
+    method: 'POST',
   }).then((res) => res.json());
 };

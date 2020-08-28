@@ -16,7 +16,6 @@ const notFound = require('../controllers/notFound');
 router.get('/services', getServicesInfo);
 router.get('/get-booking-dates', getBookingDates);
 router.get('/restore-session', restoreSession);
-router.get('/logout', logout);
 
 router.post('/sign-in', signIn);
 router.post('/register', register);
@@ -24,6 +23,7 @@ router.post('/change-user-info', changeUserInfo);
 router.post('/set-booking', setBooking);
 router.post('/cancel-booking', cancelBooking);
 router.post('/upload', avatarUpload);
+router.post('/logout', logout);
 
 router.use('/*', notFound);
 
