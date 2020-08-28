@@ -17,7 +17,7 @@ const changeUserInfo = (req, res, next) => {
           }
 
           if (result) {
-            res.end();
+            res.send({});
           } else {
             return next(createError(400, 'Bad request'));
           }

@@ -13,7 +13,7 @@ const logout = (req, res, next) => {
         }
 
         res.cookie('UID', '', {httpOnly: true, maxAge: 0});
-        res.end();
+        res.send({});
       },
   );
 };

@@ -1,7 +1,8 @@
 const API_URL = 'http://localhost:3000';
 
 const getRequest = (url) => {
-  return fetch(`${API_URL}/${url}`);
+  return fetch(`${API_URL}/${url}`)
+      .then((res) => res.json());
 };
 
 const postRequest = (url, bodyData) => {
@@ -9,27 +10,23 @@ const postRequest = (url, bodyData) => {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(bodyData),
-  });
+  }).then((res) => res.json());
 };
 
 export const getBookingDates = () => {
-  return getRequest('api/get-booking-dates')
-      .then((res) => res.json());
+  return getRequest('api/get-booking-dates');
 };
 
 export const getService = (link) => {
-  return getRequest(`api/services?page=${link}`)
-      .then((res) => res.json());
+  return getRequest(`api/services?page=${link}`);
 };
 
 export const getServices = () => {
-  return getRequest('api/services')
-      .then((res) => res.json());
+  return getRequest('api/services');
 };
 
 export const restoreSession = () => {
-  return getRequest('api/restore-session')
-      .then((res) => res.json());
+  return getRequest('api/restore-session');
 };
 
 export const logout = () => {
@@ -37,13 +34,11 @@ export const logout = () => {
 };
 
 export const signIn = (bodyData) => {
-  return postRequest('api/sign-in', bodyData)
-      .then((res) => res.json());
+  return postRequest('api/sign-in', bodyData);
 };
 
 export const register = (bodyData) => {
-  return postRequest('api/register', bodyData)
-      .then((res) => res.json());
+  return postRequest('api/register', bodyData);
 };
 
 export const setBooking = (bodyData) => {
@@ -62,6 +57,5 @@ export const upload = (formData) => {
   return fetch(`${API_URL}/api/upload`, {
     method: 'POST',
     body: formData,
-  })
-      .then((res) => res.json());
+  }).then((res) => res.json());
 };

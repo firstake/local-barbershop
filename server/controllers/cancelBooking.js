@@ -34,7 +34,7 @@ const cancelBooking = (req, res, next) => {
                   return next(createError(500, 'Server error, please try again later...'));
                 }
 
-                res.end();
+                res.send({});
               },
           );
         },
