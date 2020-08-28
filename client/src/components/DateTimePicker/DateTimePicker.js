@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 
-import {bookingDatesAPI} from '../../API';
+import * as API from '../../API';
 
 const timeSelectOptions = [
   {value: 11, label: '11:00', isDisabled: false},
@@ -36,7 +36,7 @@ class DateTimePicker extends Component {
   }
 
   componentDidMount() {
-    bookingDatesAPI()
+    API.getBookingDates()
         .then((data) => this.setState({dateSelectOptions: data, dateSelectIsDisabled: false}));
   }
 

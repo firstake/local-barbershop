@@ -1,4 +1,4 @@
-import {setBookingAPI, cancelBookingAPI} from '../API';
+import * as API from '../API';
 
 const newBooking = (date, time, title, link) => ({
   type: 'NEW_BOOKING',
@@ -9,7 +9,7 @@ const newBooking = (date, time, title, link) => ({
 });
 
 export const fetchNewBooking = (date, time, title, link) => (dispatch) => {
-  setBookingAPI({
+  API.setBooking({
     date,
     time,
     title,
@@ -24,7 +24,7 @@ const cancelBooking = (date, time) => ({
 });
 
 export const fetchCancelBooking = (date, time) => (dispatch) => {
-  cancelBookingAPI({
+  API.cancelBooking({
     date,
     time,
   }).then(() => dispatch(cancelBooking(date, time)));

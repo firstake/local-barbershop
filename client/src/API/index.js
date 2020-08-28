@@ -1,10 +1,10 @@
 const API_URL = 'http://localhost:3000';
 
-const getReq = (url) => {
+const getRequest = (url) => {
   return fetch(`${API_URL}/${url}`);
 };
 
-const postReq = (url, bodyData) => {
+const postRequest = (url, bodyData) => {
   return fetch(`${API_URL}/${url}`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
@@ -12,53 +12,53 @@ const postReq = (url, bodyData) => {
   });
 };
 
-export const bookingDatesAPI = () => {
-  return getReq('api/get-booking-dates')
+export const getBookingDates = () => {
+  return getRequest('api/get-booking-dates')
       .then((res) => res.json());
 };
 
-export const serviceAPI = (link) => {
-  return getReq(`api/services?page=${link}`)
+export const getService = (link) => {
+  return getRequest(`api/services?page=${link}`)
       .then((res) => res.json());
 };
 
-export const servicesAPI = () => {
-  return getReq('api/services')
+export const getServices = () => {
+  return getRequest('api/services')
       .then((res) => res.json());
 };
 
-export const restoreSessionAPI = () => {
-  return getReq('api/restore-session')
+export const restoreSession = () => {
+  return getRequest('api/restore-session')
       .then((res) => res.json());
 };
 
-export const logoutAPI = () => {
-  return getReq('api/logout');
+export const logout = () => {
+  return getRequest('api/logout');
 };
 
-export const signInAPI = (bodyData) => {
-  return postReq('api/sign-in', bodyData)
+export const signIn = (bodyData) => {
+  return postRequest('api/sign-in', bodyData)
       .then((res) => res.json());
 };
 
-export const registerAPI = (bodyData) => {
-  return postReq('api/register', bodyData)
+export const register = (bodyData) => {
+  return postRequest('api/register', bodyData)
       .then((res) => res.json());
 };
 
-export const setBookingAPI = (bodyData) => {
-  return postReq('api/set-booking', bodyData);
+export const setBooking = (bodyData) => {
+  return postRequest('api/set-booking', bodyData);
 };
 
-export const cancelBookingAPI = (bodyData) => {
-  return postReq('api/cancel-booking', bodyData);
+export const cancelBooking = (bodyData) => {
+  return postRequest('api/cancel-booking', bodyData);
 };
 
-export const changeUserInfoAPI = (bodyData) => {
-  return postReq('api/change-user-info', bodyData);
+export const changeUserInfo = (bodyData) => {
+  return postRequest('api/change-user-info', bodyData);
 };
 
-export const uploadAPI = (formData) => {
+export const upload = (formData) => {
   return fetch(`${API_URL}/api/upload`, {
     method: 'POST',
     body: formData,
