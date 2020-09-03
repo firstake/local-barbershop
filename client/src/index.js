@@ -15,11 +15,11 @@ import './fonts/fonts.css';
 const renderApp = (preloadedState) => {
   const store = configureStore(preloadedState);
   ReactDOM.render(
-      <BrowserRouter>
-        <Provider store={store}>
+      <Provider store={store}>
+        <BrowserRouter>
           <App />
-        </Provider>
-      </BrowserRouter>,
+        </BrowserRouter>
+      </Provider>,
       document.getElementById('root'),
   );
 };
