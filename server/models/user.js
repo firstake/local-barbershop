@@ -25,7 +25,7 @@ const schema = new Schema({
   },
   avatar: {
     type: String,
-    default: 'default.png',
+    default: 'avatars/default.png',
   },
   bookings: {
     type: [{
