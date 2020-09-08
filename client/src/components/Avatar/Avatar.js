@@ -11,8 +11,13 @@ class Avatar extends Component {
     super(props);
 
     this.imgInput = React.createRef();
+    this.onImgLoadError = this.onImgLoadError.bind(this);
     this.openUploadDialog = this.openUploadDialog.bind(this);
     this.imgHandleChange = this.imgHandleChange.bind(this);
+  }
+
+  onImgLoadError(evt) {
+    evt.target.src = 'avatars/error.png';
   }
 
   openUploadDialog() {
@@ -44,8 +49,9 @@ class Avatar extends Component {
     return (
       <>
         <img
+          onError={this.onImgLoadError}
           className="rounded mb-4 w-100"
-          src={`avatars/${avatar}`}
+          src={avatar}
           alt="Avatar"
         />
         <button

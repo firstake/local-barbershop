@@ -1,15 +1,18 @@
 const createError = require('http-errors');
+const cloudinary = require('cloudinary').v2;
 
 const avatarUpload = (req, res, next) => {
-  const {avatar} = req.files;
+  const {data, mimetype} = req.files.avatar;
 
-  avatar.mv(`${__dirname}/../../client/public/avatars/${req.body.name}.jpg`, (err) => {
-    if (err) {
-      return next(createError(500, 'Server error, please try again later...'));
-    }
+  cloudinary.uploader.upload(
+      `data:${mimetype};base64,${data.toString('base64')}`,
+      function(err, result) {
+        if (err) {
+          return next(createError(500, 'Server error, please try again later...'));
+        }
 
-    res.json({avatar: `${req.body.name}.jpg`});
-  });
+        res.json({avatar: result.secure_url});
+      });
 };
 
 module.exports = avatarUpload;
