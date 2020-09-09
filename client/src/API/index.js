@@ -1,4 +1,4 @@
-const API_URL = process.env.REACT_APP_API_URL;
+var API_URL = process.env.REACT_APP_API_URL;
 
 const getRequest = (url) => {
   return fetch(`${API_URL}/${url}`)
