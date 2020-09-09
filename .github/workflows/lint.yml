@@ -1,0 +1,27 @@
+name: 'linting client & server'
+on: [push, pull_request]
+jobs:
+  lint-job:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      name: 'setup node'
+      with:
+        node-version: '13.x'
+
+    - name: 'install client deps'
+      working-directory: ./client
+      run: npm install
+
+    - name: 'linting client'
+      working-directory: ./client
+      run: npm run client:lint
+
+    - name: 'install server deps'
+      working-directory: ./server
+      run: npm install
+
+    - name: 'linting server'
+      working-directory: ./server
+      run: npm run server:lint
