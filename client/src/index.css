@@ -1,23 +1,12 @@
+html {
+  font-size: 16px;
+}
+
 body {
   font-family: 'Kanit', sans-serif;
   font-size: 18px;
   margin: 0;
   background-color: #fff;
-}
-
-@media screen and (max-width: 400px) {
-  body {
-    font-size: 16px;
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .btn-xs {
-    padding: .25rem .5rem;
-    font-size: .875rem;
-    line-height: 1.5;
-    border-radius: .2rem;
-  }
 }
 
 /* Full height excluding header and footer */
@@ -86,6 +75,18 @@ button {
 
 .form-control-lean + .btn-toggle-password {
   right: 0;
+}
+
+@media screen and (max-width: 400px) {
+  html {
+    font-size: 14px;
+  }
+  body {
+    font-size: 16px;
+  }
+  .f-h {
+    min-height: calc(100vh - 128px);
+  }
 }
 
 /* Services page */
