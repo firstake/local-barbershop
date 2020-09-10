@@ -146,7 +146,6 @@ class Navbar extends Component {
 
 Navbar.propTypes = {
   isAuth: PropTypes.bool,
-  restoreSession: PropTypes.func,
   fetchUserLogout: PropTypes.func,
 };
 
