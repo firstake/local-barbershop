@@ -89,6 +89,7 @@ class DateTimePicker extends Component {
             },
           })}
           styles={selectStyles}
+          isSearchable={false}
         />
         <Select
           value={timeInputValue}
@@ -105,6 +106,7 @@ class DateTimePicker extends Component {
             },
           })}
           styles={selectStyles}
+          isSearchable={false}
         />
       </>
     );
