@@ -7,7 +7,7 @@ import {Provider} from 'react-redux';
 
 import App from './App';
 import configureStore from './store';
-import {restoreSession} from './util/restoreSession';
+import {restoreSession, ScrollToTop} from './util';
 
 import './index.css';
 import './fonts/fonts.css';
@@ -17,7 +17,10 @@ const renderApp = (preloadedState) => {
   ReactDOM.render(
       <Provider store={store}>
         <BrowserRouter>
-          <App />
+          <>
+            <ScrollToTop />
+            <App />
+          </>
         </BrowserRouter>
       </Provider>,
       document.getElementById('root'),

@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 import * as API from '../API';
 
 import Card from '../components/Card';
-import ScrollToTopOnMount from '../util/ScrollToTopOnMount';
 
 class Services extends Component {
   constructor(props) {
@@ -20,7 +19,6 @@ class Services extends Component {
 
     return (
       <div className="f-h">
-        <ScrollToTopOnMount />
         <div className="container">
           <h1 className="text-center pt-4 pb-2 border-bottom">Services</h1>
         </div>
