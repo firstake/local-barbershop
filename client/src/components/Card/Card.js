@@ -19,6 +19,7 @@ class Card extends Component {
             width="1024"
             height="683"
             alt={title}
+            loading="lazy"
           />
         </div>
         <div className="card-body">
