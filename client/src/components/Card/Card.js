@@ -14,11 +14,11 @@ class Card extends Component {
       <div className="card mb-4">
         <div className="card-loading-wrapper">
           <img
-            className="card-img-top"
             src={img}
             width="1024"
             height="683"
             alt={title}
+            className="card-img-top"
           />
         </div>
         <div className="card-body">
