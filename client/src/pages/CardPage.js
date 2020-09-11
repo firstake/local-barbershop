@@ -54,8 +54,10 @@ class cardPage extends Component {
           <div className="row">
             <div className="col-md-6">
               <img
-                src={img}
                 className="card-img"
+                src={img}
+                width="1024"
+                height="683"
                 alt={title}
               />
             </div>

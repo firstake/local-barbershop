@@ -13,8 +13,10 @@ class Card extends Component {
     return (
       <div className="card mb-4">
         <img
-          src={img}
           className="card-img-top"
+          src={img}
+          width="1024"
+          height="683"
           alt={title}
         />
         <div className="card-body">
