@@ -31,14 +31,18 @@ button {
 }
 
 .card-img {
-  background-color: rgba(183, 118, 40, 0.1);
   height: 100%;
   object-fit: cover;
 }
 
 .card-loading-wrapper {
   height: 0;
+  background-color: rgba(183, 118, 40, 0.1);
   padding-bottom: calc(683 / 1024 * 100%);
+}
+
+.d-contents {
+  display: contents;
 }
 
 .badge {

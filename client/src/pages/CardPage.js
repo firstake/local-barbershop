@@ -13,7 +13,10 @@ class cardPage extends Component {
     this.state = {
       pageData: null,
       isError: false,
+      isImageLoaded: false,
     };
+
+    this.handleImageLoading = this.handleImageLoading.bind(this);
   }
 
   componentDidMount() {
@@ -28,8 +31,13 @@ class cardPage extends Component {
     });
   }
 
+  // I guess this hack will be soon implemented without onLoad
+  handleImageLoading() {
+    this.setState({isImageLoaded: true});
+  }
+
   render() {
-    const {isError, pageData} = this.state;
+    const {isError, pageData, isImageLoaded} = this.state;
     const {match} = this.props;
 
     if (isError) {
@@ -53,13 +61,16 @@ class cardPage extends Component {
         <div className="card">
           <div className="row">
             <div className="col-md-6">
-              <div className="card-loading-wrapper">
+              <div className={
+                `card-loading-wrapper ${isImageLoaded ? 'd-contents' : ''}`
+              }>
                 <img
+                  className="card-img"
                   src={img}
                   width="1024"
                   height="683"
                   alt={title}
-                  className="card-img"
+                  onLoad={this.handleImageLoading}
                 />
               </div>
             </div>

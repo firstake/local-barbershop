@@ -5,7 +5,6 @@
 
 .card-deck .card img {
   height: auto;
-  background-color: rgba(183, 118, 40, 0.1);
 }
 
 @media screen and (max-width: 992px) {
