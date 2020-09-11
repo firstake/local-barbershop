@@ -53,7 +53,7 @@ class cardPage extends Component {
         <div className="card">
           <div className="row">
             <div className="col-md-6">
-              <div class="card-loading-wrapper">
+              <div className="card-loading-wrapper">
                 <img
                   className="card-img"
                   src={img}
