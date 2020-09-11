@@ -36,6 +36,13 @@ button {
   object-fit: cover;
 }
 
+.card-loading-wrapper {
+  display: initial;
+  display: contents;
+  height: 0;
+  padding-bottom: calc(683 / 1024 * 100%);
+}
+
 .badge {
   font-size: 100%;
   font-weight: inherit;

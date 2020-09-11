@@ -53,13 +53,15 @@ class cardPage extends Component {
         <div className="card">
           <div className="row">
             <div className="col-md-6">
-              <img
-                className="card-img"
-                src={img}
-                width="1024"
-                height="683"
-                alt={title}
-              />
+              <div class="card-loading-wrapper">
+                <img
+                  className="card-img"
+                  src={img}
+                  width="1024"
+                  height="683"
+                  alt={title}
+                />
+              </div>
             </div>
             <div className="col-md-6">
               <div className="card-body">
