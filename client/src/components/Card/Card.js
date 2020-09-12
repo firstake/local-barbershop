@@ -13,14 +13,18 @@ class Card extends Component {
     return (
       <div className="card mb-4">
         <div className="card-loading-wrapper">
-          <img
-            className="card-img-top"
-            src={img}
-            width="1024"
-            height="683"
-            alt={title}
-            loading="lazy"
-          />
+          <picture>
+            <source srcSet={`${img.split('.')[0]}.webp`} type="image/webp" />
+            <source srcSet={img} type="image/jpeg" />
+            <img
+              className="card-img-top"
+              src={img}
+              width="1024"
+              height="683"
+              alt={title}
+              loading="lazy"
+            />
+          </picture>
         </div>
         <div className="card-body">
           <h5 className="card-title">{title}</h5>
