@@ -13,10 +13,7 @@ class cardPage extends Component {
     this.state = {
       pageData: null,
       isError: false,
-      isImageLoaded: false,
     };
-
-    this.handleImageLoading = this.handleImageLoading.bind(this);
   }
 
   componentDidMount() {
@@ -31,13 +28,8 @@ class cardPage extends Component {
     });
   }
 
-  // I guess this hack will be soon implemented without onLoad
-  handleImageLoading() {
-    this.setState({isImageLoaded: true});
-  }
-
   render() {
-    const {isError, pageData, isImageLoaded} = this.state;
+    const {isError, pageData} = this.state;
     const {match} = this.props;
 
     if (isError) {
@@ -57,39 +49,35 @@ class cardPage extends Component {
     const {img, title, full_desc, price, time} = pageData;
 
     return (
-      <div className="container f-h py-4">
+      <div className="container f-h py-4 card-page">
         <div className="card">
           <div className="row">
             <div className="col-md-6">
-              <div className={
-                `card-loading-wrapper ${isImageLoaded ? 'd-contents' : ''}`
-              }>
-                <img
-                  className="card-img"
-                  src={img}
-                  width="1024"
-                  height="683"
-                  alt={title}
-                  onLoad={this.handleImageLoading}
-                />
+              <div className="img-loading-wrapper">
+                <picture>
+                  <source srcSet={`${img.split('.')[0]}.webp`} type="image/webp" />
+                  <source srcSet={img} type="image/jpeg" />
+                  <img
+                    className="card-img"
+                    src={img}
+                    width="1024"
+                    height="683"
+                    alt={title}
+                  />
+                </picture>
               </div>
             </div>
             <div className="col-md-6">
-              <div className="card-body">
+              <div className="card-body d-flex flex-column">
                 <h1 className="card-title">{title}</h1>
                 <p className="card-text text-muted">
                   {full_desc}
                 </p>
-                <p className="card-text text-right m-0">
-                  Price: $
-                  {price}
+                <p className="card-text text-right m-0 mt-auto">
+                  Price: ${price}
                 </p>
                 <p className="card-text text-right">
-                  Duration:
-                  {' '}
-                  {time}
-                  {' '}
-                  min
+                  Duration: {time} min
                 </p>
               </div>
             </div>

@@ -12,7 +12,7 @@ class Card extends Component {
 
     return (
       <div className="card mb-4">
-        <div className="card-loading-wrapper">
+        <div className="img-loading-wrapper">
           <picture>
             <source srcSet={`${img.split('.')[0]}.webp`} type="image/webp" />
             <source srcSet={img} type="image/jpeg" />

@@ -7,6 +7,12 @@
   height: auto;
 }
 
+.card-deck .img-loading-wrapper {
+  height: 0;
+  background-color: #4f4f4f;
+  padding-bottom: calc(683 / 1024 * 100%);
+}
+
 @media screen and (max-width: 992px) {
   .card-deck .card {
     width: calc(50% - 30px);
