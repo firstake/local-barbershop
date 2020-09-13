@@ -11,7 +11,7 @@
 }
 
 .about-pic {
-  background: rgba(202, 137, 79, 0.9) url(/img/home/about.jpg) no-repeat 50% 50%/cover;
+  background: #af7745 url(/img/home/about.jpg) no-repeat 50% 50%/cover;
   min-height: 500px;
   height: 100%;
 }

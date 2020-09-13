@@ -37,7 +37,7 @@ button {
 
 .card-loading-wrapper {
   height: 0;
-  background-color: rgba(183, 118, 40, 0.1);
+  background-color: #4f4f4f;
   padding-bottom: calc(683 / 1024 * 100%);
 }
 
