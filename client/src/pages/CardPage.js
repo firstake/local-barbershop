@@ -55,11 +55,11 @@ class cardPage extends Component {
             <div className="col-md-6">
               <div className="img-loading-wrapper">
                 <picture>
-                  <source srcSet={`${img.split('.')[0]}.webp`} type="image/webp" />
-                  <source srcSet={img} type="image/jpeg" />
+                  <source srcSet={`${img}.webp`} type="image/webp" />
+                  <source srcSet={`${img}.jpg`} type="image/jpeg" />
                   <img
                     className="card-img"
-                    src={img}
+                    src={`${img}.jpg`}
                     width="1024"
                     height="683"
                     alt={title}
