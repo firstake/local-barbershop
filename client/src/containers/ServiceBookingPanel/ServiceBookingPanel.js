@@ -18,8 +18,8 @@ class ServiceBookingPanel extends Component {
   constructor(props) {
     super(props);
 
-    this.handleCancel = this.handleCancel.bind(this);
     this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
     this.state = {
       isOpen: false,
     };
@@ -29,7 +29,7 @@ class ServiceBookingPanel extends Component {
     this.setState({isOpen: true});
   }
 
-  handleCancel(evt) {
+  hideModal() {
     this.setState({isOpen: false});
   }
 
@@ -61,19 +61,20 @@ class ServiceBookingPanel extends Component {
 
         <ModalWindow
           isOpen={isOpen}
+          hideModal={this.hideModal}
         >
           {isAuth ? (
             <UserBookingForm
               newBooking={fetchNewBooking}
               title={title}
               link={link}
-              onCancel={this.handleCancel}
+              onCancel={this.hideModal}
             />
           ) : (
             <GuestBookingForm
               title={title}
               link={link}
-              onCancel={this.handleCancel}
+              onCancel={this.hideModal}
             />
           )}
         </ModalWindow>
