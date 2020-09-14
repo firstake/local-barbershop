@@ -7,7 +7,7 @@ import {Provider} from 'react-redux';
 
 import App from './App';
 import configureStore from './store';
-import {restoreSession, ScrollToTop} from './util';
+import {restoreSession, ScrollToTop, checkWebpFeature} from './util';
 
 import './index.css';
 import './fonts/fonts.css';
@@ -27,6 +27,11 @@ const renderApp = (preloadedState) => {
   );
 };
 
-(async () =>
-  renderApp(await restoreSession())
-)();
+(async () => {
+  const supportsWebp = await checkWebpFeature('lossy');
+  if (!supportsWebp) {
+    document.body.classList.add('no-webp');
+  }
+
+  renderApp(await restoreSession());
+})();
