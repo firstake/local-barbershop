@@ -1,9 +1,13 @@
 .banner {
   margin-top: 62px;
-  background: #352922 url(/img/home/banner.jpg) no-repeat 50% 50%/cover;
+  background: #352922 url(/img/home/banner.webp) no-repeat 50% 50%/cover;
   width: 100%;
   min-height: 400px;
   height: 50vh;
   display: flex;
   align-items: flex-end;
+}
+
+.no-webp .banner {
+  background: #352922 url(/img/home/banner.jpg) no-repeat 50% 50%/cover;
 }

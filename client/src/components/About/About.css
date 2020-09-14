@@ -11,9 +11,13 @@
 }
 
 .about-pic {
-  background: #af7745 url(/img/home/about.jpg) no-repeat 50% 50%/cover;
+  background: #af7745 url(/img/home/about.webp) no-repeat 50% 50%/cover;
   min-height: 500px;
   height: 100%;
+}
+
+.no-webp .about-pic {
+  background: #af7745 url(/img/home/about.jpg) no-repeat 50% 50%/cover;
 }
 
 @media screen and (max-width: 576px) {
