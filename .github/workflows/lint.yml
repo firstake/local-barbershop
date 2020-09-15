@@ -16,7 +16,7 @@ jobs:
 
     - name: 'linting client'
       working-directory: ./client
-      run: npm run client:lint
+      run: npm run lint
 
     - name: 'install server deps'
       working-directory: ./server
@@ -24,4 +24,4 @@ jobs:
 
     - name: 'linting server'
       working-directory: ./server
-      run: npm run server:lint
+      run: npm run lint
