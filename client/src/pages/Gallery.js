@@ -10,14 +10,18 @@ class Gallery extends Component {
         <div className="gallery my-4">
           {images.map((image) => (
             <div className="mb-3" key={image.id}>
-              <img
-                className="img-fluid"
-                loading="lazy"
-                src={`img/gallery/${image.id}.jpg`}
-                alt="Local Barbershop"
-                width={image.width}
-                height={image.height}
-              />
+              <picture>
+                <source srcSet={`img/gallery/${image.id}.webp`} type="image/webp" />
+                <source srcSet={`img/gallery/${image.id}.jpg`} type="image/jpeg" />
+                <img
+                  className="img-fluid"
+                  loading="lazy"
+                  src={`img/gallery/${image.id}.jpg`}
+                  alt="Local Barbershop"
+                  width={image.width}
+                  height={image.height}
+                />
+              </picture>
             </div>
           ))}
         </div>
