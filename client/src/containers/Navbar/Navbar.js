@@ -70,7 +70,7 @@ class Navbar extends Component {
         className="navbar navbar-expand-md navbar-light"
       >
         <NavLink exact to="/" className="navbar-brand">
-          <img src="/logo.svg" width="36" height="36" alt="logo" />
+          <img src="/logo.png" width="36" height="36" alt="logo" />
         </NavLink>
 
         <button
