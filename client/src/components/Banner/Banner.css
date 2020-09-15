@@ -30,13 +30,3 @@
     background-image: url(/img/home/banner-1280w.jpg);
   }
 }
-
-@media screen and (max-width: 620px) {
-  .banner {
-    background-image:url(/img/home/banner-640w.webp);
-  }
-
-  .no-webp .banner {
-    background-image: url(/img/home/banner-640w.jpg);
-  }
-}
