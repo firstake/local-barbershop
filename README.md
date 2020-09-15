@@ -15,9 +15,9 @@ Docker
 
 *  Set up your Cloudinary to store user avatars (see instructions below)
 
-*  Open `server` directory in terminal and run `npm install`, then `npm run server:dev`
+*  Open `server` directory in terminal and run `npm install`, then `npm run dev`
 
-*  Open `client` directory in separate terminal and run `npm install`, then `npm run client:dev`
+*  Open `client` directory in separate terminal and run `npm install`, then `npm start`
 
 *  Your default browser will automatically navigate to http://localhost:3000/
 
