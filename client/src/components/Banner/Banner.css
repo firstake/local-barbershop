@@ -1,9 +1,32 @@
 .banner {
   margin-top: 62px;
-  background: url(/img/home/banner.jpg) no-repeat 50% 50%/cover;
+  background-color: #352922;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
   width: 100%;
   min-height: 400px;
   height: 50vh;
   display: flex;
   align-items: flex-end;
+}
+
+@media screen and (min-width: 1280px) {
+  .banner {
+    background-image: url(/img/home/banner-1920w.webp);
+  }
+
+  .no-webp .banner {
+    background-image: url(/img/home/banner-1920w.jpg);
+  }
+}
+
+@media screen and (max-width: 1260px) {
+  .banner {
+    background-image: url(/img/home/banner-1280w.webp);
+  }
+
+  .no-webp .banner {
+    background-image: url(/img/home/banner-1280w.jpg);
+  }
 }

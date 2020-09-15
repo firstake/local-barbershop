@@ -5,7 +5,12 @@
 
 .card-deck .card img {
   height: auto;
-  background-color: rgba(183, 118, 40, 0.1);
+}
+
+.card-deck .img-loading-wrapper {
+  height: 0;
+  background-color: #4f4f4f;
+  padding-bottom: calc(683 / 1024 * 100%);
 }
 
 @media screen and (max-width: 992px) {

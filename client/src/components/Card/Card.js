@@ -12,13 +12,20 @@ class Card extends Component {
 
     return (
       <div className="card mb-4">
-        <img
-          className="card-img-top"
-          src={img}
-          width="1024"
-          height="683"
-          alt={title}
-        />
+        <div className="img-loading-wrapper">
+          <picture>
+            <source srcSet={`${img}.webp`} type="image/webp" />
+            <source srcSet={`${img}.jpg`} type="image/jpeg" />
+            <img
+              className="card-img-top"
+              src={`${img}.jpg`}
+              width="1024"
+              height="683"
+              alt={title}
+              loading="lazy"
+            />
+          </picture>
+        </div>
         <div className="card-body">
           <h5 className="card-title">{title}</h5>
           <p className="card-text text-muted">{description}</p>

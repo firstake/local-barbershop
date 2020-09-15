@@ -49,34 +49,35 @@ class cardPage extends Component {
     const {img, title, full_desc, price, time} = pageData;
 
     return (
-      <div className="container f-h py-4">
+      <div className="container f-h py-4 card-page">
         <div className="card">
           <div className="row">
             <div className="col-md-6">
-              <img
-                className="card-img"
-                src={img}
-                width="1024"
-                height="683"
-                alt={title}
-              />
+              <div className="img-loading-wrapper">
+                <picture>
+                  <source srcSet={`${img}.webp`} type="image/webp" />
+                  <source srcSet={`${img}.jpg`} type="image/jpeg" />
+                  <img
+                    className="card-img"
+                    src={`${img}.jpg`}
+                    width="1024"
+                    height="683"
+                    alt={title}
+                  />
+                </picture>
+              </div>
             </div>
             <div className="col-md-6">
-              <div className="card-body">
+              <div className="card-body d-flex flex-column">
                 <h1 className="card-title">{title}</h1>
                 <p className="card-text text-muted">
                   {full_desc}
                 </p>
-                <p className="card-text text-right m-0">
-                  Price: $
-                  {price}
+                <p className="card-text text-right m-0 mt-auto">
+                  Price: ${price}
                 </p>
                 <p className="card-text text-right">
-                  Duration:
-                  {' '}
-                  {time}
-                  {' '}
-                  min
+                  Duration: {time} min
                 </p>
               </div>
             </div>

@@ -30,12 +30,6 @@ button {
   border-color: #f8a92e;
 }
 
-.card-img {
-  background-color: rgba(183, 118, 40, 0.1);
-  height: 100%;
-  object-fit: cover;
-}
-
 .badge {
   font-size: 100%;
   font-weight: inherit;
@@ -93,6 +87,40 @@ button {
 /* Services page */
 .spinner-container {
   min-height: calc(100vh - 137px - 89px);
+}
+
+/* Card page */
+.card-page .img-loading-wrapper {
+  height: 100%;
+  background-color: #4f4f4f;
+}
+
+.card-page .card-img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-page .col-md-6:last-child {
+  min-height: 360px;
+}
+
+.card-page .card-body {
+  min-height: inherit;
+}
+
+@media (max-width: 767px) {
+  .card-page .img-loading-wrapper {
+    height: 0;
+    padding-bottom: calc(683 / 1024 * 100%);
+  }
+
+  .card-page .card-img {
+    height: auto;
+  }
+
+  .card-page .col-md-6:last-child {
+    min-height: initial;
+  }
 }
 
 /* Gallery page */
