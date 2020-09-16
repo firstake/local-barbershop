@@ -53,6 +53,7 @@ class AccountContent extends Component {
               <div className="list-group">
                 {buttonLabels.map((label, i) => (
                   <button
+                    type="button"
                     onClick={this.openTab}
                     data-index={i}
                     key={label}

@@ -41,6 +41,7 @@ class AccountBookings extends Component {
                     </h5>
                     <p className="mb-1">{`${date} ${time}`}</p>
                     <button
+                      type="button"
                       onClick={this.cancelBooking}
                       data-key={`${date} ${time}`}
                       className="btn btn-danger float-right m-1"
