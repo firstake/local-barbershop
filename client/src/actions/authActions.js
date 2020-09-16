@@ -14,7 +14,7 @@ export const authSuccess = (bool, userData) => ({
 
 export const authIsPending = (bool) => ({
   type: 'AUTH_IS_PENDING',
-  isPending: bool,
+  authIsPending: bool,
 });
 
 export const authFetch = (email, pass) => (dispatch) => {

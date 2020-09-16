@@ -153,7 +153,7 @@ SignInForm.propTypes = {
 const mapStateToProps = (state) => ({
   isAuth: state.authSuccess.isAuth,
   authError: state.authHasErrored,
-  isPending: state.authSuccess.isPending,
+  isPending: state.authSuccess.authIsPending,
 });
 
 const mapDispatchToProps = (dispatch) => ({

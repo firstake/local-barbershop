@@ -11,10 +11,11 @@ class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: false,
+      isOpen: false,
     };
 
-    this.toggleClass = this.toggleClass.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
+    this.closeMenu = this.closeMenu.bind(this);
     this.menuHandleClick = this.menuHandleClick.bind(this);
     this.setWrapperRef = this.setWrapperRef.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
@@ -23,6 +24,12 @@ class Navbar extends Component {
 
   componentDidMount() {
     document.addEventListener('click', this.handleClickOutside);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.isLoggingOut && !this.props.isLoggingOut) {
+      this.closeMenu();
+    }
   }
 
   componentWillUnmount() {
@@ -39,20 +46,24 @@ class Navbar extends Component {
       !this.wrapperRef.contains(evt.target) &&
       window.innerWidth < 768
     ) {
-      this.setState({
-        active: false,
-      });
+      this.closeMenu();
     }
   }
 
-  toggleClass() {
-    this.setState((prevState) => ({active: !prevState.active}));
+  toggleMenu() {
+    this.setState((prevState) => ({isOpen: !prevState.isOpen}));
+  }
+
+  closeMenu() {
+    this.setState({
+      isOpen: false,
+    });
   }
 
   menuHandleClick(evt) {
     const {tagName} = evt.target;
-    if ((tagName === 'A' || tagName === 'BUTTON') && window.innerWidth < 768) {
-      this.toggleClass();
+    if ((tagName === 'A') && window.innerWidth < 768) {
+      this.closeMenu();
     }
   }
 
@@ -61,15 +72,23 @@ class Navbar extends Component {
   }
 
   render() {
-    const {isAuth} = this.props;
-    const {active} = this.state;
+    const {isAuth, isLoggingOut} = this.props;
+    const {isOpen} = this.state;
 
     return (
       <nav
         ref={this.setWrapperRef}
         className="navbar navbar-expand-md navbar-light"
       >
-        <NavLink exact to="/" className="navbar-brand">
+        <NavLink
+          exact to="/"
+          className="navbar-brand"
+          onClick={() => {
+            if (isOpen) {
+              this.closeMenu();
+            }
+          }}
+        >
           <img src="/logo.png" width="36" height="36" alt="logo" />
         </NavLink>
 
@@ -81,14 +100,14 @@ class Navbar extends Component {
           aria-controls="navbarText"
           aria-expanded="false"
           aria-label="Toggle navigation"
-          onClick={this.toggleClass}
+          onClick={this.toggleMenu}
         >
           <span className="navbar-toggler-icon" />
         </button>
 
         <div
           className={
-            `collapse navbar-collapse${active ? ' show' : ''}`
+            `collapse navbar-collapse${isOpen ? ' show' : ''}`
           }
           onClick={this.menuHandleClick}
         >
@@ -130,10 +149,12 @@ class Navbar extends Component {
               {isAuth ? (
                 <button
                   type="button"
-                  className="nav-link btn-logout"
+                  className={`nav-link btn-logout${isLoggingOut ? ' btn-logout-fetching' : ''}`}
+                  disabled={isLoggingOut}
                   onClick={this.logout}
                 >
                   Logout
+                  {isLoggingOut ? <div className="ellipsis-loader"></div> : null}
                 </button>
               ) : (
                 <NavLink to="/register" className="nav-link">
@@ -150,11 +171,13 @@ class Navbar extends Component {
 
 Navbar.propTypes = {
   isAuth: PropTypes.bool,
+  isLoggingOut: PropTypes.bool,
   fetchUserLogout: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
   isAuth: state.authSuccess.isAuth,
+  isLoggingOut: state.authSuccess.logoutIsPending,
 });
 
 const mapDispatchToProps = (dispatch) => ({

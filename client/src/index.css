@@ -72,6 +72,52 @@ button {
   right: 0;
 }
 
+.btn-logout-fetching {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent!important;
+}
+
+.ellipsis-loader,
+.ellipsis-loader:before,
+.ellipsis-loader:after {
+  position: absolute;
+  border-radius: 50%;
+  width: .4rem;
+  height: .4rem;
+  animation-fill-mode: both;
+  animation: ticker .8s infinite ease-in-out;
+}
+.ellipsis-loader {
+  margin-top: 2px;
+  animation-delay: -0.16s;
+}
+.ellipsis-loader:before,
+.ellipsis-loader:after {
+  content: '';
+  top: 0;
+}
+.ellipsis-loader:before {
+  left: -1em;
+  animation-delay: -0.32s;
+}
+.ellipsis-loader:after {
+  left: 1em;
+}
+
+@keyframes ticker {
+  0%,
+  80%,
+  100% {
+    background-color: lightgrey;
+  }
+  40% {
+    background-color: grey;
+  }
+}
+
 @media screen and (max-width: 400px) {
   html {
     font-size: 14px;
