@@ -74,8 +74,8 @@ class Navbar extends Component {
         </NavLink>
 
         <button
-          className="navbar-toggler"
           type="button"
+          className="navbar-toggler"
           data-toggle="collapse"
           data-target="#navbarText"
           aria-controls="navbarText"
@@ -128,7 +128,11 @@ class Navbar extends Component {
             </li>
             <li className="nav-item">
               {isAuth ? (
-                <button className="nav-link btn-logout" onClick={this.logout}>
+                <button
+                  type="button"
+                  className="nav-link btn-logout"
+                  onClick={this.logout}
+                >
                   Logout
                 </button>
               ) : (

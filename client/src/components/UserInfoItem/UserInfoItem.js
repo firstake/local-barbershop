@@ -155,7 +155,11 @@ class UserInfoItem extends Component {
               </button>
             </div>
           ) : (
-            <button onClick={this.handleClick} className="p-0 m-1 btn btn-link">
+            <button
+              type="button"
+              onClick={this.handleClick}
+              className="p-0 m-1 btn btn-link"
+            >
               Change
             </button>
           )}

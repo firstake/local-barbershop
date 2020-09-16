@@ -55,6 +55,7 @@ class Avatar extends Component {
           alt="Avatar"
         />
         <button
+          type="button"
           className="plus-upload-btn"
           onClick={this.openUploadDialog}
         >

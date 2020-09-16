@@ -23,6 +23,7 @@ class BookingControls extends Component {
     return (
       <div className="text-right pt-4">
         <button
+          type="button"
           className="btn btn-warning text-white mx-2 mb-3"
           onClick={() => {
             showModal();
