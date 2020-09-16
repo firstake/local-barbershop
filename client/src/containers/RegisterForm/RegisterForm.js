@@ -178,7 +178,7 @@ RegisterForm.propTypes = {
 const mapStateToProps = (state) => ({
   isAuth: state.authSuccess.isAuth,
   regError: state.regHasErrored,
-  isPending: state.authSuccess.isPending,
+  isPending: state.authSuccess.authIsPending,
 });
 
 const mapDispatchToProps = (dispatch) => ({

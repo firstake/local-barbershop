@@ -16,5 +16,5 @@ export const fetchUserLogout = () => (dispatch) => {
 };
 
 const userLogout = () => ({
-  type: 'USER_LOGOUT',
+  type: 'LOGOUT_SUCCESS',
 });

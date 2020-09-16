@@ -1,5 +1,5 @@
 const authSuccess = (
-    state = {isAuth: false, userData: null, isPending: false, logoutIsPending: false},
+    state = {isAuth: false, userData: null, authIsPending: false, logoutIsPending: false},
     action,
 ) => {
   switch (action.type) {
@@ -7,12 +7,12 @@ const authSuccess = (
       return {...state, isAuth: true, userData: action.userData};
 
     case 'AUTH_IS_PENDING':
-      return {...state, isPending: action.isPending};
+      return {...state, authIsPending: action.authIsPending};
 
     case 'LOGOUT_IS_PENDING':
       return {...state, logoutIsPending: action.logoutIsPending};
 
-    case 'USER_LOGOUT':
+    case 'LOGOUT_SUCCESS':
       return {...state, isAuth: false, userData: null};
 
     case 'NEW_BOOKING':

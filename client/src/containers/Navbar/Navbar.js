@@ -14,7 +14,8 @@ class Navbar extends Component {
       isOpen: false,
     };
 
-    this.toggleClass = this.toggleClass.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
+    this.closeMenu = this.closeMenu.bind(this);
     this.menuHandleClick = this.menuHandleClick.bind(this);
     this.setWrapperRef = this.setWrapperRef.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
@@ -23,6 +24,12 @@ class Navbar extends Component {
 
   componentDidMount() {
     document.addEventListener('click', this.handleClickOutside);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.isLoggingOut && !this.props.isLoggingOut) {
+      this.closeMenu();
+    }
   }
 
   componentWillUnmount() {
@@ -39,20 +46,24 @@ class Navbar extends Component {
       !this.wrapperRef.contains(evt.target) &&
       window.innerWidth < 768
     ) {
-      this.setState({
-        isOpen: false,
-      });
+      this.closeMenu();
     }
   }
 
-  toggleClass() {
+  toggleMenu() {
     this.setState((prevState) => ({isOpen: !prevState.isOpen}));
+  }
+
+  closeMenu() {
+    this.setState({
+      isOpen: false,
+    });
   }
 
   menuHandleClick(evt) {
     const {tagName} = evt.target;
-    if ((tagName === 'A' || tagName === 'BUTTON') && window.innerWidth < 768) {
-      this.toggleClass();
+    if ((tagName === 'A') && window.innerWidth < 768) {
+      this.closeMenu();
     }
   }
 
@@ -69,7 +80,15 @@ class Navbar extends Component {
         ref={this.setWrapperRef}
         className="navbar navbar-expand-md navbar-light"
       >
-        <NavLink exact to="/" className="navbar-brand">
+        <NavLink
+          exact to="/"
+          className="navbar-brand"
+          onClick={() => {
+            if (isOpen) {
+              this.closeMenu();
+            }
+          }}
+        >
           <img src="/logo.png" width="36" height="36" alt="logo" />
         </NavLink>
 
@@ -81,7 +100,7 @@ class Navbar extends Component {
           aria-controls="navbarText"
           aria-expanded="false"
           aria-label="Toggle navigation"
-          onClick={this.toggleClass}
+          onClick={this.toggleMenu}
         >
           <span className="navbar-toggler-icon" />
         </button>
