@@ -32,12 +32,39 @@ class DateTimePicker extends Component {
       timeSelectIsDisabled: true,
       dateSelectOptions: null,
       timeSelectOptions,
+      datePlaceholder: 'Loading dates...',
     };
   }
 
   componentDidMount() {
+    this.timer = setInterval(() => {
+      const {datePlaceholder} = this.state;
+
+      if (datePlaceholder.length < 16) {
+        this.setState((prevState) => ({
+          datePlaceholder: `${prevState.datePlaceholder}.`,
+        }));
+      } else {
+        this.setState({
+          datePlaceholder: 'Loading dates.',
+        });
+      }
+    }, 200);
+
     API.getBookingDates()
-        .then((data) => this.setState({dateSelectOptions: data, dateSelectIsDisabled: false}));
+        .then((data) => {
+          clearInterval(this.timer);
+
+          this.setState({
+            datePlaceholder: 'Select date',
+            dateSelectOptions: data,
+            dateSelectIsDisabled: false,
+          });
+        });
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
   }
 
   handleDateChange(inputValue) {
@@ -69,7 +96,9 @@ class DateTimePicker extends Component {
 
   render() {
     const {
-      dateSelectOptions, dateSelectIsDisabled, timeSelectOptions, timeSelectIsDisabled,
+      dateSelectOptions, dateSelectIsDisabled,
+      timeSelectOptions, timeSelectIsDisabled,
+      datePlaceholder,
     } = this.state;
     const {timeInputValue} = this.props;
 
@@ -80,7 +109,7 @@ class DateTimePicker extends Component {
           onChange={this.handleDateChange}
           options={dateSelectOptions}
           isDisabled={dateSelectIsDisabled}
-          placeholder="Select date"
+          placeholder={datePlaceholder}
           theme={(theme) => ({
             ...theme,
             colors: {
