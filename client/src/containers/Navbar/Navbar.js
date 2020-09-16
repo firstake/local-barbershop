@@ -11,7 +11,7 @@ class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: false,
+      isOpen: false,
     };
 
     this.toggleClass = this.toggleClass.bind(this);
@@ -40,13 +40,13 @@ class Navbar extends Component {
       window.innerWidth < 768
     ) {
       this.setState({
-        active: false,
+        isOpen: false,
       });
     }
   }
 
   toggleClass() {
-    this.setState((prevState) => ({active: !prevState.active}));
+    this.setState((prevState) => ({isOpen: !prevState.isOpen}));
   }
 
   menuHandleClick(evt) {
@@ -61,8 +61,8 @@ class Navbar extends Component {
   }
 
   render() {
-    const {isAuth} = this.props;
-    const {active} = this.state;
+    const {isAuth, isLoggingOut} = this.props;
+    const {isOpen} = this.state;
 
     return (
       <nav
@@ -88,7 +88,7 @@ class Navbar extends Component {
 
         <div
           className={
-            `collapse navbar-collapse${active ? ' show' : ''}`
+            `collapse navbar-collapse${isOpen ? ' show' : ''}`
           }
           onClick={this.menuHandleClick}
         >
@@ -130,10 +130,12 @@ class Navbar extends Component {
               {isAuth ? (
                 <button
                   type="button"
-                  className="nav-link btn-logout"
+                  className={`nav-link btn-logout${isLoggingOut ? ' btn-logout-fetching' : ''}`}
+                  disabled={isLoggingOut}
                   onClick={this.logout}
                 >
                   Logout
+                  {isLoggingOut ? <div className="ellipsis-loader"></div> : null}
                 </button>
               ) : (
                 <NavLink to="/register" className="nav-link">
@@ -150,11 +152,13 @@ class Navbar extends Component {
 
 Navbar.propTypes = {
   isAuth: PropTypes.bool,
+  isLoggingOut: PropTypes.bool,
   fetchUserLogout: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
   isAuth: state.authSuccess.isAuth,
+  isLoggingOut: state.authSuccess.logoutIsPending,
 });
 
 const mapDispatchToProps = (dispatch) => ({
