@@ -74,9 +74,6 @@ button {
 
 .btn-logout-fetching {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: transparent!important;
 }
 
@@ -84,6 +81,8 @@ button {
 .ellipsis-loader:before,
 .ellipsis-loader:after {
   position: absolute;
+  top: calc(50% - .2rem);
+  right: calc(50% - .2rem);
   border-radius: 50%;
   width: .4rem;
   height: .4rem;

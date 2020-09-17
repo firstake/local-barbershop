@@ -9,9 +9,8 @@ export const fetchUserLogout = () => (dispatch) => {
   dispatch(logoutIsPending(true));
 
   API.logout().then(() => {
-    dispatch(userLogout());
-  }).finally(() => {
     dispatch(logoutIsPending(false));
+    dispatch(userLogout());
   });
 };
 
