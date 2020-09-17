@@ -104,7 +104,7 @@ class DateTimePicker extends Component {
 
     return (
       <>
-        <p className="mb-2">Select time and date</p>
+        <p className="mb-2">Select date and time</p>
         <Select
           onChange={this.handleDateChange}
           options={dateSelectOptions}
