@@ -1,5 +1,5 @@
 name: 'linting client & server'
-on: [push, pull_request]
+on: push
 jobs:
   lint-job:
     runs-on: ubuntu-latest
