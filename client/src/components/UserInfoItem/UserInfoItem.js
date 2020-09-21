@@ -107,36 +107,36 @@ class UserInfoItem extends Component {
         list-group-item ${cssClass || ''}`}
       >
         <form
+          className="user-info-item"
           onSubmit={this.saveChanges}
-          style={{
-            flexGrow: 1, display: 'flex', alignItems: 'center', flexWrap: 'wrap',
-          }}
         >
-          <label htmlFor={name} className="m-1 text-muted">{title}</label>
-          <div className={`${type === 'password' ? 'password-wrapper ' : ''}m-1 mr-auto`}>
-            <input
-              className="form-control-lean"
-              id={name}
-              name={name}
-              onChange={this.handleChange}
-              type={this.getType()}
-              autoComplete={autocomplete}
-              minLength={minLength || null}
-              pattern={type === 'phone' ? null : pattern}
-              value={currentValue}
-              required="required"
-              disabled={!isChanging}
-              ref={this.textInput}
-            />
-            {type === 'password' && isChanging ? (
-              <button
-                type="button"
-                className="btn-toggle-password"
-                onClick={this.togglePassVisiblity}
-              >
-                <FontAwesomeIcon icon={isPassShown ? faEye : faEyeSlash} />
-              </button>
-            ) : null}
+          <div className="pr-2">
+            <label htmlFor={name} className="m-1 text-muted">{title}</label>
+            <div className={`${type === 'password' ? 'password-wrapper ' : ''}m-1 mr-auto`}>
+              <input
+                className="form-control-lean"
+                id={name}
+                name={name}
+                onChange={this.handleChange}
+                type={this.getType()}
+                autoComplete={autocomplete}
+                minLength={minLength || null}
+                pattern={type === 'phone' ? null : pattern}
+                value={currentValue}
+                required="required"
+                disabled={!isChanging}
+                ref={this.textInput}
+              />
+              {type === 'password' && isChanging ? (
+                <button
+                  type="button"
+                  className="btn-toggle-password"
+                  onClick={this.togglePassVisiblity}
+                >
+                  <FontAwesomeIcon icon={isPassShown ? faEye : faEyeSlash} />
+                </button>
+              ) : null}
+            </div>
           </div>
           {isChanging ? (
             <div>

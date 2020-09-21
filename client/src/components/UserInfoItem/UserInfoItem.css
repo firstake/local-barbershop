@@ -1,4 +1,18 @@
+.user-info-item {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.user-info-item > div:first-child {
+  transition: padding .15s;
+}
+
 .form-control-lean {
+  min-width: 200px;
+  text-overflow: ellipsis;
   display: block;
   color: #495057;
   background-clip: padding-box;
@@ -17,4 +31,10 @@
 .form-control-lean:focus {
   outline: 0;
   border-bottom-color: #dda122;
+}
+
+@media screen and (max-width: 364px) {
+  .user-info-item > div:first-child:focus-within {
+    padding-bottom: .5rem;
+  }
 }
