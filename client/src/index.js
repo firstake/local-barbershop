@@ -1,3 +1,6 @@
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import React from 'react';
