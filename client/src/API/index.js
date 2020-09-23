@@ -1,13 +1,14 @@
 const API_URL = process.env.REACT_APP_API_URL;
 
 const getRequest = (url) => {
-  return fetch(`${API_URL}/${url}`)
+  return fetch(`${API_URL}/${url}`, {credentials: 'same-origin'})
       .then((res) => res.json());
 };
 
 const postRequest = (url, bodyData) => {
   return fetch(`${API_URL}/${url}`, {
     method: 'POST',
+    credentials: 'same-origin',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(bodyData),
   }).then((res) => res.json());
