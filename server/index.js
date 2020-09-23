@@ -18,15 +18,6 @@ app.use(cookieParser());
 app.use(fileUpload());
 app.use(cors());
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Cache-Control', 'no-cache');
-  next();
-});
-
-/* Routes */
-app.use('/api', appRoutes);
-
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 
@@ -34,6 +25,9 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
   });
 }
+
+/* Routes */
+app.use('/api', appRoutes);
 
 /* Error handler */
 app.use((error, req, res, next) => {
