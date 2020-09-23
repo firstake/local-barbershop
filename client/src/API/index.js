@@ -53,6 +53,7 @@ export const changeUserInfo = (bodyData) => {
 export const upload = (formData) => {
   return fetch(`${API_URL}/api/upload`, {
     method: 'POST',
+    credentials: 'same-origin',
     body: formData,
   }).then((res) => res.json());
 };
@@ -60,5 +61,6 @@ export const upload = (formData) => {
 export const logout = () => {
   return fetch(`${API_URL}/api/logout`, {
     method: 'POST',
+    credentials: 'same-origin',
   }).then((res) => res.json());
 };
