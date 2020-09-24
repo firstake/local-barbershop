@@ -48,6 +48,7 @@ Docker
 // Example
 
 CLOUDINARY_URL=cloudinary://<my-key>:<my-secret>@<my-cloud-name>
+HTTPS=enabled
 MONGODB_URL=mongodb+srv://<user-name>:<password>@cluster0.rugmj.gcp.mongodb.net/<dbname>
 REACT_APP_API_URL=<https://<your-project-name>.herokuapp.com>
 ```
