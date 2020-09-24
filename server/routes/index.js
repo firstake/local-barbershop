@@ -13,6 +13,12 @@ const cancelBooking = require('../controllers/cancelBooking');
 const avatarUpload = require('../controllers/avatarUpload');
 const notFound = require('../controllers/notFound');
 
+router.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  next();
+});
+
 router.get('/services', getServicesInfo);
 router.get('/get-booking-dates', getBookingDates);
 router.get('/restore-session', restoreSession);

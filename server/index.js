@@ -23,17 +23,23 @@ if (process.env.NODE_ENV === 'production') {
   app.use(sslRedirect());
 }
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Cache-Control', 'no-cache');
-  next();
-});
-
 /* Routes */
 app.use('/api', appRoutes);
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
+  app.use(express.static(path.join(__dirname, '../client/build'), {
+    etag: true,
+    lastModified: true,
+    setHeaders: (res, path) => {
+      const hashRegExp = new RegExp('\\.[0-9a-f]{8}\\.');
+
+      if (path.endsWith('.html')) {
+        res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+      } else if (hashRegExp.test(path)) {
+        res.setHeader('Cache-Control', 'max-age=31536000');
+      }
+    },
+  }));
 
   app.use('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
