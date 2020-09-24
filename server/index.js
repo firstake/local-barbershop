@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
 const cors = require('cors');
+const sslRedirect = require('./util/sslRedirect');
 
 const appRoutes = require('./routes');
 
@@ -17,6 +18,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(fileUpload());
 app.use(cors());
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(sslRedirect());
+}
 
 /* Routes */
 app.use('/api', appRoutes);
