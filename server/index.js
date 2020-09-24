@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
 const cors = require('cors');
 const sslRedirect = require('./util/sslRedirect');
+const compression = require('compression');
 
 const appRoutes = require('./routes');
 
@@ -27,6 +28,8 @@ if (process.env.NODE_ENV === 'production') {
 app.use('/api', appRoutes);
 
 if (process.env.NODE_ENV === 'production') {
+  app.use(compression());
+
   app.use(express.static(path.join(__dirname, '../client/build'), {
     etag: true,
     lastModified: true,
