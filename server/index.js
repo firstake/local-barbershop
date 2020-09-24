@@ -20,8 +20,11 @@ app.use(cookieParser());
 app.use(fileUpload());
 app.use(cors());
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(sslRedirect());
+if (
+  process.env.NODE_ENV === 'production' &&
+  process.env.HTTPS === 'enabled'
+) {
+  app.use(sslRedirect(301));
 }
 
 /* Routes */
