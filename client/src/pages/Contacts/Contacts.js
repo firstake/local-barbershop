@@ -8,7 +8,7 @@ import {
   faEnvelope,
 } from '@fortawesome/free-solid-svg-icons';
 
-import './Contacts.css';
+import './Contacts.scss';
 
 const contacts = [
   {

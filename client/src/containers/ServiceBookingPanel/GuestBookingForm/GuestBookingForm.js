@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import * as API from '../../../API';
 
 import DateTimePicker from '../../../components/DateTimePicker';
-import './GuestBookingForm.css';
+import './GuestBookingForm.scss';
 
 class GuestForm extends Component {
   constructor(props) {

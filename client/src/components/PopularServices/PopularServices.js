@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
-import './PopularServices.css';
+import './PopularServices.scss';
 
 const popularServicesData = [
   {

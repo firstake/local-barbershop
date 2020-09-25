@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 
-import './UserInfoItem.css';
+import './UserInfoItem.scss';
 
 class UserInfoItem extends Component {
   constructor(props) {

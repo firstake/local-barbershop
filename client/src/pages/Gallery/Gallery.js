@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import images from '../../consts/gallery-images';
 
-import './Gallery.css';
+import './Gallery.scss';
 
 class Gallery extends Component {
   render() {

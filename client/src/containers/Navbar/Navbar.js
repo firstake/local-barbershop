@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 import {fetchUserLogout} from '../../actions/logoutActions';
 
-import './Navbar.css';
+import './Navbar.scss';
 
 class Navbar extends Component {
   constructor(props) {
