@@ -6,6 +6,8 @@ import * as API from '../../API';
 
 import ServiceBookingPanel from '../../containers/ServiceBookingPanel';
 
+import './CardPage.css';
+
 class cardPage extends Component {
   constructor(props) {
     super(props);
