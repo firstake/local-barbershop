@@ -8,6 +8,8 @@ import {
   faEnvelope,
 } from '@fortawesome/free-solid-svg-icons';
 
+import './Contacts.css';
+
 const contacts = [
   {
     icon: faMapMarkerAlt,

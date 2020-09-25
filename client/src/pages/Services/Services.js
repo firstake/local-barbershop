@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 
-import * as API from '../API';
+import * as API from '../../API';
 
-import Card from '../components/Card';
+import Card from '../../components/Card';
+
+import './Services.css';
 
 class Services extends Component {
   constructor(props) {

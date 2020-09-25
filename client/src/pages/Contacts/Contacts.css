@@ -1,0 +1,11 @@
+.text-pre-line {
+  white-space: pre-line;
+}
+
+.text-inherit {
+  color: inherit;
+}
+
+.text-inherit:hover {
+  color: inherit;
+}

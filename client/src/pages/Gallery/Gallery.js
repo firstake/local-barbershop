@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 
-import images from '../consts/gallery-images';
+import images from '../../consts/gallery-images';
+
+import './Gallery.css';
 
 class Gallery extends Component {
   render() {
