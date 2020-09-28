@@ -9,24 +9,20 @@
   height: 50vh;
   display: flex;
   align-items: flex-end;
-}
 
-@media screen and (min-width: 1280px) {
-  .banner {
+  @media screen and (min-width: 1280px) {
     background-image: url(/img/home/banner-1920w.webp);
+  
+    @at-root .no-webp .banner {
+      background-image: url(/img/home/banner-1920w.jpg);
+    }
   }
 
-  .no-webp .banner {
-    background-image: url(/img/home/banner-1920w.jpg);
-  }
-}
-
-@media screen and (max-width: 1260px) {
-  .banner {
+  @media screen and (max-width: 1260px) {
     background-image: url(/img/home/banner-1280w.webp);
-  }
-
-  .no-webp .banner {
-    background-image: url(/img/home/banner-1280w.jpg);
+  
+    @at-root .no-webp .banner {
+      background-image: url(/img/home/banner-1280w.jpg);
+    }
   }
 }

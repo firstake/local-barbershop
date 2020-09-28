@@ -15,6 +15,18 @@ body {
   margin-top: 62px;
 }
 
+@media screen and (max-width: 400px) {
+  html {
+    font-size: 14px;
+  }
+  body {
+    font-size: 16px;
+  }
+  .f-h {
+    min-height: calc(100vh - 128px);
+  }
+}
+
 button {
   outline: none !important;
 }
@@ -43,12 +55,12 @@ button {
   color: #fff;
   background-color: #e77f52;
   border-color: #e77f52;
-}
 
-.btn-general:hover {
-  color: #fff;
-  background-color: #ce7b56;
-  border-color: #b96e4d;
+  :hover {
+    color: #fff;
+    background-color: #ce7b56;
+    border-color: #b96e4d;
+  }
 }
 
 /* Toggle password visibility */
@@ -114,17 +126,5 @@ button {
   }
   40% {
     background-color: grey;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  html {
-    font-size: 14px;
-  }
-  body {
-    font-size: 16px;
-  }
-  .f-h {
-    min-height: calc(100vh - 128px);
   }
 }
