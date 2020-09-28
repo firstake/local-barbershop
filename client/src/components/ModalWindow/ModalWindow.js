@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
 
 import Portal from '../Portal';
-import './ModalWindow.css';
+import './ModalWindow.scss';
 
 class ModalWindow extends Component {
   constructor(props) {

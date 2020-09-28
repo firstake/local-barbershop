@@ -9,8 +9,8 @@ import App from './App';
 import configureStore from './store';
 import {restoreSession, ScrollToTop, checkWebpFeature} from './util';
 
-import './index.css';
-import './fonts/fonts.css';
+import './index.scss';
+import './fonts/fonts.scss';
 
 const renderApp = (preloadedState) => {
   const store = configureStore(preloadedState);

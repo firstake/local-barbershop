@@ -4,8 +4,8 @@
 
 .text-inherit {
   color: inherit;
-}
 
-.text-inherit:hover {
-  color: inherit;
+  &:hover {
+    color: inherit;
+  }
 }

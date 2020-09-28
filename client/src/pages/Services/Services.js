@@ -4,7 +4,7 @@ import * as API from '../../API';
 
 import Card from '../../components/Card';
 
-import './Services.css';
+import './Services.scss';
 
 class Services extends Component {
   constructor(props) {

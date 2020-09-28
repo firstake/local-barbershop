@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 
-import './Avatar.css';
+import './Avatar.scss';
 
 class Avatar extends Component {
   constructor(props) {

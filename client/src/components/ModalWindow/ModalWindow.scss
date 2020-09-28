@@ -1,0 +1,33 @@
+.modal {
+  display: block;
+  background: rgba(0, 0, 0, 0.7);
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  &-header, &-footer {
+    justify-content: center;
+  }
+
+  &-body form {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .close {
+    position: absolute;
+    top: 0;
+    height: 62px;
+    width: 62px;
+    right: 0;
+    color: #fff;
+    opacity: 0.8;
+
+    @media (max-width: 767px) {
+      visibility: hidden;
+    }
+
+    &:not(:disabled):not(.disabled):hover {
+      opacity: 1;
+    }
+  }
+}
