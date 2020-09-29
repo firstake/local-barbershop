@@ -103,6 +103,7 @@ class SignInForm extends Component {
                   type="button"
                   className="btn-toggle-password"
                   onClick={this.togglePassVisiblity}
+                  disabled={isPending}
                 >
                   <FontAwesomeIcon icon={isPassShown ? faEye : faEyeSlash} />
                 </button>
