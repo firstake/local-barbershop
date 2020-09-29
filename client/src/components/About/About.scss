@@ -19,26 +19,26 @@
   background-size: cover;
   
   @media screen and (min-width: 1280px) {
-    background-image: url(/img/home/about-1920w.webp);
+    background-image: url(../../assets/img/home/about-1920w.webp);
     
     @at-root .no-webp .about-pic {
-      background-image: url(/img/home/about-1920w.jpg);
+      background-image: url(../../assets/img/home/about-1920w.jpg);
     }
   }
 
   @media screen and (max-width: 1260px) {
-    background-image: url(/img/home/about-1280w.webp);
+    background-image: url(../../assets/img/home/about-1280w.webp);
   
     @at-root .no-webp .about-pic {
-      background-image: url(/img/home/about-1280w.jpg);
+      background-image: url(../../assets/img/home/about-1280w.jpg);
     }
   }
 
   @media screen and (max-width: 620px) {
-    background-image:url(/img/home/about-640w.webp);
+    background-image:url(../../assets/img/home/about-640w.webp);
   
     @at-root .no-webp .about-pic {
-      background-image: url(/img/home/about-640w.jpg);
+      background-image: url(../../assets/img/home/about-640w.jpg);
     }
   }
 

@@ -11,18 +11,18 @@
   align-items: flex-end;
 
   @media screen and (min-width: 1280px) {
-    background-image: url(/img/home/banner-1920w.webp);
+    background-image: url(../../assets/img/home/banner-1920w.webp);
   
     @at-root .no-webp .banner {
-      background-image: url(/img/home/banner-1920w.jpg);
+      background-image: url(../../assets/img/home/banner-1920w.jpg);
     }
   }
 
   @media screen and (max-width: 1260px) {
-    background-image: url(/img/home/banner-1280w.webp);
+    background-image: url(../../assets/img/home/banner-1280w.webp);
   
     @at-root .no-webp .banner {
-      background-image: url(/img/home/banner-1280w.jpg);
+      background-image: url(../../assets/img/home/banner-1280w.jpg);
     }
   }
 }
