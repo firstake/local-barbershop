@@ -8,6 +8,8 @@ import {authFetch, authHasErrored} from '../../actions/authActions';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 
+import './SignInForm.scss';
+
 class SignInForm extends Component {
   constructor(props) {
     super(props);
@@ -64,7 +66,7 @@ class SignInForm extends Component {
     );
 
     return (
-      <div>
+      <div className="signin-form-wrapper">
         {errorMessage}
         <form onSubmit={this.handleSubmit}>
           <fieldset disabled={isPending}>
@@ -127,7 +129,7 @@ class SignInForm extends Component {
 
           </fieldset>
         </form>
-        <p className="pt-4">
+        <p className="pt-4 text-center">
           Don&apos;t have an account? Register
           {' '}
           <Link to="/register" className="text-warning">

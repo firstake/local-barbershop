@@ -14,11 +14,14 @@
       }
     }
   }
+
+  .password-wrapper {
+    width: calc(100% - 1.75rem - 2px);
+  }
 }
 
 .form-control-lean {
   min-width: 200px;
-  text-overflow: ellipsis;
   display: block;
   color: #495057;
   background-clip: padding-box;
@@ -28,6 +31,10 @@
   border-left: none;
   border-radius: 0;
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+  &:not([id="password"]) {
+    text-overflow: ellipsis;
+  }
 
   &:disabled {
     background: transparent;

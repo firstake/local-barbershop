@@ -1,0 +1,12 @@
+.registration-form-wrapper {
+  width: 100%;
+  max-width: 416px;
+
+  @media screen and (max-width: 576px) {
+    max-width: 320px;
+  }
+
+  @media screen and (max-width: 400px) {
+    max-width: 280px;
+  }
+}

@@ -6,7 +6,7 @@ class Register extends Component {
   render() {
     return (
       <div className="container py-4 f-h">
-        <h1 className="text-center mt-4">Register</h1>
+        <h1 className="text-center mt-sm-4">Register</h1>
         <div className="d-flex justify-content-center">
           <RegisterForm />
         </div>

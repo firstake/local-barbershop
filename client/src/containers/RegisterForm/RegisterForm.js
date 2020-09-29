@@ -8,6 +8,8 @@ import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 
 import {regFetch, regHasErrored} from '../../actions/registerActions';
 
+import './RegisterForm.scss';
+
 class RegisterForm extends Component {
   constructor(props) {
     super(props);
@@ -60,7 +62,7 @@ class RegisterForm extends Component {
     );
 
     return (
-      <div>
+      <div className="registration-form-wrapper">
         {errorMessage}
         <form onSubmit={this.handleSubmit}>
           <fieldset disabled={isPending}>
