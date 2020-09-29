@@ -68,6 +68,10 @@ button {
   position: relative;
   display: flex;
   align-items: center;
+
+  input[id="password"] {
+    padding-right: calc(.75rem + 1rem + .75rem);
+  }
 }
 
 .btn-toggle-password {
@@ -81,7 +85,12 @@ button {
 }
 
 .form-control-lean + .btn-toggle-password {
-  right: 0;
+  right: calc(-1.75rem + 2px);
+}
+
+input.form-control-lean[id="password"] {
+  padding-right: calc(1rem + .75rem);
+  margin-right: calc(-1.75rem + 2px);
 }
 
 .btn-logout-fetching {
