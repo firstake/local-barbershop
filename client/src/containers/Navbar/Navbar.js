@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import {fetchUserLogout} from '../../actions/logoutActions';
 
 import './Navbar.scss';
+import logo from '../../assets/logo.png';
 
 class Navbar extends Component {
   constructor(props) {
@@ -89,7 +90,7 @@ class Navbar extends Component {
             }
           }}
         >
-          <img src="/logo.png" width="36" height="36" alt="logo" />
+          <img src={logo} width="36" height="36" alt="logo" />
         </NavLink>
 
         <button
