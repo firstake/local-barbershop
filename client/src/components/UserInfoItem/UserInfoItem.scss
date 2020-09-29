@@ -5,13 +5,9 @@
   flex-wrap: wrap;
   justify-content: space-between;
 
-  > div:first-child {
-    transition: padding .15s;
-
-    &:focus-within {
-      @media screen and (max-width: 364px) {
-        padding-bottom: .5rem;
-      }
+  > div:nth-child(2) {
+    @media screen and (max-width: 367px) {
+      padding-top: .5rem;
     }
   }
 
@@ -25,12 +21,18 @@
   display: block;
   color: #495057;
   background-clip: padding-box;
-  border-top: 2px solid transparent;
-  border-bottom: 2px solid transparent;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
   border-right: none;
   border-left: none;
   border-radius: 0;
-  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  background: linear-gradient(180deg, transparent 95%, #dda122 0) no-repeat;
+  background-size: 0 100%;
+  transition: background-size .15s ease, border-color .15s ease;
+
+  &.active {
+    border-bottom-color: #f4ca6e;
+  }
 
   &:not([id="password"]) {
     text-overflow: ellipsis;
@@ -43,5 +45,6 @@
   &:focus {
     outline: 0;
     border-bottom-color: #dda122;
+    background-size: 100% 100%;
   }
 }

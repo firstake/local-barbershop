@@ -114,7 +114,7 @@ class UserInfoItem extends Component {
             <label htmlFor={name} className="m-1 text-muted">{title}</label>
             <div className={`${type === 'password' ? 'password-wrapper ' : ''}m-1 mr-auto`}>
               <input
-                className="form-control-lean"
+                className={`form-control-lean${isChanging ? ' active' : ''}`}
                 id={name}
                 name={name}
                 onChange={this.handleChange}
