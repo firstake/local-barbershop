@@ -1,3 +1,10 @@
+function importAll(r) {
+  return r.keys().map(r);
+}
+
+const jpgSources = importAll(require.context('../assets/img/gallery/', false, /\.(jpg)$/));
+const webpSources = importAll(require.context('../assets/img/gallery/', false, /\.(webp)$/));
+
 const images = [
   {
     id: 1,
@@ -45,5 +52,11 @@ const images = [
     height: 678,
   },
 ];
+
+images.map((imageData, index) => {
+  imageData.jpg = jpgSources[index];
+  imageData.webp = webpSources[index];
+  return imageData;
+});
 
 export default images;
