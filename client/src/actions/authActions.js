@@ -22,11 +22,9 @@ export const authFetch = (email, pass) => (dispatch) => {
 
   API.signIn({email, pass}).then((data) => {
     dispatch(authIsPending(false));
-
-    if (data.err) {
-      dispatch(authHasErrored(true, data.err));
-    } else {
-      dispatch(authSuccess(true, data));
-    }
+    dispatch(authSuccess(true, data));
+  }).catch((err) => {
+    dispatch(authIsPending(false));
+    dispatch(authHasErrored(true, err.statusText || 'Network error!'));
   });
 };

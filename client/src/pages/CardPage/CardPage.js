@@ -22,11 +22,9 @@ class cardPage extends Component {
     const link = this.props.match.params.title || '';
 
     API.getService(link).then((data) => {
-      if (data.err) {
-        this.setState({isError: true});
-      } else {
-        this.setState({pageData: data});
-      }
+      this.setState({pageData: data});
+    }).catch((err) => {
+      this.setState({isError: true});
     });
   }
 

@@ -1,7 +1,10 @@
 const API_URL = process.env.REACT_APP_API_URL;
 
+const handleErrors = (res) => res.ok ? res : Promise.reject(res);
+
 const getRequest = (url) => {
   return fetch(`${API_URL}/${url}`, {credentials: 'same-origin'})
+      .then(handleErrors)
       .then((res) => res.json());
 };
 
@@ -11,7 +14,9 @@ const postRequest = (url, bodyData) => {
     credentials: 'same-origin',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(bodyData),
-  }).then((res) => res.json());
+  })
+      .then(handleErrors)
+      .then((res) => res.json());
 };
 
 export const getBookingDates = () => {
@@ -55,12 +60,16 @@ export const upload = (formData) => {
     method: 'POST',
     credentials: 'same-origin',
     body: formData,
-  }).then((res) => res.json());
+  })
+      .then(handleErrors)
+      .then((res) => res.json());
 };
 
 export const logout = () => {
   return fetch(`${API_URL}/api/logout`, {
     method: 'POST',
     credentials: 'same-origin',
-  }).then((res) => res.json());
+  })
+      .then(handleErrors)
+      .then((res) => res.json());
 };
