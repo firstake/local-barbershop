@@ -54,8 +54,9 @@ if (process.env.NODE_ENV === 'production') {
 
 /* Error handler */
 app.use((error, req, res, next) => {
+  res.statusMessage = error.message;
   res.status(error.status);
-  res.json({err: error.message});
+  res.end();
 });
 
 /* Start a server */

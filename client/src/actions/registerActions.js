@@ -17,11 +17,10 @@ export const regFetch = (email, pass, name, phone) => (dispatch) => {
     phone,
   }).then((data) => {
     dispatch(authIsPending(false));
-
-    if (data.err) {
-      dispatch(regHasErrored(true, data.err));
-    } else {
-      dispatch(authSuccess(true, data));
-    }
+    dispatch(authSuccess(true, data));
+  }).catch((err) => {
+    dispatch(authIsPending(false));
+    dispatch(regHasErrored(true, err.statusText || 'Network error!'));
   });
 };
+
