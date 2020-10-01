@@ -1,4 +1,7 @@
 import * as API from '../API';
+import {userLogout} from './logoutActions';
+
+import {notify} from '../index';
 
 const newBooking = (date, time, title, link) => ({
   type: 'NEW_BOOKING',
@@ -27,5 +30,11 @@ export const fetchCancelBooking = (date, time) => (dispatch) => {
   API.cancelBooking({
     date,
     time,
-  }).then(() => dispatch(cancelBooking(date, time)));
+  }).then(() => dispatch(cancelBooking(date, time)))
+      .catch((err) => {
+        if (err.status === 401) {
+          dispatch(userLogout());
+          notify('Please authorize!');
+        }
+      });
 };

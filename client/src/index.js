@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
+import {ToastContainer, toast} from 'react-toastify';
 
 import App from './App';
 import configureStore from './store';
@@ -18,6 +19,11 @@ const renderApp = (preloadedState) => {
       <Provider store={store}>
         <BrowserRouter>
           <>
+            <ToastContainer
+              autoClose={2500}
+              hideProgressBar={true}
+              draggable={false}
+            />
             <ScrollToTop />
             <App />
           </>
@@ -35,3 +41,5 @@ const renderApp = (preloadedState) => {
 
   renderApp(await restoreSession());
 })();
+
+export const notify = (message) => toast.error(message);

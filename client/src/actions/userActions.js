@@ -1,4 +1,7 @@
 import * as API from '../API';
+import {userLogout} from './logoutActions';
+
+import {notify} from '../index';
 
 /* Change User Info */
 const changeUserInfo = (name, value) => ({
@@ -12,7 +15,13 @@ export const fetchChangeUserInfo = (name, value) => (dispatch) => {
     dispatch(changeUserInfo(name, value));
   }
 
-  API.changeUserInfo({name, value});
+  API.changeUserInfo({name, value})
+      .catch((err) => {
+        if (err.status === 401) {
+          dispatch(userLogout());
+          notify('Please authorize!');
+        }
+      });
 };
 
 /* Change User Avatar */

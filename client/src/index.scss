@@ -137,3 +137,120 @@ input.form-control-lean[id="password"] {
     background-color: grey;
   }
 }
+
+.Toastify__toast-container--top-right {
+  top: 1em;
+  right: 0;
+}
+
+.Toastify__toast-container {
+  margin: 0 1rem;
+  position: fixed;
+  z-index: 9999;
+}
+
+.Toastify__toast {
+  position: relative;
+  margin-bottom: 1rem;
+  padding: .75rem 1.25rem;
+  padding-right: 4rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.1);
+}
+
+.Toastify__toast--error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.Toastify__toast-body {
+  display: inline;
+}
+
+.Toastify__close-button {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  opacity: .5;
+  background-color: transparent;
+  border: 0;
+  -webkit-appearance: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: .85rem 1.25rem;
+  color: inherit;
+
+  &:hover, &:focus {
+    color: #000;
+    text-decoration: none;
+    opacity: .75;
+  }
+
+  > svg {
+    fill: currentColor;
+    height: 16px;
+    width: 14px;
+  }
+
+  @media screen and (max-width: 400px) {
+    padding: .75rem 1.25rem;
+  }
+}
+
+.Toastify__bounce-enter--top-right {
+  animation-name: Toastify__bounceInRight;
+}
+
+.Toastify__bounce-exit--top-right {
+  animation-name: Toastify__bounceOutRight;
+}
+
+@keyframes Toastify__bounceInRight {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  from {
+    opacity: 0;
+    transform: translate3d(3000px, 0, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(-25px, 0, 0);
+  }
+  75% {
+    transform: translate3d(10px, 0, 0);
+  }
+  90% {
+    transform: translate3d(-5px, 0, 0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes Toastify__bounceOutRight {
+  20% {
+    opacity: 1;
+    transform: translate3d(-20px, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(2000px, 0, 0);
+  }
+}
+
+.Toastify__progress-bar--animated {
+  animation: Toastify__trackProgress linear 1 forwards;
+}
+
+@keyframes Toastify__trackProgress {
+  0% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
