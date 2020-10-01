@@ -10,7 +10,7 @@
   display: flex;
   align-items: flex-end;
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1260px) {
     background-image: url(../../assets/img/home/banner-1920w.webp);
   
     @at-root .no-webp .banner {
@@ -18,7 +18,7 @@
     }
   }
 
-  @media screen and (max-width: 1260px) {
+  @media screen and (max-width: 1259px) {
     background-image: url(../../assets/img/home/banner-1280w.webp);
   
     @at-root .no-webp .banner {
