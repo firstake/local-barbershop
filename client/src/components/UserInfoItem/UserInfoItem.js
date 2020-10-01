@@ -92,6 +92,17 @@ class UserInfoItem extends Component {
     });
   }
 
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.text !== prevProps.text &&
+      this.props.text !== this.state.currentValue
+    ) {
+      this.setState({
+        currentValue: this.props.text,
+      });
+    }
+  }
+
   render() {
     const {
       name, title, type, autocomplete, pattern, minLength, cssClass,
