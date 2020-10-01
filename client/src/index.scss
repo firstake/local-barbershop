@@ -90,7 +90,7 @@ button {
 
 input.form-control-lean[id="password"] {
   padding-right: calc(1rem + .75rem);
-  margin-right: calc(-1.75rem + 2px);
+  margin-right: -1.75rem;
 }
 
 .btn-logout-fetching {
