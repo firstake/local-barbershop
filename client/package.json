@@ -16,12 +16,13 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
     "react-select": "^3.0.8",
+    "react-toastify": "^6.0.8",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "lint": "eslint --fix ./src",
+    "lint": "eslint ./src",
     "build": "react-scripts build",
     "postbuild": "purgecss --config ./purgecss.config.js --output build/static/css",
     "test": "react-scripts test",

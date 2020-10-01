@@ -14,6 +14,6 @@ export const fetchUserLogout = () => (dispatch) => {
   });
 };
 
-const userLogout = () => ({
+export const userLogout = () => ({
   type: 'LOGOUT_SUCCESS',
 });
