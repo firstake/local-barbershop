@@ -20,7 +20,7 @@ const renderApp = (preloadedState) => {
         <BrowserRouter>
           <>
             <ToastContainer
-              autoClose={2500}
+              autoClose={3000}
               hideProgressBar={true}
               draggable={false}
             />

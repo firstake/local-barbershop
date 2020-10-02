@@ -2,6 +2,7 @@ import * as API from '../API';
 import {userLogout} from './logoutActions';
 
 import {notify} from '../index';
+import {withExclamation, capitalize} from '../util';
 
 /* Change User Info */
 const changeUserInfo = (name, value) => ({
@@ -10,7 +11,9 @@ const changeUserInfo = (name, value) => ({
   value,
 });
 
-export const fetchChangeUserInfo = (name, value) => (dispatch) => {
+export const fetchChangeUserInfo = (name, value) => (dispatch, getState) => {
+  const prevValue = getState().authSuccess.userData[name];
+
   if (name !== 'password') {
     dispatch(changeUserInfo(name, value));
   }
@@ -19,8 +22,14 @@ export const fetchChangeUserInfo = (name, value) => (dispatch) => {
       .catch((err) => {
         if (err.status === 401) {
           dispatch(userLogout());
-          notify('Please authorize!');
+          return notify('Please authorize!');
         }
+
+        notify(
+            `${withExclamation(err.statusText) || 'Network error!'} 
+           ${capitalize(name)} has not been changed.`,
+        );
+        dispatch(changeUserInfo(name, prevValue));
       });
 };
 
