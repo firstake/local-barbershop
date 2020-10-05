@@ -48,7 +48,7 @@ class GuestForm extends Component {
   handleSubmit(evt) {
     evt.preventDefault();
     const {title, link} = this.props;
-    const {name, phone, email} = this.state;
+    const {name, phone} = this.state;
 
     API.setBooking({
       date: this.state.dateInputValue.value,
@@ -57,7 +57,6 @@ class GuestForm extends Component {
       link,
       name,
       phone,
-      email,
     }).then(() => {
       this.setState({successMessage: true});
     });
@@ -106,23 +105,6 @@ class GuestForm extends Component {
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="email">Email address</label>
-            <input
-              name="email"
-              type="email"
-              className="form-control"
-              id="email"
-              placeholder="Enter email"
-              autoComplete="email"
-              required
-              onChange={this.handleGuestChange}
-            />
-            <small className="form-text text-muted">
-              Don&apos;t be scary, we&apos;ll never share your email with anyone else.
-            </small>
-          </div>
-
           {successMessage && (
             <div className="alert-plate">
               <div
@@ -130,7 +112,7 @@ class GuestForm extends Component {
                 alert-success
                 text-center"
               >
-                Succesfully! We will send the booking information to your phone.
+                Succesfully! Our manager will contact you to confirm the booking.
               </div>
             </div>
           )}
