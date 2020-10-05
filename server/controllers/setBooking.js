@@ -8,7 +8,6 @@ const bookAsGuest = (params, res, next) => {
   const {
     name,
     phone,
-    email,
     date,
     time,
     title,
@@ -18,7 +17,6 @@ const bookAsGuest = (params, res, next) => {
     _id: new mongoose.Types.ObjectId(),
     name,
     phone,
-    email,
   });
 
   guest.save(function(err) {
