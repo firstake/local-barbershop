@@ -5,7 +5,6 @@ const schema = new Schema({
   _id: Schema.Types.ObjectId,
   name: String,
   phone: String,
-  email: String,
 }, {
   versionKey: false,
 });
