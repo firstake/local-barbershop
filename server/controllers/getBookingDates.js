@@ -29,23 +29,25 @@ const getBookingDates = (req, res, next) => {
     const resultDates = [];
 
     nextDays.forEach((date) => {
+      const label = moment(date, 'DD:MM:YYYY').format('ddd, D MMMM, YYYY');
+
       if (bookedDates.hasOwnProperty(date)) {
         if (bookedDates[date].length === 8) {
           return resultDates.push({
             value: date,
-            label: date,
+            label,
             isDisabled: true,
           });
         }
 
         return resultDates.push({
           value: date,
-          label: date,
+          label,
           time: bookedDates[date],
         });
       }
 
-      resultDates.push({value: date, label: date});
+      resultDates.push({value: date, label});
     });
 
     res.json(resultDates);
