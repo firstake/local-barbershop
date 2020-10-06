@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faCalendarWeek} from '@fortawesome/free-solid-svg-icons';
+
+import {format} from '../../../util';
+
 class UpcomingBookings extends Component {
   constructor(props) {
     super(props);
@@ -23,12 +28,17 @@ class UpcomingBookings extends Component {
             <div className="list-group">
               {bookings.map(({date, time}) => (
                 <div className="list-group-item" key={date + time}>
-                  <p className="mb-1">{`${date} ${time}`}</p>
+                  <p className="mb-1">
+                    <FontAwesomeIcon icon={faCalendarWeek}/>
+                    {` ${format(date)} `}
+                    <span style={{color: '#dc3545'}}>|</span>
+                    {` ${time}`}
+                  </p>
                   <button
                     type="button"
                     onClick={this.cancelBooking}
                     data-key={`${date} ${time}`}
-                    className="btn btn-danger float-right m-1"
+                    className="btn btn-danger float-right mt-1"
                   >
                     Cancel
                   </button>
