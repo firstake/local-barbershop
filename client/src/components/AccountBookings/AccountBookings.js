@@ -2,6 +2,11 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faCalendarWeek} from '@fortawesome/free-solid-svg-icons';
+
+import {format} from '../../util';
+
 class AccountBookings extends Component {
   constructor(props) {
     super(props);
@@ -39,12 +44,17 @@ class AccountBookings extends Component {
                         {title}
                       </Link>
                     </h5>
-                    <p className="mb-1">{`${date} ${time}`}</p>
+                    <p className="mb-1">
+                      <FontAwesomeIcon icon={faCalendarWeek}/>
+                      {` ${format(date)} `}
+                      <span style={{color: '#dc3545'}}>|</span>
+                      {` ${time}`}
+                    </p>
                     <button
                       type="button"
                       onClick={this.cancelBooking}
                       data-key={`${date} ${time}`}
-                      className="btn btn-danger float-right m-1"
+                      className="btn btn-danger float-right mt-1"
                     >
                     Cancel
                     </button>
