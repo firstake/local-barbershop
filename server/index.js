@@ -10,6 +10,9 @@ const compression = require('compression');
 const appRoutes = require('./routes');
 
 const app = express();
+const http = require('http').Server(app); // eslint-disable-line
+const io = require('socket.io')(http);
+const cookie = require('cookie');
 
 app.disable('x-powered-by');
 app.set('port', process.env.PORT || 3001);
@@ -60,6 +63,19 @@ app.use((error, req, res, next) => {
 });
 
 /* Start a server */
-app.listen(app.get('port'), () => {
+http.listen(app.get('port'), () => {
   console.log(`Server started: http://localhost:${app.get('port')}/`);
+});
+
+/* Socket.io */
+io.on('connection', (socket) => {
+  const cookies = cookie.parse(socket.handshake.headers.cookie || '');
+
+  if (cookies.UID) {
+    socket.join(cookies.UID);
+  }
+
+  socket.on('logout', () => {
+    socket.to(cookies.UID).emit('logout');
+  });
 });
