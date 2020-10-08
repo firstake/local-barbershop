@@ -1,9 +1,11 @@
+import io from 'socket.io-client';
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import {fetchUserLogout} from '../../actions/logoutActions';
+import {fetchUserLogout, userLogout} from '../../actions/logoutActions';
 
 import './Navbar.scss';
 import logo from '../../assets/logo.png';
@@ -11,6 +13,9 @@ import logo from '../../assets/logo.png';
 class Navbar extends Component {
   constructor(props) {
     super(props);
+    this.socket = io({
+      autoConnect: false,
+    });
     this.state = {
       isOpen: false,
     };
@@ -25,11 +30,30 @@ class Navbar extends Component {
 
   componentDidMount() {
     document.addEventListener('click', this.handleClickOutside);
+    this.socket.open();
+    this.socket.on('logout', () => {
+      this.props.userLogout();
+      this.socket.close();
+    });
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.isLoggingOut && !this.props.isLoggingOut) {
       this.closeMenu();
+    }
+
+    const isAuthStatusChanges = prevProps.isAuth !== this.props.isAuth;
+    /*
+     * If user is logged in, we should close the previous connection
+     * that we opened above, and open a new one. This way WS will receive session UID.
+     */
+    if (isAuthStatusChanges && this.props.isAuth) {
+      this.socket.close();
+      this.socket.open();
+    }
+
+    if (isAuthStatusChanges && !this.props.isAuth) {
+      this.socket.emit('logout');
     }
   }
 
@@ -173,6 +197,7 @@ class Navbar extends Component {
 Navbar.propTypes = {
   isAuth: PropTypes.bool,
   isLoggingOut: PropTypes.bool,
+  userLogout: PropTypes.func,
   fetchUserLogout: PropTypes.func,
 };
 
@@ -182,6 +207,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  userLogout: () => dispatch(userLogout()),
   fetchUserLogout: () => dispatch(fetchUserLogout()),
 });
 
