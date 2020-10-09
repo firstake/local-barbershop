@@ -15,7 +15,7 @@ const register = (req, res, next) => {
       return next(createError(409, 'This email address already exists!'));
     } else {
       const newUser = new User({
-        access_token: crypto.randomBytes(48).toString('base64'),
+        access_token: [crypto.randomBytes(48).toString('base64')],
         name,
         phone,
         email,

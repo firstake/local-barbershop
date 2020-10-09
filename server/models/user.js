@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema({
   access_token: {
-    type: String,
+    type: [String],
     required: true,
   },
   name: {
