@@ -9,9 +9,9 @@ class UserInfoList extends Component {
     this.saveChanges = this.saveChanges.bind(this);
   }
 
-  saveChanges(name, value) {
+  saveChanges(key, value) {
     const {changeUserInfo} = this.props;
-    changeUserInfo(name, value);
+    changeUserInfo(key, value);
   }
 
   render() {
