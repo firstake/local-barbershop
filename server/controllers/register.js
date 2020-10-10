@@ -15,9 +15,9 @@ const register = (req, res, next) => {
       return next(createError(409, 'This email address already exists!'));
     }
 
-    const access_token = crypto.randomBytes(48).toString('base64'); //eslint-disable-line
+    const UID = crypto.randomBytes(48).toString('base64');
     const newUser = new User({
-      access_token: [access_token], //eslint-disable-line
+      session: [UID],
       name,
       phone,
       email,
@@ -31,7 +31,7 @@ const register = (req, res, next) => {
 
       const sessionUser = sessionizeUser(user);
 
-      res.cookie('UID', access_token, {httpOnly: true});
+      res.cookie('UID', UID, {httpOnly: true});
       res.send(sessionUser);
     });
   });

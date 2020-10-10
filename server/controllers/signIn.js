@@ -5,7 +5,7 @@ const sessionizeUser = require('../util/sessionizeUser');
 
 const signIn = (req, res, next) => {
   const {email, pass} = req.body;
-  const access_token = crypto.randomBytes(48).toString('base64'); //eslint-disable-line
+  const UID = crypto.randomBytes(48).toString('base64');
 
   User.findOne({email}).then((user, err) => {
     if (err) {
@@ -13,7 +13,7 @@ const signIn = (req, res, next) => {
     }
 
     if (user && user.comparePasswords(pass)) {
-      user.access_token.push(access_token);
+      user.session.push(UID);
       user.save(function(err, user) {
         if (err) {
           return next(createError(500, 'Server error, please try again later...'));
@@ -21,7 +21,7 @@ const signIn = (req, res, next) => {
 
         const sessionUser = sessionizeUser(user);
 
-        res.cookie('UID', access_token, {httpOnly: true});
+        res.cookie('UID', UID, {httpOnly: true});
         res.send(sessionUser);
       });
     } else {

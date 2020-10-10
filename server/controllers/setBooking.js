@@ -10,7 +10,7 @@ const setBooking = (req, res, next) => {
   const {UID} = cookies;
 
   User.findOneAndUpdate(
-      {access_token: UID},
+      {session: UID},
       {$push: {
         bookings: {
           date,

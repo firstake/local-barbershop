@@ -10,7 +10,7 @@ const userExists = async (UID, next) => {
   }
 
   try {
-    user = await User.findOne({access_token: UID}).exec();
+    user = await User.findOne({session: UID}).exec();
     if (!user) {
       next(createError(401, 'Unauthorized'));
     }
