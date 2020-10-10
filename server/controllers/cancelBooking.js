@@ -1,6 +1,6 @@
 const createError = require('http-errors');
 
-const User = require('../models/user');
+const userExists = require('../util/userExists');
 const Booking = require('../models/booking');
 
 const cancelBooking = (req, res, next) => {
@@ -8,40 +8,32 @@ const cancelBooking = (req, res, next) => {
   const {date, time} = body;
   const {UID} = cookies;
 
-  if (UID) {
-    User.updateOne(
-        {access_token: UID},
-        {$pull: {
-          bookings: {
-            date,
-            time,
-          },
-        }},
-        function(err) {
-          if (err) {
-            return next(createError(500, 'Server error, please try again later...'));
-          }
+  userExists(UID, next).then((user) => {
+    if (user) {
+      user.bookings = user.bookings.filter((item) => !(item.date === date && item.time === time));
+      user.save(function(err, _) {
+        if (err) {
+          return next(createError(500, 'Server error, please try again later...'));
+        }
 
-          Booking.updateOne(
-              {date},
-              {$pull: {
-                records: {
-                  time: +time.split(':')[0],
-                },
-              }},
-              function(err) {
-                if (err) {
-                  return next(createError(500, 'Server error, please try again later...'));
-                }
-
-                res.send({});
+        Booking.updateOne(
+            {date},
+            {$pull: {
+              records: {
+                time: +time.split(':')[0],
               },
-          );
-        },
-    );
-  } else {
-    return next(createError(401, 'Unauthorized'));
-  }
+            }},
+            function(err) {
+              if (err) {
+                return next(createError(500, 'Server error, please try again later...'));
+              }
+
+              res.send({});
+            },
+        );
+      });
+    }
+  });
 };
 
 module.exports = cancelBooking;

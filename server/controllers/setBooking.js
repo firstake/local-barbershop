@@ -4,6 +4,40 @@ const User = require('../models/user');
 const Guest = require('../models/guest');
 const Booking = require('../models/booking');
 
+const setBooking = (req, res, next) => {
+  const {body, cookies} = req;
+  const {time, date, title, link} = body;
+  const {UID} = cookies;
+
+  User.findOneAndUpdate(
+      {access_token: UID},
+      {$push: {
+        bookings: {
+          date,
+          time: `${time}:00`,
+          title,
+          link,
+        },
+      }},
+      function(err, user) {
+        if (err) {
+          return next(createError(500, 'Server error, please try again later...'));
+        }
+
+        if (user) {
+          updateBookingsCollection(
+              {date, time, title, user_id: user._id},
+              res, next,
+          );
+        }
+
+        if (!user) {
+          bookAsGuest(body, res, next);
+        }
+      },
+  );
+};
+
 const bookAsGuest = (params, res, next) => {
   const {
     name,
@@ -53,42 +87,6 @@ const updateBookingsCollection = (params, res, next) => {
         res.send({});
       },
   );
-};
-
-const setBooking = (req, res, next) => {
-  const {body, cookies} = req;
-  const {time, date, title, link} = body;
-  const {UID} = cookies;
-
-  if (UID) {
-    User.findOneAndUpdate(
-        {access_token: UID},
-        {$push: {
-          bookings: {
-            date,
-            time: `${time}:00`,
-            title,
-            link,
-          },
-        }},
-        function(err, user) {
-          if (err) {
-            return next(createError(500, 'Server error, please try again later...'));
-          }
-
-          if (user) {
-            updateBookingsCollection(
-                {date, time, title, user_id: user._id},
-                res, next,
-            );
-          } else {
-            bookAsGuest(body, res, next);
-          }
-        },
-    );
-  } else {
-    bookAsGuest(body, res, next);
-  }
 };
 
 module.exports = setBooking;

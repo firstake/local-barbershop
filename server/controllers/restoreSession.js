@@ -5,23 +5,20 @@ const sessionizeUser = require('../util/sessionizeUser');
 const restoreSession = (req, res, next) => {
   const {UID} = req.cookies;
 
-  if (UID) {
-    User.findOne({access_token: UID}, function(err, user) {
-      if (err) {
-        return next(createError(500, 'Server error, please try again later...'));
-      }
+  User.findOne({access_token: UID}, function(err, user) {
+    if (err) {
+      return next(createError(500, 'Server error, please try again later...'));
+    }
 
-      if (user) {
-        const sessionUser = sessionizeUser(user);
+    if (user) {
+      const sessionUser = sessionizeUser(user);
+      res.send(sessionUser);
+    }
 
-        res.send(sessionUser);
-      } else {
-        res.send({});
-      }
-    });
-  } else {
-    res.send({});
-  }
+    if (!user) {
+      res.send({});
+    }
+  });
 };
 
 module.exports = restoreSession;
