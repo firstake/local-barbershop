@@ -13,28 +13,27 @@ const register = (req, res, next) => {
 
     if (user) {
       return next(createError(409, 'This email address already exists!'));
-    } else {
-      const newUser = new User({
-        access_token: crypto.randomBytes(48).toString('base64'),
-        name,
-        phone,
-        email,
-        password,
-      });
-
-      newUser.save(function(err, user) {
-        if (err) {
-          return next(createError(500, 'Server error, please try again later...'));
-        }
-
-        if (user) {
-          const sessionUser = sessionizeUser(user);
-
-          res.cookie('UID', user.access_token, {httpOnly: true});
-          res.send(sessionUser);
-        }
-      });
     }
+
+    const UID = crypto.randomBytes(48).toString('base64');
+    const newUser = new User({
+      session: [UID],
+      name,
+      phone,
+      email,
+      password,
+    });
+
+    newUser.save(function(err, user) {
+      if (err) {
+        return next(createError(500, 'Server error, please try again later...'));
+      }
+
+      const sessionUser = sessionizeUser(user);
+
+      res.cookie('UID', UID, {httpOnly: true});
+      res.send(sessionUser);
+    });
   });
 };
 

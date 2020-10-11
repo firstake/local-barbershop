@@ -1,1 +1,1 @@
-{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"local-barbershop.users"}],"uuid":"7abaf9385168400683d41ec831ad05f2"}
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"local-barbershop.users"}],"uuid":"172f92e7d6eb470f8a2da390ff872ad8"}

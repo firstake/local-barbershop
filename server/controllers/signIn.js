@@ -5,25 +5,29 @@ const sessionizeUser = require('../util/sessionizeUser');
 
 const signIn = (req, res, next) => {
   const {email, pass} = req.body;
-  const access_token = crypto.randomBytes(48).toString('base64'); //eslint-disable-line
+  const UID = crypto.randomBytes(48).toString('base64');
 
-  User.findOneAndUpdate(
-      {email},
-      {$set: {access_token}},
-      function(err, user) {
+  User.findOne({email}).then((user, err) => {
+    if (err) {
+      return next(createError(500, 'Server error, please try again later...'));
+    }
+
+    if (user && user.comparePasswords(pass)) {
+      user.session.push(UID);
+      user.save(function(err, user) {
         if (err) {
           return next(createError(500, 'Server error, please try again later...'));
         }
 
-        if (user && user.comparePasswords(pass)) {
-          const sessionUser = sessionizeUser(user);
+        const sessionUser = sessionizeUser(user);
 
-          res.cookie('UID', access_token, {httpOnly: true});
-          res.send(sessionUser);
-        } else {
-          next(createError(401, 'Wrong email or password!'));
-        }
+        res.cookie('UID', UID, {httpOnly: true});
+        res.send(sessionUser);
       });
+    } else {
+      next(createError(401, 'Wrong email or password!'));
+    }
+  });
 };
 
 module.exports = signIn;

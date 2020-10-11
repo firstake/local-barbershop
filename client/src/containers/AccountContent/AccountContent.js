@@ -108,7 +108,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   cancelBooking: (date, time) => dispatch(fetchCancelBooking(date, time)),
-  changeUserInfo: (name, value) => dispatch(fetchChangeUserInfo(name, value)),
+  changeUserInfo: (key, value) => dispatch(fetchChangeUserInfo(key, value)),
   changeUserAvatar: (formData) => dispatch(fetchChangeUserAvatar(formData)),
 });
 

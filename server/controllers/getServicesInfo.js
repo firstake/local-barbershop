@@ -3,6 +3,7 @@ const Service = require('../models/service');
 
 const getServicesInfo = (req, res, next) => {
   const {page} = req.query;
+
   if (page) {
     Service.findOne({link: page}, '-_id', function(err, service) {
       if (err) {

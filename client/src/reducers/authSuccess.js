@@ -50,7 +50,7 @@ const authSuccess = (
         ...state,
         userData: {
           ...state.userData,
-          [action.name]: action.value,
+          [action.key]: action.value,
         },
       };
 
