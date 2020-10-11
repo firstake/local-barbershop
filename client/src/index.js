@@ -42,4 +42,4 @@ const renderApp = (preloadedState) => {
   renderApp(await restoreSession());
 })();
 
-export const notify = (message) => toast.error(message);
+export const notify = (message, status = 'error') => toast[status](message);

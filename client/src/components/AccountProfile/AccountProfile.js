@@ -18,12 +18,13 @@ class AccountProfile extends Component {
     this.setState({isPending: true});
     API.logoutAllSessions().then((_) => {
       this.setState({isPending: false});
-      notify('Successfully logged out from other sessions!');
+      notify('Successfully logged out from other sessions!', 'success');
     }).catch((err) => {
       if (err.status === 401) {
         this.props.userLogout();
-        notify('Please authorize!');
+        return notify('Please authorize!');
       }
+
       notify(err.statusText || 'Network error!');
     });
   }
