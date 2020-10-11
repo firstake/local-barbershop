@@ -73,3 +73,12 @@ export const logout = () => {
       .then(handleErrors)
       .then((res) => res.json());
 };
+
+export const logoutAllSessions = () => {
+  return fetch(`${API_URL}/api/logout-all-sessions`, {
+    method: 'POST',
+    credentials: 'same-origin',
+  })
+      .then(handleErrors)
+      .then((res) => res.json());
+};
