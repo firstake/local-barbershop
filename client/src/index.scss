@@ -29,6 +29,11 @@ body {
 
 button {
   outline: none !important;
+
+  &:disabled {
+    cursor: default;
+    pointer-events: all !important;
+  }
 }
 
 .form-control:focus {
