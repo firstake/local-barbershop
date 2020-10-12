@@ -16,7 +16,9 @@ const logout = (req, res, next) => {
           return next(createError(500, 'Server error, please try again later...'));
         }
 
-        res.cookie('UID', '', {httpOnly: true, maxAge: 0});
+        res.cookie('UID', '', {
+          httpOnly: true, maxAge: 0, secure: process.env.HTTPS === 'enabled' ? true : false,
+        });
         res.send({});
       });
     }

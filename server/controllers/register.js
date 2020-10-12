@@ -31,7 +31,9 @@ const register = (req, res, next) => {
 
       const sessionUser = sessionizeUser(user);
 
-      res.cookie('UID', UID, {httpOnly: true});
+      res.cookie('UID', UID, {
+        httpOnly: true, secure: process.env.HTTPS === 'enabled' ? true : false,
+      });
       res.send(sessionUser);
     });
   });
