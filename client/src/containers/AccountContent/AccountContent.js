@@ -8,6 +8,7 @@ import {
   fetchChangeUserInfo,
   fetchChangeUserAvatar,
 } from '../../actions/userActions';
+import {userLogout} from '../../actions/logoutActions';
 
 import Avatar from '../../components/Avatar';
 import AccountBookings from '../../components/AccountBookings';
@@ -33,7 +34,7 @@ class AccountContent extends Component {
 
   render() {
     const {
-      isAuth, userData, changeUserInfo, cancelBooking, changeUserAvatar,
+      isAuth, userData, changeUserInfo, cancelBooking, changeUserAvatar, userLogout,
     } = this.props;
     const {active} = this.state;
 
@@ -79,6 +80,7 @@ class AccountContent extends Component {
             <AccountProfile
               userData={userData}
               changeUserInfo={changeUserInfo}
+              userLogout={userLogout}
             />
           </Tabs>
         </div>
@@ -99,6 +101,7 @@ AccountContent.propTypes = {
     phone: PropTypes.string,
     avatar: PropTypes.string,
   }),
+  userLogout: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
@@ -110,6 +113,7 @@ const mapDispatchToProps = (dispatch) => ({
   cancelBooking: (date, time) => dispatch(fetchCancelBooking(date, time)),
   changeUserInfo: (key, value) => dispatch(fetchChangeUserInfo(key, value)),
   changeUserAvatar: (formData) => dispatch(fetchChangeUserAvatar(formData)),
+  userLogout: () => dispatch(userLogout()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountContent);
