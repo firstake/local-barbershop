@@ -30,6 +30,7 @@ class Navbar extends Component {
 
   componentDidMount() {
     document.addEventListener('click', this.handleClickOutside);
+
     this.socket.open();
     this.socket.on('logout', () => {
       this.props.userLogout();
@@ -43,6 +44,7 @@ class Navbar extends Component {
     }
 
     const isAuthStatusChanges = prevProps.isAuth !== this.props.isAuth;
+
     /*
      * If user is logged in, we should close the previous connection
      * that we opened above, and open a new one. This way WS will receive session UID.

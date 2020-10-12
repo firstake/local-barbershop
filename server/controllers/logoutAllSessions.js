@@ -7,13 +7,16 @@ const logoutAllSessions = (req, res, next) => {
 
   userExists(UID, next).then((user) => {
     if (user) {
-      user.session = user.session.filter((token) => token === UID);
+      const otherSessions = user.session.filter((token) => token !== UID);
+
+      user.session = [UID];
       user.save(function(err, _) {
         if (err) {
           return next(createError(500, 'Server error, please try again later...'));
         }
 
         res.send({});
+        otherSessions.forEach((session) => req.app.io.sockets.to(session).emit('logout'));
       });
     }
   });
