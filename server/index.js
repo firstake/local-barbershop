@@ -14,6 +14,8 @@ const http = require('http').Server(app); // eslint-disable-line
 const io = require('socket.io')(http);
 const cookie = require('cookie');
 
+app.io = io; // Attaching the io instance to app
+
 app.disable('x-powered-by');
 app.set('port', process.env.PORT || 3001);
 
@@ -71,10 +73,12 @@ http.listen(app.get('port'), () => {
 io.on('connection', (socket) => {
   const cookies = cookie.parse(socket.handshake.headers.cookie || '');
 
+  // Сombine all tabs into a room by session
   if (cookies.UID) {
     socket.join(cookies.UID);
   }
 
+  // Receive message & logout all tabs except sender
   socket.on('logout', () => {
     socket.to(cookies.UID).emit('logout');
   });
