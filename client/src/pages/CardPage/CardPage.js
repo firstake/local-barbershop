@@ -22,6 +22,7 @@ class cardPage extends Component {
     const link = this.props.match.params.title || '';
 
     API.getService(link).then((data) => {
+      document.title = `${data.title} | Local Barbershop`;
       this.setState({pageData: data});
     }).catch((err) => {
       this.setState({isError: true});
