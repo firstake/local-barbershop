@@ -14,21 +14,24 @@ import Account from './pages/Account';
 import Contacts from './pages/Contacts';
 import NotFound from './pages/NotFound';
 
+// CardPage has dynamic title, see this component for details
+import {withTitle} from './util';
+
 class App extends Component {
   render() {
     return (
       <>
         <Header />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/sign-in" component={SignIn} />
-          <Route exact path="/services" component={Services} />
-          <Route path="/services/:title" component={CardPage} />
-          <Route path="/gallery" component={Gallery} />
-          <Route path="/contacts" component={Contacts} />
-          <Route path="/register" component={Register} />
-          <Route path="/account" component={Account} />
-          <Route component={NotFound} />
+          <Route exact path="/" component={withTitle(Home, 'Home')} />
+          <Route exact path="/sign-in" component={withTitle(SignIn, 'Sign in')} />
+          <Route exact path="/services" component={withTitle(Services, 'Services')} />
+          <Route path="/services/:title" component={withTitle(CardPage, 'Loading service...')} />
+          <Route path="/gallery" component={withTitle(Gallery, 'Gallery')} />
+          <Route path="/contacts" component={withTitle(Contacts, 'Contacts')} />
+          <Route path="/register" component={withTitle(Register, 'Register')} />
+          <Route path="/account" component={withTitle(Account, 'Account')} />
+          <Route component={withTitle(NotFound, '404')} />
         </Switch>
         <Footer />
       </>
