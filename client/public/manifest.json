@@ -1,15 +1,16 @@
 {
+  "name": "Local Barbershop",
   "short_name": "Local Barbershop",
-  "name": "Local Barbershop App",
   "icons": [
     {
-      "src": "favicon.png",
-      "sizes": "128x128",
-      "type": "image/x-icon"
+      "src": "/img/touch/android-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "orientation": "portrait",
+  "theme_color": "#fff",
+  "background_color": "#fff"
 }
