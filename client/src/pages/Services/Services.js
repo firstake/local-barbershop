@@ -13,7 +13,19 @@ class Services extends Component {
   }
 
   componentDidMount() {
-    API.getServices().then((data) => this.setState({data}));
+    this.controller = new AbortController();
+    API.getServices({
+      signal: this.controller.signal,
+    }).then((data) => this.setState({data}))
+        .catch((err) => {
+          if (err.name === 'AbortError') {
+            return console.error('The user aborted a request.');
+          }
+        });
+  }
+
+  componentWillUnmount() {
+    this.controller.abort();
   }
 
   render() {
