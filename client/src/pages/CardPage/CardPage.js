@@ -19,14 +19,24 @@ class cardPage extends Component {
   }
 
   componentDidMount() {
+    this.controller = new AbortController();
     const link = this.props.match.params.title || '';
 
-    API.getService(link).then((data) => {
+    API.getService(link, {
+      signal: this.controller.signal,
+    }).then((data) => {
       document.title = `${data.title} | Local Barbershop`;
       this.setState({pageData: data});
     }).catch((err) => {
+      if (err.name === 'AbortError') {
+        return console.error('The user aborted a request.');
+      }
       this.setState({isError: true});
     });
+  }
+
+  componentWillUnmount() {
+    this.controller.abort();
   }
 
   render() {

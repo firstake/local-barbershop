@@ -2,8 +2,11 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 const handleErrors = (res) => res.ok ? res : Promise.reject(res);
 
-const getRequest = (url) => {
-  return fetch(`${API_URL}/${url}`, {credentials: 'same-origin'})
+const getRequest = (url, options) => {
+  return fetch(`${API_URL}/${url}`, {
+    credentials: 'same-origin',
+    ...options,
+  })
       .then(handleErrors)
       .then((res) => res.json());
 };
@@ -23,12 +26,12 @@ export const getBookingDates = () => {
   return getRequest('api/get-booking-dates');
 };
 
-export const getService = (link) => {
-  return getRequest(`api/services?page=${link}`);
+export const getService = (link, options) => {
+  return getRequest(`api/services?page=${link}`, options);
 };
 
-export const getServices = () => {
-  return getRequest('api/services');
+export const getServices = (options) => {
+  return getRequest('api/services', options);
 };
 
 export const restoreSession = () => {
