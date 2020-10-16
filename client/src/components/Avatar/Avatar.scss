@@ -1,8 +1,21 @@
+.avatar-loading-wrapper {
+  position: relative;
+  height: 0;
+  padding-bottom: calc(100% - 2px);
+  border: 1px solid #dfdfdf;
+  border-radius: calc(.25rem + 1px);
+
+  img {
+    height: auto;
+  }
+}
+
 .plus-upload-btn {
   position: absolute;
-  top: 0.2rem;
-  left: 1.4rem;
+  top: -4px;
+  left: -4px;
   border: 0;
-  padding: 0;
-  background: transparent;
+  background: white;
+  padding: 0 .35rem;
+  border-radius: .25rem;
 }

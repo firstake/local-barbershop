@@ -48,19 +48,27 @@ class Avatar extends Component {
 
     return (
       <>
-        <img
-          onError={this.onImgLoadError}
-          className="rounded mb-4 w-100"
-          src={avatar}
-          alt="Avatar"
-        />
-        <button
-          type="button"
-          className="plus-upload-btn"
-          onClick={this.openUploadDialog}
-        >
-          <FontAwesomeIcon icon={faPlus} />
-        </button>
+        <div className="mb-4 avatar-loading-wrapper">
+          <picture>
+            <source srcSet={`${avatar.slice(0, -3)}webp`} type="image/webp" />
+            <source srcSet={avatar} type="image/jpeg" />
+            <img
+              onError={this.onImgLoadError}
+              className="rounded w-100"
+              width="512"
+              height="512"
+              src={avatar}
+              alt="Avatar"
+            />
+          </picture>
+          <button
+            type="button"
+            className="plus-upload-btn"
+            onClick={this.openUploadDialog}
+          >
+            <FontAwesomeIcon icon={faPlus} />
+          </button>
+        </div>
         <input
           type="file"
           accept="image/*"
