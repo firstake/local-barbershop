@@ -53,4 +53,4 @@ MONGODB_URL=mongodb+srv://<user-name>:<password>@cluster0.rugmj.gcp.mongodb.net/
 REACT_APP_API_URL=<https://<your-project-name>.herokuapp.com>
 ```
 
-* `git push heroku master` or `git push heroku your-branch:master`
+* `git push heroku master` or `git push heroku <your-branch>:master`
