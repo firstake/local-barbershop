@@ -1,13 +1,13 @@
 const API_URL = process.env.REACT_APP_API_URL;
 
-const handleErrors = (res) => res.ok ? res : Promise.reject(res);
+const handleHttpErrorStatus = (res) => res.ok ? res : Promise.reject(res);
 
 const getRequest = (url, options) => {
   return fetch(`${API_URL}/${url}`, {
     credentials: 'same-origin',
     ...options,
   })
-      .then(handleErrors)
+      .then(handleHttpErrorStatus)
       .then((res) => res.json());
 };
 
@@ -18,7 +18,7 @@ const postRequest = (url, bodyData) => {
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(bodyData),
   })
-      .then(handleErrors)
+      .then(handleHttpErrorStatus)
       .then((res) => res.json());
 };
 
@@ -64,7 +64,7 @@ export const upload = (formData) => {
     credentials: 'same-origin',
     body: formData,
   })
-      .then(handleErrors)
+      .then(handleHttpErrorStatus)
       .then((res) => res.json());
 };
 
@@ -73,7 +73,7 @@ export const logout = () => {
     method: 'POST',
     credentials: 'same-origin',
   })
-      .then(handleErrors)
+      .then(handleHttpErrorStatus)
       .then((res) => res.json());
 };
 
@@ -82,6 +82,6 @@ export const logoutAllSessions = () => {
     method: 'POST',
     credentials: 'same-origin',
   })
-      .then(handleErrors)
+      .then(handleHttpErrorStatus)
       .then((res) => res.json());
 };
