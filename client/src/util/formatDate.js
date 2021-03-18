@@ -1,4 +1,4 @@
-export const format = (dateString) => {
+export const formatDate = (dateString) => {
   const date = new Date(dateString.split(':').reverse().join('-'));
 
   return `

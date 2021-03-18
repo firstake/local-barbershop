@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCalendarWeek} from '@fortawesome/free-solid-svg-icons';
 
-import {format} from '../../../util';
+import {formatDate} from '../../../util';
 
 class UpcomingBookings extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class UpcomingBookings extends Component {
                 <div className="list-group-item" key={date + time}>
                   <p className="mb-1">
                     <FontAwesomeIcon icon={faCalendarWeek}/>
-                    {` ${format(date)} `}
+                    {` ${formatDate(date)} `}
                     <span style={{color: '#dc3545'}}>|</span>
                     {` ${time}`}
                   </p>

@@ -4,7 +4,7 @@ import {checkWebpFeature} from './checkWebpFeature';
 import {withExclamation} from './withExclamation';
 import {withTitle} from './withTitle';
 import {capitalize} from './capitalize';
-import {format} from './format';
+import {formatDate} from './formatDate';
 
 export {
   restoreSession,
@@ -13,5 +13,5 @@ export {
   withExclamation,
   withTitle,
   capitalize,
-  format,
+  formatDate,
 };

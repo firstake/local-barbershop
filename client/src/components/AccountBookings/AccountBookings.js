@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCalendarWeek} from '@fortawesome/free-solid-svg-icons';
 
-import {format} from '../../util';
+import {formatDate} from '../../util';
 
 class AccountBookings extends Component {
   constructor(props) {
@@ -46,7 +46,7 @@ class AccountBookings extends Component {
                     </h5>
                     <p className="mb-1">
                       <FontAwesomeIcon icon={faCalendarWeek}/>
-                      {` ${format(date)} `}
+                      {` ${formatDate(date)} `}
                       <span style={{color: '#dc3545'}}>|</span>
                       {` ${time}`}
                     </p>
