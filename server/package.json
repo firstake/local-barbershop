@@ -13,8 +13,8 @@
     "express-fileupload": "^1.1.9",
     "http-errors": "^1.7.3",
     "moment": "^2.24.0",
-    "mongodb": "^3.5.7",
-    "mongoose": "^5.11.19",
+    "mongodb": "^3.7.3",
+    "mongoose": "^5.13.14",
     "socket.io": "^4.4.1"
   },
   "scripts": {
