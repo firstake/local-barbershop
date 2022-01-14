@@ -15,7 +15,7 @@
     "moment": "^2.24.0",
     "mongodb": "^3.5.7",
     "mongoose": "^5.11.19",
-    "socket.io": "^2.4.0"
+    "socket.io": "^4.4.1"
   },
   "scripts": {
     "start": "node index.js",
