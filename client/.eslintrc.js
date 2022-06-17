@@ -30,6 +30,6 @@ module.exports = {
     'require-jsdoc': 0,
     'camelcase': 0,
     'max-len': ['error', { "code": 100 }],
-    'linebreak-style': ['error', 'windows']
+    'linebreak-style': ['error', 'unix']
   },
 };
